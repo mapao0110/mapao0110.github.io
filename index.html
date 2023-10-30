@@ -6,8 +6,8 @@
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/mapao.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/mapao.jpg">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
@@ -17,14 +17,14 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="不爱码字的小懒马儿">
 <meta property="og:type" content="website">
-<meta property="og:title" content="MapaoBlog">
+<meta property="og:title" content="小马&amp;博客">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="MapaoBlog">
+<meta property="og:site_name" content="小马&amp;博客">
 <meta property="og:description" content="不爱码字的小懒马儿">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="马跑">
@@ -44,7 +44,7 @@
   };
 </script>
 
-  <title>MapaoBlog</title>
+  <title>小马&博客</title>
   
 
 
@@ -75,6 +75,9 @@
   </style>
 </noscript>
 
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+<link rel="alternate" href="/atom.xml" title="小马&博客" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -95,7 +98,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">MapaoBlog</h1>
+      <h1 class="site-title">小马&博客</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">不爱码字的小懒马儿</p>
@@ -103,6 +106,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -117,16 +121,53 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -152,13 +193,13 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/29/machine-learn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/mapao.jpg">
       <meta itemprop="name" content="马跑">
       <meta itemprop="description" content="不爱码字的小懒马儿">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MapaoBlog">
+      <meta itemprop="name" content="小马&博客">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -172,9 +213,28 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-10-29 19:19:16 / 修改时间：19:23:42" itemprop="dateCreated datePublished" datetime="2023-10-29T19:19:16+08:00">2023-10-29</time>
+              <time title="创建时间：2023-10-29 19:19:16" itemprop="dateCreated datePublished" datetime="2023-10-29T19:19:16+08:00">2023-10-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-30 21:16:32" itemprop="dateModified" datetime="2023-10-30T21:16:32+08:00">2023-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+                </span>
             </span>
 
           
@@ -190,9 +250,14 @@
       
           <p>大家好，我是马跑~~</p>
 <p>本文目标：带大家学会机器学习</p>
-<p>机器学习非常简单，无所谓！我会出手。</p>
-<!--read more-->
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/10/29/machine-learn/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -214,13 +279,13 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/18/%E6%88%91%E8%A7%89%E5%BE%97%E5%B0%B1%E4%BC%9A%E8%BF%94%E5%9B%9E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/mapao.jpg">
       <meta itemprop="name" content="马跑">
       <meta itemprop="description" content="不爱码字的小懒马儿">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MapaoBlog">
+      <meta itemprop="name" content="小马&博客">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -234,10 +299,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-04-18 18:36:13 / 修改时间：18:36:39" itemprop="dateCreated datePublished" datetime="2021-04-18T18:36:13+08:00">2021-04-18</time>
+              <time title="创建时间：2021-04-18 18:36:13" itemprop="dateCreated datePublished" datetime="2021-04-18T18:36:13+08:00">2021-04-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-30 21:16:55" itemprop="dateModified" datetime="2023-10-30T21:16:55+08:00">2023-10-30</time>
+              </span>
 
           
 
@@ -251,6 +322,14 @@
 
       
           <h2 id="的课程妇女刹那间"><a href="#的课程妇女刹那间" class="headerlink" title="的课程妇女刹那间"></a>的课程妇女刹那间</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/18/%E6%88%91%E8%A7%89%E5%BE%97%E5%B0%B1%E4%BC%9A%E8%BF%94%E5%9B%9E/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -272,13 +351,13 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BB%8F%E6%B5%8E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/mapao.jpg">
       <meta itemprop="name" content="马跑">
       <meta itemprop="description" content="不爱码字的小懒马儿">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MapaoBlog">
+      <meta itemprop="name" content="小马&博客">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -330,13 +409,13 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/18/%E6%88%91%E5%9B%BD%E5%BD%93%E4%BB%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/mapao.jpg">
       <meta itemprop="name" content="马跑">
       <meta itemprop="description" content="不爱码字的小懒马儿">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MapaoBlog">
+      <meta itemprop="name" content="小马&博客">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -390,13 +469,13 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/18/%E6%88%91%E7%9A%84%E4%BB%93%E5%BA%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/mapao.jpg">
       <meta itemprop="name" content="马跑">
       <meta itemprop="description" content="不爱码字的小懒马儿">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MapaoBlog">
+      <meta itemprop="name" content="小马&博客">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -450,13 +529,13 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/mapao.jpg">
       <meta itemprop="name" content="马跑">
       <meta itemprop="description" content="不爱码字的小懒马儿">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MapaoBlog">
+      <meta itemprop="name" content="小马&博客">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -514,13 +593,13 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/18/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/mapao.jpg">
       <meta itemprop="name" content="马跑">
       <meta itemprop="description" content="不爱码字的小懒马儿">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MapaoBlog">
+      <meta itemprop="name" content="小马&博客">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -537,6 +616,13 @@
 
               <time title="创建时间：2021-04-18 16:16:51" itemprop="dateCreated datePublished" datetime="2021-04-18T16:16:51+08:00">2021-04-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-30 21:16:12" itemprop="dateModified" datetime="2023-10-30T21:16:12+08:00">2023-10-30</time>
+              </span>
 
           
 
@@ -551,18 +637,14 @@
       
           <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/18/hello-world/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -635,6 +717,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="马跑"
+      src="/images/mapao.jpg">
   <p class="site-author-name" itemprop="name">马跑</p>
   <div class="site-description" itemprop="description">不爱码字的小懒马儿</div>
 </div>
@@ -647,8 +731,31 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mapao0110" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mapao0110" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/Mnpao?type=blog" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;Mnpao?type&#x3D;blog" rel="noopener" target="_blank"><i class="fab custom csdn fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/3493292207507852" title="BiliBili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;3493292207507852" rel="noopener" target="_blank"><i class="fa custom bilibili fa-fw"></i>BiliBili</a>
+      </span>
+  </div>
 
 
 
@@ -694,6 +801,8 @@
   </div>
 
   
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
@@ -716,6 +825,10 @@
 
 
 
+  
+<script src="/js/local-search.js"></script>
+
+
 
 
 
@@ -730,6 +843,7 @@
   
 
   
+
 
 </body>
 </html>
