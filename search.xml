@@ -1,10 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>deep learning</title>
+    <url>/2023/10/31/deep-learning/</url>
+    <content><![CDATA[<p>@<a href="%E5%8D%9A%E6%96%87%E7%9B%AE%E5%BD%95">TOC</a></p>
+<hr>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、深度学习、机器学习、目标检测<br>2、将持续更新</p>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="">参考资料1</a></li>
+<li><a href="">参考资料2</a></li>
+</ul>
+<hr>
+<h2 id="交个朋友"><a href="#交个朋友" class="headerlink" title="交个朋友"></a>交个朋友</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+        <category>计算机视觉</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+        <tag>计算机视觉</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>machine learning</title>
     <url>/2023/10/29/machine-learn/</url>
     <content><![CDATA[<p>大家好，我是马跑~~</p>
 <p>本文目标：带大家学会机器学习</p>
+<p>深度学习、计算机视觉、目标检测<br>欢迎大家留言讨论</p>
 <span id="more"></span>
 <p>机器学习非常简单，无所谓！我会出手。</p>
 ]]></content>
