@@ -73,4 +73,30 @@
     
   </entry>
   
+  <entry>
+    <title>machine learning</title>
+    <link href="https://mapao0110.github.io/2023/10/29/hexo-github/"/>
+    <id>https://mapao0110.github.io/2023/10/29/hexo-github/</id>
+    <published>2023-10-29T11:19:16.000Z</published>
+    <updated>2023-10-31T07:31:42.614Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用hexo创建博文，然后部署到GitHub<br>1、新建博文：hexo new ‘xxx’<br>2、清除缓存文件：hexo clean<br>3、生成网站静态文件到默认设置的 public 文件夹：hexo g<br>4、自动生成网站静态文件，并部署到设定的仓库：hexo d<br>5、本地浏览：hexo s</p><p>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;使用hexo创建博文，然后部署到GitHub&lt;br&gt;1、新建博文：hexo new ‘xxx’&lt;br&gt;2、清除缓存文件：hexo clean&lt;br&gt;3、生成网站静态文件到默认设置的 public 文件夹：hexo g&lt;br&gt;4、自动生成网站静态文件，并部署到设定的仓库：hexo d&lt;br&gt;5、本地浏览：hexo s&lt;/p&gt;
+&lt;p&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具" scheme="https://mapao0110.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="hexo" scheme="https://mapao0110.github.io/categories/%E5%B7%A5%E5%85%B7/hexo/"/>
+    
+    
+    <category term="工具" scheme="https://mapao0110.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="hexo" scheme="https://mapao0110.github.io/tags/hexo/"/>
+    
+  </entry>
+  
 </feed>
