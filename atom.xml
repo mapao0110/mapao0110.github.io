@@ -77,21 +77,18 @@
   </entry>
   
   <entry>
-    <title>Hexo-GitHub</title>
-    <link href="https://mapao0110.github.io/2023/10/29/hexo-github/"/>
-    <id>https://mapao0110.github.io/2023/10/29/hexo-github/</id>
+    <title>machine learning</title>
+    <link href="https://mapao0110.github.io/2023/10/29/machine-learn/"/>
+    <id>https://mapao0110.github.io/2023/10/29/machine-learn/</id>
     <published>2023-10-29T11:19:16.000Z</published>
-    <updated>2023-10-31T12:31:53.289Z</updated>
+    <updated>2023-10-31T07:15:48.383Z</updated>
     
-    <content type="html"><![CDATA[<p>使用hexo创建博文，然后部署到GitHub<br>1、新建博文：hexo new ‘xxx’<br>2、清除缓存文件：hexo clean<br>3、生成网站静态文件到默认设置的 public 文件夹：hexo g<br>4、自动生成网站静态文件，并部署到设定的仓库：hexo d<br>5、本地浏览：hexo s<br>6、hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
+    <content type="html"><![CDATA[<p>大家好，我是马跑~~</p><p>本文目标：带大家学会机器学习</p><p>深度学习、计算机视觉、目标检测<br>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
     
     
-    <summary type="html">&lt;p&gt;使用hexo创建博文，然后部署到GitHub&lt;br&gt;1、新建博文：hexo new ‘xxx’&lt;br&gt;2、清除缓存文件：hexo clean&lt;br&gt;3、生成网站静态文件到默认设置的 public 文件夹：hexo g&lt;br&gt;4、自动生成网站静态文件，并部署到设定的仓库：hexo d&lt;br&gt;5、本地浏览：hexo s&lt;br&gt;6、hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。&lt;br&gt;把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;![img](&amp;#x2F;pic&amp;#x2F;xxx.png)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-
-
-&lt;p&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;大家好，我是马跑~~&lt;/p&gt;
+&lt;p&gt;本文目标：带大家学会机器学习&lt;/p&gt;
+&lt;p&gt;深度学习、计算机视觉、目标检测&lt;br&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
     
     
     
@@ -107,18 +104,21 @@
   </entry>
   
   <entry>
-    <title>machine learning</title>
-    <link href="https://mapao0110.github.io/2023/10/29/machine-learn/"/>
-    <id>https://mapao0110.github.io/2023/10/29/machine-learn/</id>
+    <title>Hexo-GitHub</title>
+    <link href="https://mapao0110.github.io/2023/10/29/hexo-github/"/>
+    <id>https://mapao0110.github.io/2023/10/29/hexo-github/</id>
     <published>2023-10-29T11:19:16.000Z</published>
-    <updated>2023-10-31T07:15:48.383Z</updated>
+    <updated>2023-10-31T12:31:53.289Z</updated>
     
-    <content type="html"><![CDATA[<p>大家好，我是马跑~~</p><p>本文目标：带大家学会机器学习</p><p>深度学习、计算机视觉、目标检测<br>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
+    <content type="html"><![CDATA[<p>使用hexo创建博文，然后部署到GitHub<br>1、新建博文：hexo new ‘xxx’<br>2、清除缓存文件：hexo clean<br>3、生成网站静态文件到默认设置的 public 文件夹：hexo g<br>4、自动生成网站静态文件，并部署到设定的仓库：hexo d<br>5、本地浏览：hexo s<br>6、hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
     
     
-    <summary type="html">&lt;p&gt;大家好，我是马跑~~&lt;/p&gt;
-&lt;p&gt;本文目标：带大家学会机器学习&lt;/p&gt;
-&lt;p&gt;深度学习、计算机视觉、目标检测&lt;br&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;使用hexo创建博文，然后部署到GitHub&lt;br&gt;1、新建博文：hexo new ‘xxx’&lt;br&gt;2、清除缓存文件：hexo clean&lt;br&gt;3、生成网站静态文件到默认设置的 public 文件夹：hexo g&lt;br&gt;4、自动生成网站静态文件，并部署到设定的仓库：hexo d&lt;br&gt;5、本地浏览：hexo s&lt;br&gt;6、hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。&lt;br&gt;把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;![img](&amp;#x2F;pic&amp;#x2F;xxx.png)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+&lt;p&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
     
     
     
