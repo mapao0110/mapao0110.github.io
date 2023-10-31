@@ -6,7 +6,7 @@
   <link href="https://mapao0110.github.io/atom.xml" rel="self"/>
   
   <link href="https://mapao0110.github.io/"/>
-  <updated>2023-10-31T07:20:30.996Z</updated>
+  <updated>2023-10-31T07:36:20.969Z</updated>
   <id>https://mapao0110.github.io/</id>
   
   <author>
@@ -21,17 +21,17 @@
     <link href="https://mapao0110.github.io/2023/10/31/deep-learning/"/>
     <id>https://mapao0110.github.io/2023/10/31/deep-learning/</id>
     <published>2023-10-31T07:16:15.000Z</published>
-    <updated>2023-10-31T07:20:30.996Z</updated>
+    <updated>2023-10-31T07:36:20.969Z</updated>
     
-    <content type="html"><![CDATA[<p>@<a href="%E5%8D%9A%E6%96%87%E7%9B%AE%E5%BD%95">TOC</a></p><hr><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul><li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、深度学习、机器学习、目标检测<br>2、将持续更新</p><hr><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="">参考资料1</a></li><li><a href="">参考资料2</a></li></ul><hr><h2 id="交个朋友"><a href="#交个朋友" class="headerlink" title="交个朋友"></a>交个朋友</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul><li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、深度学习、机器学习、目标检测<br>2、将持续更新</p><hr><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="">参考资料1</a></li><li><a href="">参考资料2</a></li></ul><hr><h2 id="交个朋友"><a href="#交个朋友" class="headerlink" title="交个朋友"></a>交个朋友</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;p&gt;@&lt;a href=&quot;%E5%8D%9A%E6%96%87%E7%9B%AE%E5%BD%95&quot;&gt;TOC&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/</summary>
-      
+    <summary type="html">&lt;hr&gt;
+&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://mapao0110.github.io/2023/10/29/machine-learn/&quot;&gt;相关博文&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;注：学习交流使用！</summary>
     
     
     
@@ -48,17 +48,16 @@
   
   <entry>
     <title>machine learning</title>
-    <link href="https://mapao0110.github.io/2023/10/29/machine-learn/"/>
-    <id>https://mapao0110.github.io/2023/10/29/machine-learn/</id>
+    <link href="https://mapao0110.github.io/2023/10/29/hexo-github/"/>
+    <id>https://mapao0110.github.io/2023/10/29/hexo-github/</id>
     <published>2023-10-29T11:19:16.000Z</published>
-    <updated>2023-10-31T07:15:48.383Z</updated>
+    <updated>2023-10-31T07:36:31.161Z</updated>
     
-    <content type="html"><![CDATA[<p>大家好，我是马跑~~</p><p>本文目标：带大家学会机器学习</p><p>深度学习、计算机视觉、目标检测<br>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
+    <content type="html"><![CDATA[<p>使用hexo创建博文，然后部署到GitHub<br>1、新建博文：hexo new ‘xxx’<br>2、清除缓存文件：hexo clean<br>3、生成网站静态文件到默认设置的 public 文件夹：hexo g<br>4、自动生成网站静态文件，并部署到设定的仓库：hexo d<br>5、本地浏览：hexo s</p><p>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
     
     
-    <summary type="html">&lt;p&gt;大家好，我是马跑~~&lt;/p&gt;
-&lt;p&gt;本文目标：带大家学会机器学习&lt;/p&gt;
-&lt;p&gt;深度学习、计算机视觉、目标检测&lt;br&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;使用hexo创建博文，然后部署到GitHub&lt;br&gt;1、新建博文：hexo new ‘xxx’&lt;br&gt;2、清除缓存文件：hexo clean&lt;br&gt;3、生成网站静态文件到默认设置的 public 文件夹：hexo g&lt;br&gt;4、自动生成网站静态文件，并部署到设定的仓库：hexo d&lt;br&gt;5、本地浏览：hexo s&lt;/p&gt;
+&lt;p&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
     
     
     
@@ -75,16 +74,17 @@
   
   <entry>
     <title>machine learning</title>
-    <link href="https://mapao0110.github.io/2023/10/29/hexo-github/"/>
-    <id>https://mapao0110.github.io/2023/10/29/hexo-github/</id>
+    <link href="https://mapao0110.github.io/2023/10/29/machine-learn/"/>
+    <id>https://mapao0110.github.io/2023/10/29/machine-learn/</id>
     <published>2023-10-29T11:19:16.000Z</published>
-    <updated>2023-10-31T07:31:42.614Z</updated>
+    <updated>2023-10-31T07:15:48.383Z</updated>
     
-    <content type="html"><![CDATA[<p>使用hexo创建博文，然后部署到GitHub<br>1、新建博文：hexo new ‘xxx’<br>2、清除缓存文件：hexo clean<br>3、生成网站静态文件到默认设置的 public 文件夹：hexo g<br>4、自动生成网站静态文件，并部署到设定的仓库：hexo d<br>5、本地浏览：hexo s</p><p>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
+    <content type="html"><![CDATA[<p>大家好，我是马跑~~</p><p>本文目标：带大家学会机器学习</p><p>深度学习、计算机视觉、目标检测<br>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
     
     
-    <summary type="html">&lt;p&gt;使用hexo创建博文，然后部署到GitHub&lt;br&gt;1、新建博文：hexo new ‘xxx’&lt;br&gt;2、清除缓存文件：hexo clean&lt;br&gt;3、生成网站静态文件到默认设置的 public 文件夹：hexo g&lt;br&gt;4、自动生成网站静态文件，并部署到设定的仓库：hexo d&lt;br&gt;5、本地浏览：hexo s&lt;/p&gt;
-&lt;p&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;大家好，我是马跑~~&lt;/p&gt;
+&lt;p&gt;本文目标：带大家学会机器学习&lt;/p&gt;
+&lt;p&gt;深度学习、计算机视觉、目标检测&lt;br&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
     
     
     

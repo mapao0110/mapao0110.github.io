@@ -1,50 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>machine learning</title>
-    <url>/2023/10/29/machine-learn/</url>
-    <content><![CDATA[<p>大家好，我是马跑~~</p>
-<p>本文目标：带大家学会机器学习</p>
-<p>深度学习、计算机视觉、目标检测<br>欢迎大家留言讨论</p>
-<span id="more"></span>
-<p>机器学习非常简单，无所谓！我会出手。</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>machine learning</title>
-    <url>/2023/10/29/hexo-github/</url>
-    <content><![CDATA[<p>使用hexo创建博文，然后部署到GitHub<br>1、新建博文：hexo new ‘xxx’<br>2、清除缓存文件：hexo clean<br>3、生成网站静态文件到默认设置的 public 文件夹：hexo g<br>4、自动生成网站静态文件，并部署到设定的仓库：hexo d<br>5、本地浏览：hexo s</p>
-<p>欢迎大家留言讨论</p>
-<span id="more"></span>
-<p>机器学习非常简单，无所谓！我会出手。</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>deep learning</title>
     <url>/2023/10/31/deep-learning/</url>
-    <content><![CDATA[<p>@<a href="%E5%8D%9A%E6%96%87%E7%9B%AE%E5%BD%95">TOC</a></p>
-<hr>
+    <content><![CDATA[<hr>
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
+<li>注：学习交流使用！<span id="more"></span></li>
 </ul>
 <hr>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、深度学习、机器学习、目标检测<br>2、将持续更新</p>
@@ -70,6 +34,41 @@
       <tags>
         <tag>深度学习</tag>
         <tag>计算机视觉</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>machine learning</title>
+    <url>/2023/10/29/hexo-github/</url>
+    <content><![CDATA[<p>使用hexo创建博文，然后部署到GitHub<br>1、新建博文：hexo new ‘xxx’<br>2、清除缓存文件：hexo clean<br>3、生成网站静态文件到默认设置的 public 文件夹：hexo g<br>4、自动生成网站静态文件，并部署到设定的仓库：hexo d<br>5、本地浏览：hexo s</p>
+<p>欢迎大家留言讨论</p>
+<span id="more"></span>
+<p>机器学习非常简单，无所谓！我会出手。</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>machine learning</title>
+    <url>/2023/10/29/machine-learn/</url>
+    <content><![CDATA[<p>大家好，我是马跑~~</p>
+<p>本文目标：带大家学会机器学习</p>
+<p>深度学习、计算机视觉、目标检测<br>欢迎大家留言讨论</p>
+<span id="more"></span>
+<p>机器学习非常简单，无所谓！我会出手。</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
 </search>
