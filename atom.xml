@@ -6,7 +6,7 @@
   <link href="https://mapao0110.github.io/atom.xml" rel="self"/>
   
   <link href="https://mapao0110.github.io/"/>
-  <updated>2023-10-31T12:27:05.767Z</updated>
+  <updated>2023-11-02T09:06:36.600Z</updated>
   <id>https://mapao0110.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>pic_process</title>
+    <link href="https://mapao0110.github.io/2023/11/02/pic-process/"/>
+    <id>https://mapao0110.github.io/2023/11/02/pic-process/</id>
+    <published>2023-11-02T08:56:40.000Z</published>
+    <updated>2023-11-02T09:06:36.600Z</updated>
+    
+    <content type="html"><![CDATA[<p>__</p><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol><li><p>图像灰度化：</p><p> 图像灰度化是将一幅彩色图像转换为灰度图像的过程。在灰度图像中，每个像素只包含一个灰度值，而不是彩色图像中的红、绿和蓝三个通道。灰度图像通常用于简化图像处理和分析，因为它们只包含亮度信息，而没有颜色信息。</p></li><li><p>图像二值化：<br> 图像二值化（Image Binarization）是一种图像处理技术，它将一幅灰度图像转换为只包含两个像素值的二值图像，通常是黑色（0）和白色（255）或其他两种互斥的颜色。二值化的目标是将图像中的信息从背景中分离出来，以便更容易进行特征提取、分割和分析。<br> 图像二值化的主要思想是根据像素的灰度值将图像分为两个不同的区域：前景和背景。前景通常包含我们感兴趣的目标对象，而背景则是目标对象的周围环境。通过将前景和背景分离成明显不同的像素值，可以更容易地进行目标检测、分割、轮廓提取等图像处理任务。</p></li><li><p>图像灰度化和二值化的区别：<br> 灰度处理会保留图像中所有的灰度层级，而二值化则只能保留黑白两种颜色，所以在某些场景下，灰度处理能够更好地保留图像的细节，而二值化则可以更好地突出图像中的边界和轮廓。</p></li><li><p>图像加噪：<br> 图像加噪是指在一幅图像中引入不希望的、随机或人为制造的像素值的变化，这些变化可能来自于各种源头，包括传感器噪声、环境条件、传输问题、图像采集设备的问题或意图明确的操作。噪声可以干扰或损害图像的质量，使其更难以分析、处理或识别。</p></li></ol><hr><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="">参考资料1</a></li><li><a href="">参考资料2</a></li></ul><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;__&lt;/p&gt;
+&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://mapao0110.github.io/2023/10/29/machine-learn/&quot;&gt;相关博文&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;注：学习交流使用！</summary>
+    
+    
+    
+    <category term="深度学习" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="计算机视觉" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="图像处理" scheme="https://mapao0110.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+    <category term="目标检测" scheme="https://mapao0110.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>PyTorch01</title>
@@ -77,33 +107,6 @@
   </entry>
   
   <entry>
-    <title>machine learning</title>
-    <link href="https://mapao0110.github.io/2023/10/29/machine-learn/"/>
-    <id>https://mapao0110.github.io/2023/10/29/machine-learn/</id>
-    <published>2023-10-29T11:19:16.000Z</published>
-    <updated>2023-10-31T07:15:48.383Z</updated>
-    
-    <content type="html"><![CDATA[<p>大家好，我是马跑~~</p><p>本文目标：带大家学会机器学习</p><p>深度学习、计算机视觉、目标检测<br>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;大家好，我是马跑~~&lt;/p&gt;
-&lt;p&gt;本文目标：带大家学会机器学习&lt;/p&gt;
-&lt;p&gt;深度学习、计算机视觉、目标检测&lt;br&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="工具" scheme="https://mapao0110.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="hexo" scheme="https://mapao0110.github.io/categories/%E5%B7%A5%E5%85%B7/hexo/"/>
-    
-    
-    <category term="工具" scheme="https://mapao0110.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="hexo" scheme="https://mapao0110.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hexo-GitHub</title>
     <link href="https://mapao0110.github.io/2023/10/29/hexo-github/"/>
     <id>https://mapao0110.github.io/2023/10/29/hexo-github/</id>
@@ -119,6 +122,33 @@
 
 
 &lt;p&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具" scheme="https://mapao0110.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="hexo" scheme="https://mapao0110.github.io/categories/%E5%B7%A5%E5%85%B7/hexo/"/>
+    
+    
+    <category term="工具" scheme="https://mapao0110.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="hexo" scheme="https://mapao0110.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>machine learning</title>
+    <link href="https://mapao0110.github.io/2023/10/29/machine-learn/"/>
+    <id>https://mapao0110.github.io/2023/10/29/machine-learn/</id>
+    <published>2023-10-29T11:19:16.000Z</published>
+    <updated>2023-10-31T07:15:48.383Z</updated>
+    
+    <content type="html"><![CDATA[<p>大家好，我是马跑~~</p><p>本文目标：带大家学会机器学习</p><p>深度学习、计算机视觉、目标检测<br>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;大家好，我是马跑~~&lt;/p&gt;
+&lt;p&gt;本文目标：带大家学会机器学习&lt;/p&gt;
+&lt;p&gt;深度学习、计算机视觉、目标检测&lt;br&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
     
     
     
