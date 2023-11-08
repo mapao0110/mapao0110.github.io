@@ -6,7 +6,7 @@
   <link href="https://mapao0110.github.io/atom.xml" rel="self"/>
   
   <link href="https://mapao0110.github.io/"/>
-  <updated>2023-11-02T09:11:21.918Z</updated>
+  <updated>2023-11-08T13:18:53.984Z</updated>
   <id>https://mapao0110.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Pycharm导包遇到的问题</title>
+    <link href="https://mapao0110.github.io/2023/11/08/Pycharm%E5%AF%BC%E5%8C%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://mapao0110.github.io/2023/11/08/Pycharm%E5%AF%BC%E5%8C%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</id>
+    <published>2023-11-08T13:04:36.000Z</published>
+    <updated>2023-11-08T13:18:53.984Z</updated>
+    
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、Pycharm中导入matplotlib遇到问题，但在控制台(cmd、conda)中pip list能够找到matplotlib包<br>（1）原因：因为在anaconda中创建了tensorflow、pytorch等多个虚拟环境，第一次在tensorflow中安装了matplotlib，所以pip list能够看到matplotlib安装包，<br>但在pytorch下因为没有安装所以找不到module。<br>（2）搞心态：此时在pycharm中install matplotlib会显示失败，在cdm和conda中pip install matplotlib也会失败，仿佛怎么也弄不好。<br>（3）解决办法：进入anaconda prompt，然后进入pytorch环境（activate pytorch）,再在里面通过pip install matplotlib安装包，问题解决。<br>（4）举一反三：在切换python解释器的时候，其它相应的包如果遇到同样的问题，可对症下药。</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;hr&gt;
+&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://mapao0110.github.io/2023/10/29/machine-learn/&quot;&gt;相关博文&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;注：学习交流使用！</summary>
+    
+    
+    
+    <category term="深度学习" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Pycharm" scheme="https://mapao0110.github.io/tags/Pycharm/"/>
+    
+    <category term="导包" scheme="https://mapao0110.github.io/tags/%E5%AF%BC%E5%8C%85/"/>
+    
+  </entry>
   
   <entry>
     <title>pic_process</title>
