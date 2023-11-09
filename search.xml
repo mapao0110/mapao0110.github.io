@@ -5,14 +5,13 @@
     <url>/2023/11/09/AlexNet/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！<span id="more"></span></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：AlexNet神经网络模型训练<span id="more"></span></li>
 </ul>
 <hr>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>卷积神经网络（Convolutional Neural Networks, CNN）<br>1、该网络的亮点：<br>（1）首次利用GPU进行网络加速训练<br>（2）使用了ReLU激活函数<br>（3）使用了LRN局部响应归一化<br>（4）在全连接层的前两层中使用了Dropout随机失活神经元操作，以减少过拟合。</p>
-<p>2、</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -24,10 +23,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>深度学习</category>
+        <category>研究方向(学习路线_记忆宫殿)</category>
       </categories>
       <tags>
-        <tag>卷积神经网络</tag>
+        <tag>阶段四：图像分类实战</tag>
       </tags>
   </entry>
   <entry>
@@ -35,10 +34,10 @@
     <url>/2023/11/09/LeNet/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！<span id="more"></span></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：LeNet神经网络模型训练<span id="more"></span></li>
 </ul>
 <hr>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、requires_grad<br>（1）在pytorch中，tensor有一个requires_grad参数，如果设置为True，则反向传播时，该tensor就会自动求导。tensor的requires_grad的属性默认为False,若一个节点（叶子变量：自己创建的tensor）requires_grad被设置为True，那么所有依赖它的节点requires_grad都为True（即使其他相依赖的tensor的requires_grad = False）<br>（2）当requires_grad设置为False时,反向传播时就不会自动求导了，因此大大节约了显存或者说内存。<br>（3）值得注意的是：requires_grad的设置只能针对叶子结点（网络的权重w就算，bias也算），如何理解叶子结点呢？叶子节点在数据结构中是一棵树没有子节点的结点，在网络中就是这个结点对应的参数不是由更上一层的tensor计算而来。</p>
@@ -56,10 +55,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>深度学习</category>
+        <category>研究方向(学习路线_记忆宫殿)</category>
       </categories>
       <tags>
-        <tag>卷积神经网络</tag>
+        <tag>阶段四：图像分类实战</tag>
       </tags>
   </entry>
   <entry>
@@ -67,10 +66,10 @@
     <url>/2023/10/31/PyTorch01/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！<span id="more"></span></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：PyTorch相关基础概念<span id="more"></span></li>
 </ul>
 <hr>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
@@ -82,11 +81,6 @@
 </li>
 </ol>
 <hr>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="">参考资料1</a></li>
-<li><a href="">参考资料2</a></li>
-</ul>
-<hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
 </li>
@@ -97,11 +91,9 @@
 </ul>
 ]]></content>
       <categories>
-        <category>深度学习</category>
-        <category>PyTorch</category>
+        <category>深度学习_随心所欲</category>
       </categories>
       <tags>
-        <tag>深度学习</tag>
         <tag>PyTorch</tag>
       </tags>
   </entry>
@@ -110,10 +102,10 @@
     <url>/2023/11/08/Pycharm%E5%AF%BC%E5%8C%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！<span id="more"></span></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：Pycharm导包遇到的小问题及解决办法。<span id="more"></span></li>
 </ul>
 <hr>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、Pycharm中导入matplotlib遇到问题，但在控制台(cmd、conda)中pip list能够找到matplotlib包<br>（1）原因：因为在anaconda中创建了tensorflow、pytorch等多个虚拟环境，第一次在tensorflow中安装了matplotlib，所以pip list能够看到matplotlib安装包，<br>但在pytorch下因为没有安装所以找不到module。<br>（2）搞心态：此时在pycharm中install matplotlib会显示失败，在cdm和conda中pip install matplotlib也会失败，仿佛怎么也弄不好。<br>（3）解决办法：进入anaconda prompt，然后进入pytorch环境（activate pytorch）,再在里面通过pip install matplotlib安装包，问题解决。<br>（4）举一反三：在切换python解释器的时候，其它相应的包如果遇到同样的问题，可对症下药。</p>
@@ -128,32 +120,27 @@
 </ul>
 ]]></content>
       <categories>
-        <category>深度学习</category>
+        <category>深度学习_随心所欲</category>
       </categories>
       <tags>
-        <tag>Pycharm</tag>
-        <tag>导包</tag>
+        <tag>Pycharm导包</tag>
       </tags>
   </entry>
   <entry>
-    <title>deep learning</title>
-    <url>/2023/10/31/deep-learning/</url>
-    <content><![CDATA[<hr>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li>
+    <title>Hexo-GitHub</title>
+    <url>/2023/10/29/hexo-github/</url>
+    <content><![CDATA[<p>__</p>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！<span id="more"></span></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：Hexo本地编写博文的相关操作<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、深度学习、机器学习、目标检测<br>2、将持续更新</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="">参考资料1</a></li>
-<li><a href="">参考资料2</a></li>
-</ul>
-<hr>
-<h2 id="交个朋友"><a href="#交个朋友" class="headerlink" title="交个朋友"></a>交个朋友</h2><ul>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
 </li>
 <li><p>哔哩哔哩：不爱码字的小懒马儿</p>
@@ -163,62 +150,51 @@
 </ul>
 ]]></content>
       <categories>
-        <category>深度学习</category>
-        <category>计算机视觉</category>
+        <category>Hexo_博客随记</category>
       </categories>
       <tags>
-        <tag>深度学习</tag>
-        <tag>计算机视觉</tag>
+        <tag>Hexo万花筒</tag>
       </tags>
   </entry>
   <entry>
-    <title>Hexo-GitHub</title>
-    <url>/2023/10/29/hexo-github/</url>
-    <content><![CDATA[<p>使用hexo创建博文，然后部署到GitHub<br>1、新建博文：hexo new ‘xxx’<br>2、清除缓存文件：hexo clean<br>3、生成网站静态文件到默认设置的 public 文件夹：hexo g<br>4、自动生成网站静态文件，并部署到设定的仓库：hexo d<br>5、本地浏览：hexo s<br>6、hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p>欢迎大家留言讨论</p>
-<span id="more"></span>
-<p>机器学习非常简单，无所谓！我会出手。</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>machine learning</title>
-    <url>/2023/10/29/machine-learn/</url>
-    <content><![CDATA[<p>大家好，我是马跑~~</p>
-<p>本文目标：带大家学会机器学习</p>
-<p>深度学习、计算机视觉、目标检测<br>欢迎大家留言讨论</p>
-<span id="more"></span>
-<p>机器学习非常简单，无所谓！我会出手。</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pic_process</title>
-    <url>/2023/11/02/pic-process/</url>
+    <title>博客模板</title>
+    <url>/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！<span id="more"></span></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：博客模板制作<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
+<p>2、<br>（1）</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hexo_博客随记</category>
+      </categories>
+      <tags>
+        <tag>博客模板</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图像处理杂记</title>
+    <url>/2023/11/02/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E6%9D%82%E8%AE%B0/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：图像处理相关小知识点<span id="more"></span></li>
 </ul>
 <hr>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
@@ -233,11 +209,6 @@
 </li>
 </ol>
 <hr>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="">参考资料1</a></li>
-<li><a href="">参考资料2</a></li>
-</ul>
-<hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
 </li>
@@ -248,12 +219,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>深度学习</category>
-        <category>计算机视觉</category>
+        <category>深度学习_随心所欲</category>
       </categories>
       <tags>
         <tag>图像处理</tag>
-        <tag>目标检测</tag>
       </tags>
   </entry>
 </search>

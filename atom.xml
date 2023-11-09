@@ -6,7 +6,7 @@
   <link href="https://mapao0110.github.io/atom.xml" rel="self"/>
   
   <link href="https://mapao0110.github.io/"/>
-  <updated>2023-11-09T10:32:18.656Z</updated>
+  <updated>2023-11-09T14:03:01.181Z</updated>
   <id>https://mapao0110.github.io/</id>
   
   <author>
@@ -21,24 +21,24 @@
     <link href="https://mapao0110.github.io/2023/11/09/AlexNet/"/>
     <id>https://mapao0110.github.io/2023/11/09/AlexNet/</id>
     <published>2023-11-09T09:58:00.000Z</published>
-    <updated>2023-11-09T10:32:18.656Z</updated>
+    <updated>2023-11-09T14:03:01.181Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>卷积神经网络（Convolutional Neural Networks, CNN）<br>1、该网络的亮点：<br>（1）首次利用GPU进行网络加速训练<br>（2）使用了ReLU激活函数<br>（3）使用了LRN局部响应归一化<br>（4）在全连接层的前两层中使用了Dropout随机失活神经元操作，以减少过拟合。</p><p>2、</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：AlexNet神经网络模型训练<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>卷积神经网络（Convolutional Neural Networks, CNN）<br>1、该网络的亮点：<br>（1）首次利用GPU进行网络加速训练<br>（2）使用了ReLU激活函数<br>（3）使用了LRN局部响应归一化<br>（4）在全连接层的前两层中使用了Dropout随机失活神经元操作，以减少过拟合。</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;hr&gt;
 &lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://mapao0110.github.io/2023/10/29/machine-learn/&quot;&gt;相关博文&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;注：学习交流使用！</summary>
+&lt;li&gt;注：学习交流使用！&lt;/li&gt;
+&lt;li&gt;本文简介：AlexNet神经网络模型训练</summary>
     
     
     
-    <category term="深度学习" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <category term="研究方向(学习路线_记忆宫殿)" scheme="https://mapao0110.github.io/categories/%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF-%E8%AE%B0%E5%BF%86%E5%AE%AB%E6%AE%BF/"/>
     
     
-    <category term="卷积神经网络" scheme="https://mapao0110.github.io/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    <category term="阶段四：图像分类实战" scheme="https://mapao0110.github.io/tags/%E9%98%B6%E6%AE%B5%E5%9B%9B%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
@@ -47,24 +47,24 @@
     <link href="https://mapao0110.github.io/2023/11/09/LeNet/"/>
     <id>https://mapao0110.github.io/2023/11/09/LeNet/</id>
     <published>2023-11-09T09:27:43.000Z</published>
-    <updated>2023-11-09T09:57:06.268Z</updated>
+    <updated>2023-11-09T14:03:39.541Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、requires_grad<br>（1）在pytorch中，tensor有一个requires_grad参数，如果设置为True，则反向传播时，该tensor就会自动求导。tensor的requires_grad的属性默认为False,若一个节点（叶子变量：自己创建的tensor）requires_grad被设置为True，那么所有依赖它的节点requires_grad都为True（即使其他相依赖的tensor的requires_grad = False）<br>（2）当requires_grad设置为False时,反向传播时就不会自动求导了，因此大大节约了显存或者说内存。<br>（3）值得注意的是：requires_grad的设置只能针对叶子结点（网络的权重w就算，bias也算），如何理解叶子结点呢？叶子节点在数据结构中是一棵树没有子节点的结点，在网络中就是这个结点对应的参数不是由更上一层的tensor计算而来。</p><p>2、with torch.no_grad()<br>（1）在该模块下，所有计算得出的tensor的requires_grad都自动设置为False。<br>（2）即使一个tensor（命名为x）的requires_grad = True，在with torch.no_grad计算，由x得到的新tensor（命名为w-标量）requires_grad也为False，且grad_fn也为None,即不会对w求导。<br>（3）在神经网络训练过程中，测试阶段及预测阶段不需要更新网络参数，使用该模块大大节约了内存的开销。</p><p>3、内存与显存的区别<br>（1）电脑内存是替CPU暂存资料的储存空间。<br>（2）显卡显存是替GPU（显卡芯片）暂存资料的储存空间。<br>（3）内存或显存理论上越大越好。<br>（4）笔记本内存是可以增加的，但是显卡我们一般不能更换，笔记本大多是独立显示芯片或核显。</p><p>4、demo的流程<br>（1）model.py ——定义LeNet网络模型<br>（2）train.py ——加载数据集并训练，训练集计算loss，测试集计算accuracy，保存训练好的网络参数<br>（3）predict.py——得到训练好的网络参数后，用自己找的图像进行分类测试</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：LeNet神经网络模型训练<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、requires_grad<br>（1）在pytorch中，tensor有一个requires_grad参数，如果设置为True，则反向传播时，该tensor就会自动求导。tensor的requires_grad的属性默认为False,若一个节点（叶子变量：自己创建的tensor）requires_grad被设置为True，那么所有依赖它的节点requires_grad都为True（即使其他相依赖的tensor的requires_grad = False）<br>（2）当requires_grad设置为False时,反向传播时就不会自动求导了，因此大大节约了显存或者说内存。<br>（3）值得注意的是：requires_grad的设置只能针对叶子结点（网络的权重w就算，bias也算），如何理解叶子结点呢？叶子节点在数据结构中是一棵树没有子节点的结点，在网络中就是这个结点对应的参数不是由更上一层的tensor计算而来。</p><p>2、with torch.no_grad()<br>（1）在该模块下，所有计算得出的tensor的requires_grad都自动设置为False。<br>（2）即使一个tensor（命名为x）的requires_grad = True，在with torch.no_grad计算，由x得到的新tensor（命名为w-标量）requires_grad也为False，且grad_fn也为None,即不会对w求导。<br>（3）在神经网络训练过程中，测试阶段及预测阶段不需要更新网络参数，使用该模块大大节约了内存的开销。</p><p>3、内存与显存的区别<br>（1）电脑内存是替CPU暂存资料的储存空间。<br>（2）显卡显存是替GPU（显卡芯片）暂存资料的储存空间。<br>（3）内存或显存理论上越大越好。<br>（4）笔记本内存是可以增加的，但是显卡我们一般不能更换，笔记本大多是独立显示芯片或核显。</p><p>4、demo的流程<br>（1）model.py ——定义LeNet网络模型<br>（2）train.py ——加载数据集并训练，训练集计算loss，测试集计算accuracy，保存训练好的网络参数<br>（3）predict.py——得到训练好的网络参数后，用自己找的图像进行分类测试</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;hr&gt;
 &lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://mapao0110.github.io/2023/10/29/machine-learn/&quot;&gt;相关博文&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;注：学习交流使用！</summary>
+&lt;li&gt;注：学习交流使用！&lt;/li&gt;
+&lt;li&gt;本文简介：LeNet神经网络模型训练</summary>
     
     
     
-    <category term="深度学习" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <category term="研究方向(学习路线_记忆宫殿)" scheme="https://mapao0110.github.io/categories/%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF-%E8%AE%B0%E5%BF%86%E5%AE%AB%E6%AE%BF/"/>
     
     
-    <category term="卷积神经网络" scheme="https://mapao0110.github.io/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    <category term="阶段四：图像分类实战" scheme="https://mapao0110.github.io/tags/%E9%98%B6%E6%AE%B5%E5%9B%9B%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
@@ -73,56 +73,50 @@
     <link href="https://mapao0110.github.io/2023/11/08/Pycharm%E5%AF%BC%E5%8C%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>https://mapao0110.github.io/2023/11/08/Pycharm%E5%AF%BC%E5%8C%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</id>
     <published>2023-11-08T13:04:36.000Z</published>
-    <updated>2023-11-08T13:18:53.984Z</updated>
+    <updated>2023-11-09T14:00:38.222Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、Pycharm中导入matplotlib遇到问题，但在控制台(cmd、conda)中pip list能够找到matplotlib包<br>（1）原因：因为在anaconda中创建了tensorflow、pytorch等多个虚拟环境，第一次在tensorflow中安装了matplotlib，所以pip list能够看到matplotlib安装包，<br>但在pytorch下因为没有安装所以找不到module。<br>（2）搞心态：此时在pycharm中install matplotlib会显示失败，在cdm和conda中pip install matplotlib也会失败，仿佛怎么也弄不好。<br>（3）解决办法：进入anaconda prompt，然后进入pytorch环境（activate pytorch）,再在里面通过pip install matplotlib安装包，问题解决。<br>（4）举一反三：在切换python解释器的时候，其它相应的包如果遇到同样的问题，可对症下药。</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：Pycharm导包遇到的小问题及解决办法。<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、Pycharm中导入matplotlib遇到问题，但在控制台(cmd、conda)中pip list能够找到matplotlib包<br>（1）原因：因为在anaconda中创建了tensorflow、pytorch等多个虚拟环境，第一次在tensorflow中安装了matplotlib，所以pip list能够看到matplotlib安装包，<br>但在pytorch下因为没有安装所以找不到module。<br>（2）搞心态：此时在pycharm中install matplotlib会显示失败，在cdm和conda中pip install matplotlib也会失败，仿佛怎么也弄不好。<br>（3）解决办法：进入anaconda prompt，然后进入pytorch环境（activate pytorch）,再在里面通过pip install matplotlib安装包，问题解决。<br>（4）举一反三：在切换python解释器的时候，其它相应的包如果遇到同样的问题，可对症下药。</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;hr&gt;
 &lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://mapao0110.github.io/2023/10/29/machine-learn/&quot;&gt;相关博文&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;注：学习交流使用！</summary>
+&lt;li&gt;注：学习交流使用！&lt;/li&gt;
+&lt;li&gt;本文简介：Pycharm导包遇到的小问题及解决办法。</summary>
     
     
     
-    <category term="深度学习" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <category term="深度学习_随心所欲" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E9%9A%8F%E5%BF%83%E6%89%80%E6%AC%B2/"/>
     
     
-    <category term="Pycharm" scheme="https://mapao0110.github.io/tags/Pycharm/"/>
-    
-    <category term="导包" scheme="https://mapao0110.github.io/tags/%E5%AF%BC%E5%8C%85/"/>
+    <category term="Pycharm导包" scheme="https://mapao0110.github.io/tags/Pycharm%E5%AF%BC%E5%8C%85/"/>
     
   </entry>
   
   <entry>
-    <title>pic_process</title>
-    <link href="https://mapao0110.github.io/2023/11/02/pic-process/"/>
-    <id>https://mapao0110.github.io/2023/11/02/pic-process/</id>
+    <title>图像处理杂记</title>
+    <link href="https://mapao0110.github.io/2023/11/02/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E6%9D%82%E8%AE%B0/"/>
+    <id>https://mapao0110.github.io/2023/11/02/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E6%9D%82%E8%AE%B0/</id>
     <published>2023-11-02T08:56:40.000Z</published>
-    <updated>2023-11-02T09:11:21.918Z</updated>
+    <updated>2023-11-09T13:55:40.552Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol><li><p>图像灰度化：</p><p> （1）图像灰度化是将一幅彩色图像转换为灰度图像的过程。在灰度图像中，每个像素只包含一个灰度值，而不是彩色图像中的红、绿和蓝三个通道。灰度图像通常用于简化图像处理和分析，因为它们只包含亮度信息，而没有颜色信息。</p></li><li><p>图像二值化：<br> （1）图像二值化（Image Binarization）是一种图像处理技术，它将一幅灰度图像转换为只包含两个像素值的二值图像，通常是黑色（0）和白色（255）或其他两种互斥的颜色。二值化的目标是将图像中的信息从背景中分离出来，以便更容易进行特征提取、分割和分析。<br> （2）图像二值化的主要思想是根据像素的灰度值将图像分为两个不同的区域：前景和背景。前景通常包含我们感兴趣的目标对象，而背景则是目标对象的周围环境。通过将前景和背景分离成明显不同的像素值，可以更容易地进行目标检测、分割、轮廓提取等图像处理任务。</p></li><li><p>图像灰度化和二值化的区别：<br> （1）灰度处理会保留图像中所有的灰度层级，而二值化则只能保留黑白两种颜色，所以在某些场景下，灰度处理能够更好地保留图像的细节，而二值化则可以更好地突出图像中的边界和轮廓。</p></li><li><p>图像加噪：<br> （1）图像加噪是指在一幅图像中引入不希望的、随机或人为制造的像素值的变化，这些变化可能来自于各种源头，包括传感器噪声、环境条件、传输问题、图像采集设备的问题或意图明确的操作。噪声可以干扰或损害图像的质量，使其更难以分析、处理或识别。</p></li></ol><hr><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="">参考资料1</a></li><li><a href="">参考资料2</a></li></ul><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：图像处理相关小知识点<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol><li><p>图像灰度化：</p><p> （1）图像灰度化是将一幅彩色图像转换为灰度图像的过程。在灰度图像中，每个像素只包含一个灰度值，而不是彩色图像中的红、绿和蓝三个通道。灰度图像通常用于简化图像处理和分析，因为它们只包含亮度信息，而没有颜色信息。</p></li><li><p>图像二值化：<br> （1）图像二值化（Image Binarization）是一种图像处理技术，它将一幅灰度图像转换为只包含两个像素值的二值图像，通常是黑色（0）和白色（255）或其他两种互斥的颜色。二值化的目标是将图像中的信息从背景中分离出来，以便更容易进行特征提取、分割和分析。<br> （2）图像二值化的主要思想是根据像素的灰度值将图像分为两个不同的区域：前景和背景。前景通常包含我们感兴趣的目标对象，而背景则是目标对象的周围环境。通过将前景和背景分离成明显不同的像素值，可以更容易地进行目标检测、分割、轮廓提取等图像处理任务。</p></li><li><p>图像灰度化和二值化的区别：<br> （1）灰度处理会保留图像中所有的灰度层级，而二值化则只能保留黑白两种颜色，所以在某些场景下，灰度处理能够更好地保留图像的细节，而二值化则可以更好地突出图像中的边界和轮廓。</p></li><li><p>图像加噪：<br> （1）图像加噪是指在一幅图像中引入不希望的、随机或人为制造的像素值的变化，这些变化可能来自于各种源头，包括传感器噪声、环境条件、传输问题、图像采集设备的问题或意图明确的操作。噪声可以干扰或损害图像的质量，使其更难以分析、处理或识别。</p></li></ol><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;hr&gt;
 &lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://mapao0110.github.io/2023/10/29/machine-learn/&quot;&gt;相关博文&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;注：学习交流使用！</summary>
+&lt;li&gt;注：学习交流使用！&lt;/li&gt;
+&lt;li&gt;本文简介：图像处理相关小知识点</summary>
     
     
     
-    <category term="深度学习" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="计算机视觉" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    <category term="深度学习_随心所欲" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E9%9A%8F%E5%BF%83%E6%89%80%E6%AC%B2/"/>
     
     
     <category term="图像处理" scheme="https://mapao0110.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-    <category term="目标检测" scheme="https://mapao0110.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/"/>
     
   </entry>
   
@@ -131,58 +125,50 @@
     <link href="https://mapao0110.github.io/2023/10/31/PyTorch01/"/>
     <id>https://mapao0110.github.io/2023/10/31/PyTorch01/</id>
     <published>2023-10-31T11:19:19.000Z</published>
-    <updated>2023-10-31T12:27:05.767Z</updated>
+    <updated>2023-11-09T14:05:08.599Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol><li><p>计算图：用来描述运算的有向无环图<br>（1）计算图有两个主要元素：结点（Node）和边（Edge）；<br>（2）结点表示数据，如向量、矩阵、张量，边表示运算，如加减乘除卷积等；<br><img src="/pic/jstu.png" alt="计算图表示"><br>（3）PyTorch基于动态图，TensorFlow基于静态图<br>静态图框架好比C++，每次修改之后运行都要重新编译才行，动态图框架好比Python，动态执行，可以交互式查看修改。</p></li><li><p>节点和结点的区别：节点，被认为是一个实体，有处理能力，比如：网络上的一台计算机；而结点则只是一个交叉点，像“结绳记事”，打个结，做个标记，仅此而已，一般算法中点的都是结点。</p></li><li><p>PyTorch的设计遵循tensor-&gt;variable(autograd)-&gt;nn.Module三个由低到高的抽象层次，分别代表高维数组（张量）、自动求导（变量）和神经网络（层/模块）。</p></li></ol><hr><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="">参考资料1</a></li><li><a href="">参考资料2</a></li></ul><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：PyTorch相关基础概念<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol><li><p>计算图：用来描述运算的有向无环图<br>（1）计算图有两个主要元素：结点（Node）和边（Edge）；<br>（2）结点表示数据，如向量、矩阵、张量，边表示运算，如加减乘除卷积等；<br><img src="/pic/jstu.png" alt="计算图表示"><br>（3）PyTorch基于动态图，TensorFlow基于静态图<br>静态图框架好比C++，每次修改之后运行都要重新编译才行，动态图框架好比Python，动态执行，可以交互式查看修改。</p></li><li><p>节点和结点的区别：节点，被认为是一个实体，有处理能力，比如：网络上的一台计算机；而结点则只是一个交叉点，像“结绳记事”，打个结，做个标记，仅此而已，一般算法中点的都是结点。</p></li><li><p>PyTorch的设计遵循tensor-&gt;variable(autograd)-&gt;nn.Module三个由低到高的抽象层次，分别代表高维数组（张量）、自动求导（变量）和神经网络（层/模块）。</p></li></ol><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;hr&gt;
 &lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://mapao0110.github.io/2023/10/29/machine-learn/&quot;&gt;相关博文&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;注：学习交流使用！</summary>
+&lt;li&gt;注：学习交流使用！&lt;/li&gt;
+&lt;li&gt;本文简介：PyTorch相关基础概念</summary>
     
     
     
-    <category term="深度学习" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <category term="深度学习_随心所欲" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E9%9A%8F%E5%BF%83%E6%89%80%E6%AC%B2/"/>
     
-    <category term="PyTorch" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/PyTorch/"/>
-    
-    
-    <category term="深度学习" scheme="https://mapao0110.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="PyTorch" scheme="https://mapao0110.github.io/tags/PyTorch/"/>
     
   </entry>
   
   <entry>
-    <title>deep learning</title>
-    <link href="https://mapao0110.github.io/2023/10/31/deep-learning/"/>
-    <id>https://mapao0110.github.io/2023/10/31/deep-learning/</id>
+    <title>博客模板</title>
+    <link href="https://mapao0110.github.io/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/"/>
+    <id>https://mapao0110.github.io/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</id>
     <published>2023-10-31T07:16:15.000Z</published>
-    <updated>2023-10-31T07:36:20.969Z</updated>
+    <updated>2023-11-09T13:46:34.580Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul><li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、深度学习、机器学习、目标检测<br>2、将持续更新</p><hr><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="">参考资料1</a></li><li><a href="">参考资料2</a></li></ul><hr><h2 id="交个朋友"><a href="#交个朋友" class="headerlink" title="交个朋友"></a>交个朋友</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：博客模板制作<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p><p>2、<br>（1）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;hr&gt;
-&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://mapao0110.github.io/2023/10/29/machine-learn/&quot;&gt;相关博文&lt;/a&gt;&lt;/li&gt;
+&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;注：学习交流使用！</summary>
+&lt;li&gt;注：学习交流使用！&lt;/li&gt;
+&lt;li&gt;本文简介：博客模板制作</summary>
     
     
     
-    <category term="深度学习" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="计算机视觉" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    <category term="Hexo_博客随记" scheme="https://mapao0110.github.io/categories/Hexo-%E5%8D%9A%E5%AE%A2%E9%9A%8F%E8%AE%B0/"/>
     
     
-    <category term="深度学习" scheme="https://mapao0110.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="计算机视觉" scheme="https://mapao0110.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    <category term="博客模板" scheme="https://mapao0110.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/"/>
     
   </entry>
   
@@ -191,55 +177,24 @@
     <link href="https://mapao0110.github.io/2023/10/29/hexo-github/"/>
     <id>https://mapao0110.github.io/2023/10/29/hexo-github/</id>
     <published>2023-10-29T11:19:16.000Z</published>
-    <updated>2023-10-31T12:31:53.289Z</updated>
+    <updated>2023-11-09T13:57:22.374Z</updated>
     
-    <content type="html"><![CDATA[<p>使用hexo创建博文，然后部署到GitHub<br>1、新建博文：hexo new ‘xxx’<br>2、清除缓存文件：hexo clean<br>3、生成网站静态文件到默认设置的 public 文件夹：hexo g<br>4、自动生成网站静态文件，并部署到设定的仓库：hexo d<br>5、本地浏览：hexo s<br>6、hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;使用hexo创建博文，然后部署到GitHub&lt;br&gt;1、新建博文：hexo new ‘xxx’&lt;br&gt;2、清除缓存文件：hexo clean&lt;br&gt;3、生成网站静态文件到默认设置的 public 文件夹：hexo g&lt;br&gt;4、自动生成网站静态文件，并部署到设定的仓库：hexo d&lt;br&gt;5、本地浏览：hexo s&lt;br&gt;6、hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。&lt;br&gt;把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;![img](&amp;#x2F;pic&amp;#x2F;xxx.png)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-
-
-&lt;p&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
+    <content type="html"><![CDATA[<p>__</p><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：Hexo本地编写博文的相关操作<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
-    
-    <category term="工具" scheme="https://mapao0110.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="hexo" scheme="https://mapao0110.github.io/categories/%E5%B7%A5%E5%85%B7/hexo/"/>
-    
-    
-    <category term="工具" scheme="https://mapao0110.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="hexo" scheme="https://mapao0110.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>machine learning</title>
-    <link href="https://mapao0110.github.io/2023/10/29/machine-learn/"/>
-    <id>https://mapao0110.github.io/2023/10/29/machine-learn/</id>
-    <published>2023-10-29T11:19:16.000Z</published>
-    <updated>2023-10-31T07:15:48.383Z</updated>
-    
-    <content type="html"><![CDATA[<p>大家好，我是马跑~~</p><p>本文目标：带大家学会机器学习</p><p>深度学习、计算机视觉、目标检测<br>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;大家好，我是马跑~~&lt;/p&gt;
-&lt;p&gt;本文目标：带大家学会机器学习&lt;/p&gt;
-&lt;p&gt;深度学习、计算机视觉、目标检测&lt;br&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;__&lt;/p&gt;
+&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;注：学习交流使用！&lt;/li&gt;
+&lt;li&gt;本文简介：Hexo本地编写博文的相关操作</summary>
     
     
     
-    <category term="工具" scheme="https://mapao0110.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="hexo" scheme="https://mapao0110.github.io/categories/%E5%B7%A5%E5%85%B7/hexo/"/>
+    <category term="Hexo_博客随记" scheme="https://mapao0110.github.io/categories/Hexo-%E5%8D%9A%E5%AE%A2%E9%9A%8F%E8%AE%B0/"/>
     
     
-    <category term="工具" scheme="https://mapao0110.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="hexo" scheme="https://mapao0110.github.io/tags/hexo/"/>
+    <category term="Hexo万花筒" scheme="https://mapao0110.github.io/tags/Hexo%E4%B8%87%E8%8A%B1%E7%AD%92/"/>
     
   </entry>
   
