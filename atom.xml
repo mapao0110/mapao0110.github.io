@@ -6,7 +6,7 @@
   <link href="https://mapao0110.github.io/atom.xml" rel="self"/>
   
   <link href="https://mapao0110.github.io/"/>
-  <updated>2023-11-09T14:03:01.181Z</updated>
+  <updated>2023-11-09T14:25:19.710Z</updated>
   <id>https://mapao0110.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数理统计复习</title>
+    <link href="https://mapao0110.github.io/2023/11/09/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0/"/>
+    <id>https://mapao0110.github.io/2023/11/09/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0/</id>
+    <published>2023-11-09T14:23:43.000Z</published>
+    <updated>2023-11-09T14:25:19.710Z</updated>
+    
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：博客模板制作<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p><p>2、<br>（1）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;hr&gt;
+&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;注：学习交流使用！&lt;/li&gt;
+&lt;li&gt;本文简介：博客模板制作</summary>
+    
+    
+    
+    <category term="研一期末复习_记忆宫殿" scheme="https://mapao0110.github.io/categories/%E7%A0%94%E4%B8%80%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0-%E8%AE%B0%E5%BF%86%E5%AE%AB%E6%AE%BF/"/>
+    
+    
+    <category term="数理统计" scheme="https://mapao0110.github.io/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>AlexNet</title>
@@ -121,11 +147,11 @@
   </entry>
   
   <entry>
-    <title>PyTorch01</title>
-    <link href="https://mapao0110.github.io/2023/10/31/PyTorch01/"/>
-    <id>https://mapao0110.github.io/2023/10/31/PyTorch01/</id>
+    <title>PyTorch基础</title>
+    <link href="https://mapao0110.github.io/2023/10/31/PyTorch%E5%9F%BA%E7%A1%80/"/>
+    <id>https://mapao0110.github.io/2023/10/31/PyTorch%E5%9F%BA%E7%A1%80/</id>
     <published>2023-10-31T11:19:19.000Z</published>
-    <updated>2023-11-09T14:05:08.599Z</updated>
+    <updated>2023-11-09T14:10:09.266Z</updated>
     
     <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：PyTorch相关基础概念<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol><li><p>计算图：用来描述运算的有向无环图<br>（1）计算图有两个主要元素：结点（Node）和边（Edge）；<br>（2）结点表示数据，如向量、矩阵、张量，边表示运算，如加减乘除卷积等；<br><img src="/pic/jstu.png" alt="计算图表示"><br>（3）PyTorch基于动态图，TensorFlow基于静态图<br>静态图框架好比C++，每次修改之后运行都要重新编译才行，动态图框架好比Python，动态执行，可以交互式查看修改。</p></li><li><p>节点和结点的区别：节点，被认为是一个实体，有处理能力，比如：网络上的一台计算机；而结点则只是一个交叉点，像“结绳记事”，打个结，做个标记，仅此而已，一般算法中点的都是结点。</p></li><li><p>PyTorch的设计遵循tensor-&gt;variable(autograd)-&gt;nn.Module三个由低到高的抽象层次，分别代表高维数组（张量）、自动求导（变量）和神经网络（层/模块）。</p></li></ol><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
@@ -177,12 +203,12 @@
     <link href="https://mapao0110.github.io/2023/10/29/hexo-github/"/>
     <id>https://mapao0110.github.io/2023/10/29/hexo-github/</id>
     <published>2023-10-29T11:19:16.000Z</published>
-    <updated>2023-11-09T13:57:22.374Z</updated>
+    <updated>2023-11-09T14:08:23.344Z</updated>
     
-    <content type="html"><![CDATA[<p>__</p><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：Hexo本地编写博文的相关操作<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：Hexo本地编写博文的相关操作<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
-    <summary type="html">&lt;p&gt;__&lt;/p&gt;
+    <summary type="html">&lt;hr&gt;
 &lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
