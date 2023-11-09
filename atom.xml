@@ -6,7 +6,7 @@
   <link href="https://mapao0110.github.io/atom.xml" rel="self"/>
   
   <link href="https://mapao0110.github.io/"/>
-  <updated>2023-11-08T13:18:53.984Z</updated>
+  <updated>2023-11-09T09:40:18.937Z</updated>
   <id>https://mapao0110.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>神经网络训练小tips</title>
+    <link href="https://mapao0110.github.io/2023/11/09/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AE%AD%E7%BB%83%E5%B0%8Ftips/"/>
+    <id>https://mapao0110.github.io/2023/11/09/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AE%AD%E7%BB%83%E5%B0%8Ftips/</id>
+    <published>2023-11-09T09:27:43.000Z</published>
+    <updated>2023-11-09T09:40:18.937Z</updated>
+    
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li><a href="https://mapao0110.github.io/2023/10/29/machine-learn/">相关博文</a></li><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、requires_grad<br>（1）在pytorch中，tensor有一个requires_grad参数，如果设置为True，则反向传播时，该tensor就会自动求导。tensor的requires_grad的属性默认为False,若一个节点（叶子变量：自己创建的tensor）requires_grad被设置为True，那么所有依赖它的节点requires_grad都为True（即使其他相依赖的tensor的requires_grad = False）<br>（2）当requires_grad设置为False时,反向传播时就不会自动求导了，因此大大节约了显存或者说内存。<br>（3）值得注意的是：requires_grad的设置只能针对叶子结点（网络的权重w就算，bias也算），如何理解叶子结点呢？叶子节点在数据结构中是一棵树没有子节点的结点，在网络中就是这个结点对应的参数不是由更上一层的tensor计算而来。</p><p>2、with torch.no_grad()<br>（1）在该模块下，所有计算得出的tensor的requires_grad都自动设置为False。<br>（2）即使一个tensor（命名为x）的requires_grad = True，在with torch.no_grad计算，由x得到的新tensor（命名为w-标量）requires_grad也为False，且grad_fn也为None,即不会对w求导。<br>（3）在神经网络训练过程中，测试阶段及预测阶段不需要更新网络参数，使用该模块大大节约了内存的开销。</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;hr&gt;
+&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://mapao0110.github.io/2023/10/29/machine-learn/&quot;&gt;相关博文&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;注：学习交流使用！</summary>
+    
+    
+    
+    <category term="深度学习" scheme="https://mapao0110.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="卷积神经网络" scheme="https://mapao0110.github.io/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>Pycharm导包遇到的问题</title>
@@ -135,21 +161,18 @@
   </entry>
   
   <entry>
-    <title>Hexo-GitHub</title>
-    <link href="https://mapao0110.github.io/2023/10/29/hexo-github/"/>
-    <id>https://mapao0110.github.io/2023/10/29/hexo-github/</id>
+    <title>machine learning</title>
+    <link href="https://mapao0110.github.io/2023/10/29/machine-learn/"/>
+    <id>https://mapao0110.github.io/2023/10/29/machine-learn/</id>
     <published>2023-10-29T11:19:16.000Z</published>
-    <updated>2023-10-31T12:31:53.289Z</updated>
+    <updated>2023-10-31T07:15:48.383Z</updated>
     
-    <content type="html"><![CDATA[<p>使用hexo创建博文，然后部署到GitHub<br>1、新建博文：hexo new ‘xxx’<br>2、清除缓存文件：hexo clean<br>3、生成网站静态文件到默认设置的 public 文件夹：hexo g<br>4、自动生成网站静态文件，并部署到设定的仓库：hexo d<br>5、本地浏览：hexo s<br>6、hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
+    <content type="html"><![CDATA[<p>大家好，我是马跑~~</p><p>本文目标：带大家学会机器学习</p><p>深度学习、计算机视觉、目标检测<br>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
     
     
-    <summary type="html">&lt;p&gt;使用hexo创建博文，然后部署到GitHub&lt;br&gt;1、新建博文：hexo new ‘xxx’&lt;br&gt;2、清除缓存文件：hexo clean&lt;br&gt;3、生成网站静态文件到默认设置的 public 文件夹：hexo g&lt;br&gt;4、自动生成网站静态文件，并部署到设定的仓库：hexo d&lt;br&gt;5、本地浏览：hexo s&lt;br&gt;6、hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。&lt;br&gt;把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;![img](&amp;#x2F;pic&amp;#x2F;xxx.png)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-
-
-&lt;p&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;大家好，我是马跑~~&lt;/p&gt;
+&lt;p&gt;本文目标：带大家学会机器学习&lt;/p&gt;
+&lt;p&gt;深度学习、计算机视觉、目标检测&lt;br&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
     
     
     
@@ -165,18 +188,21 @@
   </entry>
   
   <entry>
-    <title>machine learning</title>
-    <link href="https://mapao0110.github.io/2023/10/29/machine-learn/"/>
-    <id>https://mapao0110.github.io/2023/10/29/machine-learn/</id>
+    <title>Hexo-GitHub</title>
+    <link href="https://mapao0110.github.io/2023/10/29/hexo-github/"/>
+    <id>https://mapao0110.github.io/2023/10/29/hexo-github/</id>
     <published>2023-10-29T11:19:16.000Z</published>
-    <updated>2023-10-31T07:15:48.383Z</updated>
+    <updated>2023-10-31T12:31:53.289Z</updated>
     
-    <content type="html"><![CDATA[<p>大家好，我是马跑~~</p><p>本文目标：带大家学会机器学习</p><p>深度学习、计算机视觉、目标检测<br>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
+    <content type="html"><![CDATA[<p>使用hexo创建博文，然后部署到GitHub<br>1、新建博文：hexo new ‘xxx’<br>2、清除缓存文件：hexo clean<br>3、生成网站静态文件到默认设置的 public 文件夹：hexo g<br>4、自动生成网站静态文件，并部署到设定的仓库：hexo d<br>5、本地浏览：hexo s<br>6、hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>欢迎大家留言讨论</p><span id="more"></span><p>机器学习非常简单，无所谓！我会出手。</p>]]></content>
     
     
-    <summary type="html">&lt;p&gt;大家好，我是马跑~~&lt;/p&gt;
-&lt;p&gt;本文目标：带大家学会机器学习&lt;/p&gt;
-&lt;p&gt;深度学习、计算机视觉、目标检测&lt;br&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;使用hexo创建博文，然后部署到GitHub&lt;br&gt;1、新建博文：hexo new ‘xxx’&lt;br&gt;2、清除缓存文件：hexo clean&lt;br&gt;3、生成网站静态文件到默认设置的 public 文件夹：hexo g&lt;br&gt;4、自动生成网站静态文件，并部署到设定的仓库：hexo d&lt;br&gt;5、本地浏览：hexo s&lt;br&gt;6、hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。&lt;br&gt;把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;![img](&amp;#x2F;pic&amp;#x2F;xxx.png)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+&lt;p&gt;欢迎大家留言讨论&lt;/p&gt;</summary>
     
     
     
