@@ -177,7 +177,7 @@ body {
 body {
   background: var(--body-bg-color);
   color: var(--text-color);
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Noto Serif SC', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1em;
   line-height: 2;
 }
@@ -193,7 +193,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Roboto Mono', 'Noto Serif SC', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
@@ -416,7 +416,7 @@ pre {
 }
 pre,
 code {
-  font-family: consolas, Menlo, monospace, "PingFang SC", "Microsoft YaHei";
+  font-family: 'Roboto Mono', consolas, Menlo, monospace, "PingFang SC", "Microsoft YaHei";
 }
 code {
   background: #eee;
@@ -1010,7 +1010,7 @@ pre .javascript .function {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Open Sans Condensed', 'Noto Serif SC', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   margin: 0;
@@ -1202,7 +1202,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #df99e3;
+  background: #1726ee;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1529,7 +1529,7 @@ pre .javascript .function {
   opacity: 0.8;
 }
 .post-body {
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Montserrat', 'Noto Serif SC', "PingFang SC", "Microsoft YaHei", sans-serif;
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
@@ -1834,7 +1834,7 @@ pre .javascript .function {
 }
 .posts-expand .post-meta {
   color: #999;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Montserrat', 'Noto Serif SC', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 0.75em;
   margin: 3px 0 60px 0;
   text-align: center;
@@ -2469,7 +2469,7 @@ ul.breadcrumb li + li:last-child {
   border-bottom-color: #fc6423;
 }
 .sidebar {
-  background: var(--body-bg-color);
+  background: var(--content-bg-color);
   box-shadow: none;
   margin-top: 100%;
   position: static;
@@ -2509,13 +2509,13 @@ ul.breadcrumb li + li:last-child {
   text-align: center;
 }
 .sidebar-button a {
-  border: 0;
-  color: #fc6423;
+  border: #ff7f50;
+  color: #ff7f50;
   display: block;
 }
 .sidebar-button a:hover {
   background: none;
-  border: 0;
+  border: #ff7f50;
   color: #e34603;
 }
 .sidebar-button a:hover .fa,
@@ -2731,10 +2731,10 @@ ul.breadcrumb li + li:last-child {
   opacity: 1;
 }
 body {
-  background: url("/images/bg.jpg");
+  background: url("/images/zrl.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: 50% 50%;
+  background-size: 100% 100%;
   opacity: 0.8;
 }
 @media (max-width: 767px) {
@@ -2742,4 +2742,50 @@ body {
     background-image: url("https://ziyuan.lruihao.cn/images/bg_cell.png");
     background-size: cover;
   }
+}
+/* webkit, opera, IE9 */
+::selection {
+  background: #06d633;
+  color: #f7f7f7;
+}
+/* firefox */
+::-moz-selection {
+  background: #06d633;
+  color: #f7f7f7;
+}
+.highlight *::selection {
+  background: #06d633;
+}
+.tag-cloud a {
+  box-shadow: 0 1px 3px #6f42c1, 0 1px 2px #d9534f;
+  padding: 2px 10px;
+  margin: 8px;
+  background: rgba(193,66,92,0);
+  border-bottom: none;
+  border-radius: 20px;
+}
+.content-wrap {
+  opacity: 1;
+}
+.sidebar-inner {
+  background: rgba(255,255,255,0.8) none repeat scroll !important;
+}
+.header-inner {
+  background: rgba(255,255,255,0.8);
+}
+.popup {
+  opacity: 0.9;
+}
+.post-block {
+  background: #fff none repeat scroll !important;
+}
+.post {
+  margin-top: 60px;
+  padding: 20px;
+  margin-bottom: 60px;
+  -webkit-box-shadow: 0 0 5px rgba(127,255,0,0.9);
+  -moz-box-shadow: 0 0 5px rgba(127,255,0,0.9);
+}
+* {
+  color: #000;
 }
