@@ -98,37 +98,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo-GitHub</title>
-    <url>/2023/10/29/hexo-github/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：Hexo本地编写博文的相关操作<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>2、博客默认布局设置<br>（1）如何自定义布局呢？实际上，布局是一个markdown文件，它们保存在scaffolds/目录下，可以看到hexo自带的三种布局其实就是三个.md文件。</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Hexo_博客随记</category>
-      </categories>
-      <tags>
-        <tag>Hexo万花筒</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pycharm导包遇到的问题</title>
     <url>/2023/11/08/Pycharm%E5%AF%BC%E5%8C%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<hr>
@@ -158,27 +127,19 @@
       </tags>
   </entry>
   <entry>
-    <title>图像处理杂记</title>
-    <url>/2023/11/02/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E6%9D%82%E8%AE%B0/</url>
+    <title>Hexo-GitHub</title>
+    <url>/2023/10/29/hexo-github/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：图像处理相关小知识点<span id="more"></span></li>
+<li>本文简介：Hexo本地编写博文的相关操作<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
-<li><p>图像灰度化：</p>
-<p> （1）图像灰度化是将一幅彩色图像转换为灰度图像的过程。在灰度图像中，每个像素只包含一个灰度值，而不是彩色图像中的红、绿和蓝三个通道。灰度图像通常用于简化图像处理和分析，因为它们只包含亮度信息，而没有颜色信息。</p>
-</li>
-<li><p>图像二值化：<br> （1）图像二值化（Image Binarization）是一种图像处理技术，它将一幅灰度图像转换为只包含两个像素值的二值图像，通常是黑色（0）和白色（255）或其他两种互斥的颜色。二值化的目标是将图像中的信息从背景中分离出来，以便更容易进行特征提取、分割和分析。<br> （2）图像二值化的主要思想是根据像素的灰度值将图像分为两个不同的区域：前景和背景。前景通常包含我们感兴趣的目标对象，而背景则是目标对象的周围环境。通过将前景和背景分离成明显不同的像素值，可以更容易地进行目标检测、分割、轮廓提取等图像处理任务。</p>
-</li>
-<li><p>图像灰度化和二值化的区别：<br> （1）灰度处理会保留图像中所有的灰度层级，而二值化则只能保留黑白两种颜色，所以在某些场景下，灰度处理能够更好地保留图像的细节，而二值化则可以更好地突出图像中的边界和轮廓。</p>
-</li>
-<li><p>图像加噪：<br> （1）图像加噪是指在一幅图像中引入不希望的、随机或人为制造的像素值的变化，这些变化可能来自于各种源头，包括传感器噪声、环境条件、传输问题、图像采集设备的问题或意图明确的操作。噪声可以干扰或损害图像的质量，使其更难以分析、处理或识别。</p>
-</li>
-</ol>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>2、博客默认布局设置<br>（1）如何自定义布局呢？实际上，布局是一个markdown文件，它们保存在scaffolds/目录下，可以看到hexo自带的三种布局其实就是三个.md文件。</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -190,10 +151,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>深度学习_随心所欲</category>
+        <category>Hexo_博客随记</category>
       </categories>
       <tags>
-        <tag>图像处理</tag>
+        <tag>Hexo万花筒</tag>
       </tags>
   </entry>
   <entry>
@@ -254,6 +215,45 @@
       </categories>
       <tags>
         <tag>数理统计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图像处理杂记</title>
+    <url>/2023/11/02/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E6%9D%82%E8%AE%B0/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：图像处理相关小知识点<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
+<li><p>图像灰度化：</p>
+<p> （1）图像灰度化是将一幅彩色图像转换为灰度图像的过程。在灰度图像中，每个像素只包含一个灰度值，而不是彩色图像中的红、绿和蓝三个通道。灰度图像通常用于简化图像处理和分析，因为它们只包含亮度信息，而没有颜色信息。</p>
+</li>
+<li><p>图像二值化：<br> （1）图像二值化（Image Binarization）是一种图像处理技术，它将一幅灰度图像转换为只包含两个像素值的二值图像，通常是黑色（0）和白色（255）或其他两种互斥的颜色。二值化的目标是将图像中的信息从背景中分离出来，以便更容易进行特征提取、分割和分析。<br> （2）图像二值化的主要思想是根据像素的灰度值将图像分为两个不同的区域：前景和背景。前景通常包含我们感兴趣的目标对象，而背景则是目标对象的周围环境。通过将前景和背景分离成明显不同的像素值，可以更容易地进行目标检测、分割、轮廓提取等图像处理任务。</p>
+</li>
+<li><p>图像灰度化和二值化的区别：<br> （1）灰度处理会保留图像中所有的灰度层级，而二值化则只能保留黑白两种颜色，所以在某些场景下，灰度处理能够更好地保留图像的细节，而二值化则可以更好地突出图像中的边界和轮廓。</p>
+</li>
+<li><p>图像加噪：<br> （1）图像加噪是指在一幅图像中引入不希望的、随机或人为制造的像素值的变化，这些变化可能来自于各种源头，包括传感器噪声、环境条件、传输问题、图像采集设备的问题或意图明确的操作。噪声可以干扰或损害图像的质量，使其更难以分析、处理或识别。</p>
+</li>
+</ol>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>深度学习_随心所欲</category>
+      </categories>
+      <tags>
+        <tag>图像处理</tag>
       </tags>
   </entry>
 </search>
