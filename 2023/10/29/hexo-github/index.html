@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-pace-theme-big-counter.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"mapao0110.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"mapao0110.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="关于 个人微信公众号： Mn2+ 个人博客首页 注：学习交流使用！ 本文简介：Hexo本地编写博文的相关操作">
@@ -28,7 +30,7 @@
 <meta property="og:description" content="关于 个人微信公众号： Mn2+ 个人博客首页 注：学习交流使用！ 本文简介：Hexo本地编写博文的相关操作">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-29T11:19:16.000Z">
-<meta property="article:modified_time" content="2023-11-09T14:28:28.619Z">
+<meta property="article:modified_time" content="2023-11-10T03:39:02.608Z">
 <meta property="article:author" content="马跑">
 <meta property="article:tag" content="Hexo万花筒">
 <meta name="twitter:card" content="summary">
@@ -219,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-09 22:28:28" itemprop="dateModified" datetime="2023-11-09T22:28:28+08:00">2023-11-09</time>
+                <time title="修改时间：2023-11-10 11:39:02" itemprop="dateModified" datetime="2023-11-10T11:39:02+08:00">2023-11-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,7 +239,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>430</span>
+              <span>797</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -268,8 +270,25 @@
 </ul>
 <hr>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br></pre></td></tr></table></figure>
+
 <p>2、博客默认布局设置<br>（1）如何自定义布局呢？实际上，布局是一个markdown文件，它们保存在scaffolds/目录下，可以看到hexo自带的三种布局其实就是三个.md文件。</p>
+<p>3、Markdowm的基本使用<br>（1）多少个#号就是多少级标题<br>（2）添加列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 列表1</span><br><span class="line">         a 子列表</span><br><span class="line">         b 子列表</span><br><span class="line">- 列表2</span><br></pre></td></tr></table></figure>
+<p>这样就可以添加列表，挺好tab后可以添加子列表<br>（3）添加链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[baidu](http:&#x2F;&#x2F;www.baidu.com)</span><br></pre></td></tr></table></figure>
+<p>[]中是简介，()中是连接<br>（4）添加图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![image](&#x2F;images&#x2F;xxx.xxx)</span><br></pre></td></tr></table></figure>
+<p>（5）斜体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*斜体*</span><br></pre></td></tr></table></figure>
+<p>在星号中间写文章<br>（6）字体加粗</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**粗体**</span><br></pre></td></tr></table></figure>
+<p>同上，只不过换成两个星号<br>（7）代码块<br>通过tab上面的那个英文符号，两点是单行，六点是多行<br>（8）添加引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; 引用</span><br></pre></td></tr></table></figure>
+<p>当某段内容出自某人之口或者某篇文章时，使用引用可以方便地把引用的部分分开，告诉读者这一段是出自别处。<br>（9）添加横线</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">---或者------------------------或者***等方式</span><br></pre></td></tr></table></figure>
+
+
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -485,13 +504,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">3k</span>
+    <span title="站点总字数">4k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">6 分钟</span>
+    <span title="站点阅读时长">7 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
@@ -500,7 +519,7 @@
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共2.2k字</span>
+  <span class="post-count">博客全站共2.4k字</span>
   <span class="post-meta-divider">|</span>
   本站总访问量<span id="busuanzi_value_site_pv"></span>次
   <span class="post-meta-divider">|</span>
@@ -572,6 +591,81 @@
 
 
     <script src="/js/cursor/cherry.js"></script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #4D4D4C;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #F7F7F7;
+      background-image: linear-gradient(#F7F7F7, #F7F7F7);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
