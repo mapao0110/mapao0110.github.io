@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>AlexNet</title>
-    <url>/2023/11/09/AlexNet/</url>
+    <title>LeNet</title>
+    <url>/2023/11/09/LeNet/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：AlexNet神经网络模型训练<span id="more"></span></li>
+<li>本文简介：LeNet神经网络模型训练<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>卷积神经网络（Convolutional Neural Networks, CNN）<br>1、该网络的亮点：<br>（1）首次利用GPU进行网络加速训练<br>（2）使用了ReLU激活函数<br>（3）使用了LRN局部响应归一化<br>（4）在全连接层的前两层中使用了Dropout随机失活神经元操作，以减少过拟合。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、requires_grad<br>（1）在pytorch中，tensor有一个requires_grad参数，如果设置为True，则反向传播时，该tensor就会自动求导。tensor的requires_grad的属性默认为False,若一个节点（叶子变量：自己创建的tensor）requires_grad被设置为True，那么所有依赖它的节点requires_grad都为True（即使其他相依赖的tensor的requires_grad = False）<br>（2）当requires_grad设置为False时,反向传播时就不会自动求导了，因此大大节约了显存或者说内存。<br>（3）值得注意的是：requires_grad的设置只能针对叶子结点（网络的权重w就算，bias也算），如何理解叶子结点呢？叶子节点在数据结构中是一棵树没有子节点的结点，在网络中就是这个结点对应的参数不是由更上一层的tensor计算而来。</p>
+<p>2、with torch.no_grad()<br>（1）在该模块下，所有计算得出的tensor的requires_grad都自动设置为False。<br>（2）即使一个tensor（命名为x）的requires_grad = True，在with torch.no_grad计算，由x得到的新tensor（命名为w-标量）requires_grad也为False，且grad_fn也为None,即不会对w求导。<br>（3）在神经网络训练过程中，测试阶段及预测阶段不需要更新网络参数，使用该模块大大节约了内存的开销。</p>
+<p>3、内存与显存的区别<br>（1）电脑内存是替CPU暂存资料的储存空间。<br>（2）显卡显存是替GPU（显卡芯片）暂存资料的储存空间。<br>（3）内存或显存理论上越大越好。<br>（4）笔记本内存是可以增加的，但是显卡我们一般不能更换，笔记本大多是独立显示芯片或核显。</p>
+<p>4、demo的流程<br>（1）model.py ——定义LeNet网络模型<br>（2）train.py ——加载数据集并训练，训练集计算loss，测试集计算accuracy，保存训练好的网络参数<br>（3）predict.py——得到训练好的网络参数后，用自己找的图像进行分类测试</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -30,20 +33,17 @@
       </tags>
   </entry>
   <entry>
-    <title>LeNet</title>
-    <url>/2023/11/09/LeNet/</url>
+    <title>AlexNet</title>
+    <url>/2023/11/09/AlexNet/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：LeNet神经网络模型训练<span id="more"></span></li>
+<li>本文简介：AlexNet神经网络模型训练<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、requires_grad<br>（1）在pytorch中，tensor有一个requires_grad参数，如果设置为True，则反向传播时，该tensor就会自动求导。tensor的requires_grad的属性默认为False,若一个节点（叶子变量：自己创建的tensor）requires_grad被设置为True，那么所有依赖它的节点requires_grad都为True（即使其他相依赖的tensor的requires_grad = False）<br>（2）当requires_grad设置为False时,反向传播时就不会自动求导了，因此大大节约了显存或者说内存。<br>（3）值得注意的是：requires_grad的设置只能针对叶子结点（网络的权重w就算，bias也算），如何理解叶子结点呢？叶子节点在数据结构中是一棵树没有子节点的结点，在网络中就是这个结点对应的参数不是由更上一层的tensor计算而来。</p>
-<p>2、with torch.no_grad()<br>（1）在该模块下，所有计算得出的tensor的requires_grad都自动设置为False。<br>（2）即使一个tensor（命名为x）的requires_grad = True，在with torch.no_grad计算，由x得到的新tensor（命名为w-标量）requires_grad也为False，且grad_fn也为None,即不会对w求导。<br>（3）在神经网络训练过程中，测试阶段及预测阶段不需要更新网络参数，使用该模块大大节约了内存的开销。</p>
-<p>3、内存与显存的区别<br>（1）电脑内存是替CPU暂存资料的储存空间。<br>（2）显卡显存是替GPU（显卡芯片）暂存资料的储存空间。<br>（3）内存或显存理论上越大越好。<br>（4）笔记本内存是可以增加的，但是显卡我们一般不能更换，笔记本大多是独立显示芯片或核显。</p>
-<p>4、demo的流程<br>（1）model.py ——定义LeNet网络模型<br>（2）train.py ——加载数据集并训练，训练集计算loss，测试集计算accuracy，保存训练好的网络参数<br>（3）predict.py——得到训练好的网络参数后，用自己找的图像进行分类测试</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>卷积神经网络（Convolutional Neural Networks, CNN）<br>1、该网络的亮点：<br>（1）首次利用GPU进行网络加速训练<br>（2）使用了ReLU激活函数<br>（3）使用了LRN局部响应归一化<br>（4）在全连接层的前两层中使用了Dropout随机失活神经元操作，以减少过拟合。</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -127,55 +127,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo-GitHub</title>
-    <url>/2023/10/29/hexo-github/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：Hexo本地编写博文的相关操作<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>&emsp; 把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br></pre></td></tr></table></figure>
-
-<p>2、博客默认布局设置<br>（1）如何自定义布局呢？实际上，布局是一个markdown文件，它们保存在scaffolds/目录下，可以看到hexo自带的三种布局其实就是三个.md文件。</p>
-<p>3、Markdowm的基本使用<br>（1）多少个#号就是多少级标题<br>&emsp; 由于不同 Markdown 应用程序处理 # 和标题之间空白格的方式并不一致，出于兼容性考虑，最好在 # 与标题之间使用一个空格。井号的个数即表示是几级标题，最低可到六级标题，七个井号时就不再有标题效果了。<br>（2）添加列表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 列表1</span><br><span class="line">         a 子列表</span><br><span class="line">         b 子列表</span><br><span class="line">- 列表2</span><br></pre></td></tr></table></figure>
-<p>&emsp; 这样就可以添加列表，挺好tab后可以添加子列表<br>（3）添加链接</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[baidu](http:&#x2F;&#x2F;www.baidu.com)</span><br></pre></td></tr></table></figure>
-<p>&emsp; []中是简介，()中是连接<br>（4）添加图片</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![image](&#x2F;images&#x2F;xxx.xxx)</span><br></pre></td></tr></table></figure>
-<p>（5）斜体</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*斜体*</span><br></pre></td></tr></table></figure>
-<p>&emsp; 在星号中间写文章<br>（6）字体加粗</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**粗体**</span><br></pre></td></tr></table></figure>
-<p>&emsp; 同上，只不过换成两个星号<br>（7）代码块<br>&emsp; 通过tab上面的那个英文符号，两点是单行，六点是多行<br>（8）添加引用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 引用</span><br></pre></td></tr></table></figure>
-<p>&emsp; 当某段内容出自某人之口或者某篇文章时，使用引用可以方便地把引用的部分分开，告诉读者这一段是出自别处。<br>（9）添加横线</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---或者------------------------或者***等方式</span><br></pre></td></tr></table></figure>
-<p>（10）markdown段落中如何产生缩进<br>（粗暴添加）直接在文本前加html中的空格语句</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;nbsp; 半角的不断行的空白格（推荐使用）</span><br><span class="line">&amp;ensp;  半角的空格 </span><br><span class="line">&amp;emsp;  全角的空格</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Hexo_博客随记</category>
-      </categories>
-      <tags>
-        <tag>Hexo万花筒</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>博客模板</title>
     <url>/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</url>
     <content><![CDATA[<hr>
@@ -245,6 +196,55 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo-GitHub</title>
+    <url>/2023/10/29/hexo-github/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：Hexo本地编写博文的相关操作<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>&emsp; 把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br></pre></td></tr></table></figure>
+
+<p>2、博客默认布局设置<br>（1）如何自定义布局呢？实际上，布局是一个markdown文件，它们保存在scaffolds/目录下，可以看到hexo自带的三种布局其实就是三个.md文件。</p>
+<p>3、Markdowm的基本使用<br>（1）多少个#号就是多少级标题<br>&emsp; 由于不同 Markdown 应用程序处理 # 和标题之间空白格的方式并不一致，出于兼容性考虑，最好在 # 与标题之间使用一个空格。井号的个数即表示是几级标题，最低可到六级标题，七个井号时就不再有标题效果了。<br>（2）添加列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 列表1</span><br><span class="line">         a 子列表</span><br><span class="line">         b 子列表</span><br><span class="line">- 列表2</span><br></pre></td></tr></table></figure>
+<p>&emsp; 这样就可以添加列表，挺好tab后可以添加子列表<br>（3）添加链接</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[baidu](http:&#x2F;&#x2F;www.baidu.com)</span><br></pre></td></tr></table></figure>
+<p>&emsp; []中是简介，()中是连接<br>（4）添加图片</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![image](&#x2F;images&#x2F;xxx.xxx)</span><br></pre></td></tr></table></figure>
+<p>（5）斜体</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*斜体*</span><br></pre></td></tr></table></figure>
+<p>&emsp; 在星号中间写文章<br>（6）字体加粗</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**粗体**</span><br></pre></td></tr></table></figure>
+<p>&emsp; 同上，只不过换成两个星号<br>（7）代码块<br>&emsp; 通过tab上面的那个英文符号，两点是单行，六点是多行<br>（8）添加引用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 引用</span><br></pre></td></tr></table></figure>
+<p>&emsp; 当某段内容出自某人之口或者某篇文章时，使用引用可以方便地把引用的部分分开，告诉读者这一段是出自别处。<br>（9）添加横线</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---或者------------------------或者***等方式</span><br></pre></td></tr></table></figure>
+<p>（10）markdown段落中如何产生缩进<br>（粗暴添加）直接在文本前加html中的空格语句</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;nbsp; 半角的不断行的空白格（推荐使用）</span><br><span class="line">&amp;ensp;  半角的空格 </span><br><span class="line">&amp;emsp;  全角的空格</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hexo_博客随记</category>
+      </categories>
+      <tags>
+        <tag>Hexo万花筒</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>常用快捷键随记</title>
     <url>/2023/11/11/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9A%8F%E8%AE%B0/</url>
     <content><![CDATA[<hr>
@@ -273,30 +273,6 @@
       <tags>
         <tag>电脑办公</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>矩阵论复习</title>
-    <url>/2023/11/11/%E7%9F%A9%E9%98%B5%E8%AE%BA%E5%A4%8D%E4%B9%A0/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：博文简介(XXX)<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>数理统计复习</title>
@@ -356,6 +332,30 @@
   <entry>
     <title>研究生综合英语1</title>
     <url>/2023/11/11/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%BB%BC%E5%90%88%E8%8B%B1%E8%AF%AD1/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：博文简介(XXX)<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
+<p>2、<br>（1）</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>矩阵论复习</title>
+    <url>/2023/11/11/%E7%9F%A9%E9%98%B5%E8%AE%BA%E5%A4%8D%E4%B9%A0/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
