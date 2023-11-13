@@ -62,22 +62,24 @@
       </tags>
   </entry>
   <entry>
-    <title>VGG网络</title>
-    <url>/2023/11/13/VGG%E7%BD%91%E7%BB%9C/</url>
+    <title>PyTorch基础</title>
+    <url>/2023/10/31/PyTorch%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：VGG网络详解<span id="more"></span></li>
+<li>本文简介：PyTorch相关基础概念<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、VGG 在2014年由牛津大学著名研究组 VGG（Visual Geometry Group）提出。</p>
-<p>2、VGG网络的创新点<br>（1）通过堆叠多个小卷积核来替代大尺度卷积核，可以减少训练参数，同时能保证相同的感受野。<br>（2）论文中提到，可以通过堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。</p>
-<p>3、CNN感受野<br>（1）卷积神经网络中，决定某一层输出结果中一个元素所对应的输入层的区域大小，被称作感受野（receptive field）。<br>（2）通俗的解释是，输出feature map上的一个单元 对应 输入层上的区域大小。<br>（3）以下图为例，输出层 layer3 中一个单元 对应 输入层 layer2 上区域大小为2×2（池化操作），对应输入层 layer1 上大小为5×5（可以这么理解，layer2中 2×2区域中的每一块对应一个3×3的卷积核，又因为 stride=2，所以layer1的感受野为5×5）<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/gsy.jpg" alt="感受野"><br>（4）感受野的计算公式为：<br>&emsp; F(i)=(F(i+1)−1)×Stride +Ksize<br>&emsp;  * F(i) 为第i层感受野<br>&emsp; * Stride为第i层的步距<br>&emsp; * Ksize为 卷积核 或 池化核 尺寸<br>&emsp; 以上图为例：<br>&emsp; * Feature map: F ( 3 ) = 1<br>&emsp; * Pool1：F ( 2 ) = ( 1 − 1 ) × 2 + 2 = 2<br>&emsp; * Conv1: F ( 1 ) = ( 2 − 1 ) × 2 + 3 = 5</p>
-<p>4、小卷积核<br>（1）堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。替代前后感受野是否相同？<br>（注：VGG网络中卷积的Stride默认为1）<br>&emsp; Feature map: F = 1 F=1F=1<br>&emsp; * Conv3x3(3): F = ( 1 − 1 ) × 1 + 3 = 3<br>&emsp; * Conv3x3(2): F = ( 3 − 1 ) × 1 + 3 = 5 （5×5卷积核感受野）<br>&emsp; * Conv3x3(1): F = ( 5 − 1 ) × 1 + 3 = 7 （7×7卷积核感受野）</p>
-<p>（2）堆叠3×3卷积核后训练参数是否真的减少了？<br>&emsp; 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度。<br>&emsp; 现假设 输入特征矩阵深度 = 输出特征矩阵深度 = C<br>&emsp; *使用7×7卷积核所需参数个数：7 × 7 × C × C = 49 C**2<br>&emsp; *堆叠三个3×3的卷积核所需参数个数：3 × 3 × C × C + 3 × 3 × C × C + 3 × 3 × C × C = 27 C**2 </p>
-<p>5、VGG-16<br>（1）VGG网络有多个版本，一般常用的是VGG-16模型，其网络结构如下如所示：<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/VGG16.JPG" alt="VGG16"><br>（2）稍作计算可以发现，经3×3卷积的特征矩阵的尺寸是不改变的：</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
+<li><p>计算图：用来描述运算的有向无环图<br>（1）计算图有两个主要元素：结点（Node）和边（Edge）；<br>（2）结点表示数据，如向量、矩阵、张量，边表示运算，如加减乘除卷积等；<br><img src="/pic/PyTorch%E5%9F%BA%E7%A1%80/jstu.png" alt="计算图表示"><br>（3）PyTorch基于动态图，TensorFlow基于静态图<br>静态图框架好比C++，每次修改之后运行都要重新编译才行，动态图框架好比Python，动态执行，可以交互式查看修改。</p>
+</li>
+<li><p>节点和结点的区别：节点，被认为是一个实体，有处理能力，比如：网络上的一台计算机；而结点则只是一个交叉点，像“结绳记事”，打个结，做个标记，仅此而已，一般算法中点的都是结点。</p>
+</li>
+<li><p>PyTorch的设计遵循tensor-&gt;variable(autograd)-&gt;nn.Module三个由低到高的抽象层次，分别代表高维数组（张量）、自动求导（变量）和神经网络（层/模块）。</p>
+</li>
+</ol>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -89,10 +91,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
+        <category>深度学习_随心所欲</category>
       </categories>
       <tags>
-        <tag>阶段四：图像分类实战</tag>
+        <tag>PyTorch</tag>
       </tags>
   </entry>
   <entry>
@@ -125,24 +127,22 @@
       </tags>
   </entry>
   <entry>
-    <title>PyTorch基础</title>
-    <url>/2023/10/31/PyTorch%E5%9F%BA%E7%A1%80/</url>
+    <title>VGG网络</title>
+    <url>/2023/11/13/VGG%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：PyTorch相关基础概念<span id="more"></span></li>
+<li>本文简介：VGG网络详解<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
-<li><p>计算图：用来描述运算的有向无环图<br>（1）计算图有两个主要元素：结点（Node）和边（Edge）；<br>（2）结点表示数据，如向量、矩阵、张量，边表示运算，如加减乘除卷积等；<br><img src="/pic/jstu.png" alt="计算图表示"><br>（3）PyTorch基于动态图，TensorFlow基于静态图<br>静态图框架好比C++，每次修改之后运行都要重新编译才行，动态图框架好比Python，动态执行，可以交互式查看修改。</p>
-</li>
-<li><p>节点和结点的区别：节点，被认为是一个实体，有处理能力，比如：网络上的一台计算机；而结点则只是一个交叉点，像“结绳记事”，打个结，做个标记，仅此而已，一般算法中点的都是结点。</p>
-</li>
-<li><p>PyTorch的设计遵循tensor-&gt;variable(autograd)-&gt;nn.Module三个由低到高的抽象层次，分别代表高维数组（张量）、自动求导（变量）和神经网络（层/模块）。</p>
-</li>
-</ol>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、VGG 在2014年由牛津大学著名研究组 VGG（Visual Geometry Group）提出。</p>
+<p>2、VGG网络的创新点<br>（1）通过堆叠多个小卷积核来替代大尺度卷积核，可以减少训练参数，同时能保证相同的感受野。<br>（2）论文中提到，可以通过堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。</p>
+<p>3、CNN感受野<br>（1）卷积神经网络中，决定某一层输出结果中一个元素所对应的输入层的区域大小，被称作感受野（receptive field）。<br>（2）通俗的解释是，输出feature map上的一个单元 对应 输入层上的区域大小。<br>（3）以下图为例，输出层 layer3 中一个单元 对应 输入层 layer2 上区域大小为2×2（池化操作），对应输入层 layer1 上大小为5×5（可以这么理解，layer2中 2×2区域中的每一块对应一个3×3的卷积核，又因为 stride=2，所以layer1的感受野为5×5）<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/gsy.jpg" alt="感受野"><br>（4）感受野的计算公式为：<br>&emsp; F(i)=(F(i+1)−1)×Stride +Ksize<br>&emsp;  * F(i) 为第i层感受野<br>&emsp; * Stride为第i层的步距<br>&emsp; * Ksize为 卷积核 或 池化核 尺寸<br>&emsp; 以上图为例：<br>&emsp; * Feature map: F ( 3 ) = 1<br>&emsp; * Pool1：F ( 2 ) = ( 1 − 1 ) × 2 + 2 = 2<br>&emsp; * Conv1: F ( 1 ) = ( 2 − 1 ) × 2 + 3 = 5</p>
+<p>4、小卷积核<br>（1）堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。替代前后感受野是否相同？<br>（注：VGG网络中卷积的Stride默认为1）<br>&emsp; Feature map: F = 1 F=1F=1<br>&emsp; * Conv3x3(3): F = ( 1 − 1 ) × 1 + 3 = 3<br>&emsp; * Conv3x3(2): F = ( 3 − 1 ) × 1 + 3 = 5 （5×5卷积核感受野）<br>&emsp; * Conv3x3(1): F = ( 5 − 1 ) × 1 + 3 = 7 （7×7卷积核感受野）</p>
+<p>（2）堆叠3×3卷积核后训练参数是否真的减少了？<br>&emsp; 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度。<br>&emsp; 现假设 输入特征矩阵深度 = 输出特征矩阵深度 = C<br>&emsp; *使用7×7卷积核所需参数个数：7 × 7 × C × C = 49 C**2<br>&emsp; *堆叠三个3×3的卷积核所需参数个数：3 × 3 × C × C + 3 × 3 × C × C + 3 × 3 × C × C = 27 C**2 </p>
+<p>5、VGG-16<br>（1）VGG网络有多个版本，一般常用的是VGG-16模型，其网络结构如下如所示：<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/VGG16.JPG" alt="VGG16"><br>（2）稍作计算可以发现，经3×3卷积的特征矩阵的尺寸是不改变的：</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -154,40 +154,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>深度学习_随心所欲</category>
+        <category>研究方向(学习路线_记忆宫殿)</category>
       </categories>
       <tags>
-        <tag>PyTorch</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客模板</title>
-    <url>/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：博客模板制作<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Hexo_博客随记</category>
-      </categories>
-      <tags>
-        <tag>博客模板</tag>
+        <tag>阶段四：图像分类实战</tag>
       </tags>
   </entry>
   <entry>
@@ -243,6 +213,105 @@
       </categories>
       <tags>
         <tag>Hexo万花筒</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客模板</title>
+    <url>/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：博客模板制作<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
+<p>2、<br>（1）</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hexo_博客随记</category>
+      </categories>
+      <tags>
+        <tag>博客模板</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图像处理杂记</title>
+    <url>/2023/11/02/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E6%9D%82%E8%AE%B0/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：图像处理相关小知识点<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
+<li><p>图像灰度化：</p>
+<p> （1）图像灰度化是将一幅彩色图像转换为灰度图像的过程。在灰度图像中，每个像素只包含一个灰度值，而不是彩色图像中的红、绿和蓝三个通道。灰度图像通常用于简化图像处理和分析，因为它们只包含亮度信息，而没有颜色信息。</p>
+</li>
+<li><p>图像二值化：<br> （1）图像二值化（Image Binarization）是一种图像处理技术，它将一幅灰度图像转换为只包含两个像素值的二值图像，通常是黑色（0）和白色（255）或其他两种互斥的颜色。二值化的目标是将图像中的信息从背景中分离出来，以便更容易进行特征提取、分割和分析。<br> （2）图像二值化的主要思想是根据像素的灰度值将图像分为两个不同的区域：前景和背景。前景通常包含我们感兴趣的目标对象，而背景则是目标对象的周围环境。通过将前景和背景分离成明显不同的像素值，可以更容易地进行目标检测、分割、轮廓提取等图像处理任务。</p>
+</li>
+<li><p>图像灰度化和二值化的区别：<br> （1）灰度处理会保留图像中所有的灰度层级，而二值化则只能保留黑白两种颜色，所以在某些场景下，灰度处理能够更好地保留图像的细节，而二值化则可以更好地突出图像中的边界和轮廓。</p>
+</li>
+<li><p>图像加噪：<br> （1）图像加噪是指在一幅图像中引入不希望的、随机或人为制造的像素值的变化，这些变化可能来自于各种源头，包括传感器噪声、环境条件、传输问题、图像采集设备的问题或意图明确的操作。噪声可以干扰或损害图像的质量，使其更难以分析、处理或识别。</p>
+</li>
+</ol>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>深度学习_随心所欲</category>
+      </categories>
+      <tags>
+        <tag>图像处理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用快捷键随记</title>
+    <url>/2023/11/11/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9A%8F%E8%AE%B0/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：电脑常用快捷键随记<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、截图<br>（1）win10自带：Win+Shift+S</p>
+<p>2、系统控制<br>（1）任务管理器：Ctrl+Shift+Esc</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具小世界</category>
+      </categories>
+      <tags>
+        <tag>电脑办公</tag>
       </tags>
   </entry>
   <entry>
@@ -304,75 +373,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>常用快捷键随记</title>
-    <url>/2023/11/11/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9A%8F%E8%AE%B0/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：电脑常用快捷键随记<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、截图<br>（1）win10自带：Win+Shift+S</p>
-<p>2、系统控制<br>（1）任务管理器：Ctrl+Shift+Esc</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具小世界</category>
-      </categories>
-      <tags>
-        <tag>电脑办公</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图像处理杂记</title>
-    <url>/2023/11/02/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E6%9D%82%E8%AE%B0/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：图像处理相关小知识点<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
-<li><p>图像灰度化：</p>
-<p> （1）图像灰度化是将一幅彩色图像转换为灰度图像的过程。在灰度图像中，每个像素只包含一个灰度值，而不是彩色图像中的红、绿和蓝三个通道。灰度图像通常用于简化图像处理和分析，因为它们只包含亮度信息，而没有颜色信息。</p>
-</li>
-<li><p>图像二值化：<br> （1）图像二值化（Image Binarization）是一种图像处理技术，它将一幅灰度图像转换为只包含两个像素值的二值图像，通常是黑色（0）和白色（255）或其他两种互斥的颜色。二值化的目标是将图像中的信息从背景中分离出来，以便更容易进行特征提取、分割和分析。<br> （2）图像二值化的主要思想是根据像素的灰度值将图像分为两个不同的区域：前景和背景。前景通常包含我们感兴趣的目标对象，而背景则是目标对象的周围环境。通过将前景和背景分离成明显不同的像素值，可以更容易地进行目标检测、分割、轮廓提取等图像处理任务。</p>
-</li>
-<li><p>图像灰度化和二值化的区别：<br> （1）灰度处理会保留图像中所有的灰度层级，而二值化则只能保留黑白两种颜色，所以在某些场景下，灰度处理能够更好地保留图像的细节，而二值化则可以更好地突出图像中的边界和轮廓。</p>
-</li>
-<li><p>图像加噪：<br> （1）图像加噪是指在一幅图像中引入不希望的、随机或人为制造的像素值的变化，这些变化可能来自于各种源头，包括传感器噪声、环境条件、传输问题、图像采集设备的问题或意图明确的操作。噪声可以干扰或损害图像的质量，使其更难以分析、处理或识别。</p>
-</li>
-</ol>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>深度学习_随心所欲</category>
-      </categories>
-      <tags>
-        <tag>图像处理</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>机器学习</title>
     <url>/2023/11/12/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<hr>
@@ -427,6 +427,30 @@
 ]]></content>
   </entry>
   <entry>
+    <title>研究生综合英语1</title>
+    <url>/2023/11/11/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%BB%BC%E5%90%88%E8%8B%B1%E8%AF%AD1/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：博文简介(XXX)<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
+<p>2、<br>（1）</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>计算机视觉三大顶会</title>
     <url>/2023/11/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E4%B8%89%E5%A4%A7%E9%A1%B6%E4%BC%9A/</url>
     <content><![CDATA[<hr>
@@ -456,54 +480,6 @@
       </tags>
   </entry>
   <entry>
-    <title>研究生综合英语1</title>
-    <url>/2023/11/11/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%BB%BC%E5%90%88%E8%8B%B1%E8%AF%AD1/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：博文简介(XXX)<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>高级人工智能</title>
-    <url>/2023/11/12/%E9%AB%98%E7%BA%A7%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：博文简介(XXX)<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>计算机体系结构</title>
     <url>/2023/11/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</url>
     <content><![CDATA[<hr>
@@ -530,6 +506,30 @@
   <entry>
     <title>面向对象分析与设计</title>
     <url>/2023/11/12/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：博文简介(XXX)<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
+<p>2、<br>（1）</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>高级人工智能</title>
+    <url>/2023/11/12/%E9%AB%98%E7%BA%A7%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
