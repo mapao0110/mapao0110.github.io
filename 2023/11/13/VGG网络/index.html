@@ -22,18 +22,23 @@
     var CONFIG = {"hostname":"mapao0110.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="不爱码字的小懒马儿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小马&amp;博客">
-<meta property="og:url" content="https://mapao0110.github.io/archives/page/2/index.html">
+  <meta name="description" content="关于 个人微信公众号： Mn2+ 个人博客首页 注：学习交流使用！ 本文简介：VGG网络详解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VGG网络">
+<meta property="og:url" content="https://mapao0110.github.io/2023/11/13/VGG%E7%BD%91%E7%BB%9C/index.html">
 <meta property="og:site_name" content="小马&amp;博客">
-<meta property="og:description" content="不爱码字的小懒马儿">
+<meta property="og:description" content="关于 个人微信公众号： Mn2+ 个人博客首页 注：学习交流使用！ 本文简介：VGG网络详解">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mapao0110.github.io/2023/11/13/VGG%E7%BD%91%E7%BB%9C/VGG%E7%BD%91%E7%BB%9C/gsy.jpg">
+<meta property="og:image" content="https://mapao0110.github.io/2023/11/13/VGG%E7%BD%91%E7%BB%9C/VGG%E7%BD%91%E7%BB%9C/VGG16.JPG">
+<meta property="article:published_time" content="2023-11-13T06:19:03.000Z">
+<meta property="article:modified_time" content="2023-11-13T07:16:53.709Z">
 <meta property="article:author" content="马跑">
-<meta property="article:tag" content="深度学习、计算机视觉、目标检测">
+<meta property="article:tag" content="阶段四：图像分类实战">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mapao0110.github.io/2023/11/13/VGG%E7%BD%91%E7%BB%9C/VGG%E7%BD%91%E7%BB%9C/gsy.jpg">
 
-<link rel="canonical" href="https://mapao0110.github.io/archives/page/2/">
+<link rel="canonical" href="https://mapao0110.github.io/2023/11/13/VGG%E7%BD%91%E7%BB%9C/">
 
 
 <script id="page-configurations">
@@ -41,12 +46,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | 小马&博客</title>
+  <title>VGG网络 | 小马&博客</title>
   
 
 
@@ -182,194 +187,171 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 18 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mapao0110.github.io/2023/11/13/VGG%E7%BD%91%E7%BB%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mapao.jpg">
+      <meta itemprop="name" content="马跑">
+      <meta itemprop="description" content="不爱码字的小懒马儿">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小马&博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VGG网络
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-11-13 14:19:03 / 修改时间：15:16:53" itemprop="dateCreated datePublished" datetime="2023-11-13T14:19:03+08:00">2023-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF-%E8%AE%B0%E5%BF%86%E5%AE%AB%E6%AE%BF/" itemprop="url" rel="index"><span itemprop="name">研究方向(学习路线_记忆宫殿)</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+
+
+
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2023</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-11-09T22:23:43+08:00"
-              content="2023-11-09">
-          11-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/11/09/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0/" itemprop="url">
-            <span itemprop="name">数理统计复习</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-11-09T17:58:00+08:00"
-              content="2023-11-09">
-          11-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/11/09/AlexNet/" itemprop="url">
-            <span itemprop="name">AlexNet</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-11-09T17:27:43+08:00"
-              content="2023-11-09">
-          11-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/11/09/LeNet/" itemprop="url">
-            <span itemprop="name">LeNet</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-11-08T21:04:36+08:00"
-              content="2023-11-08">
-          11-08
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/11/08/Pycharm%E5%AF%BC%E5%8C%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" itemprop="url">
-            <span itemprop="name">Pycharm导包遇到的问题</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-11-02T16:56:40+08:00"
-              content="2023-11-02">
-          11-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/11/02/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E6%9D%82%E8%AE%B0/" itemprop="url">
-            <span itemprop="name">图像处理杂记</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-10-31T19:19:19+08:00"
-              content="2023-10-31">
-          10-31
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/10/31/PyTorch%E5%9F%BA%E7%A1%80/" itemprop="url">
-            <span itemprop="name">PyTorch基础</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-10-31T15:16:15+08:00"
-              content="2023-10-31">
-          10-31
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/" itemprop="url">
-            <span itemprop="name">博客模板</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-10-29T19:19:16+08:00"
-              content="2023-10-29">
-          10-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/10/29/hexo-github/" itemprop="url">
-            <span itemprop="name">Hexo-GitHub</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：VGG网络详解<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、VGG 在2014年由牛津大学著名研究组 VGG（Visual Geometry Group）提出。</p>
+<p>2、VGG网络的创新点<br>（1）通过堆叠多个小卷积核来替代大尺度卷积核，可以减少训练参数，同时能保证相同的感受野。<br>（2）论文中提到，可以通过堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。</p>
+<p>3、CNN感受野<br>（1）卷积神经网络中，决定某一层输出结果中一个元素所对应的输入层的区域大小，被称作感受野（receptive field）。<br>（2）通俗的解释是，输出feature map上的一个单元 对应 输入层上的区域大小。<br>（3）以下图为例，输出层 layer3 中一个单元 对应 输入层 layer2 上区域大小为2×2（池化操作），对应输入层 layer1 上大小为5×5（可以这么理解，layer2中 2×2区域中的每一块对应一个3×3的卷积核，又因为 stride=2，所以layer1的感受野为5×5）<br><img src="VGG%E7%BD%91%E7%BB%9C/gsy.jpg" alt="感受野"><br>（4）感受野的计算公式为：<br>&emsp; F(i)=(F(i+1)−1)×Stride +Ksize<br>&emsp;  * F(i) 为第i层感受野<br>&emsp; * Stride为第i层的步距<br>&emsp; * Ksize为 卷积核 或 池化核 尺寸<br>&emsp; 以上图为例：<br>&emsp; * Feature map: F ( 3 ) = 1<br>&emsp; * Pool1：F ( 2 ) = ( 1 − 1 ) × 2 + 2 = 2<br>&emsp; * Conv1: F ( 1 ) = ( 2 − 1 ) × 2 + 3 = 5</p>
+<p>4、小卷积核<br>（1）堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。替代前后感受野是否相同？<br>（注：VGG网络中卷积的Stride默认为1）<br>&emsp; Feature map: F = 1 F=1F=1<br>&emsp; * Conv3x3(3): F = ( 1 − 1 ) × 1 + 3 = 3<br>&emsp; * Conv3x3(2): F = ( 3 − 1 ) × 1 + 3 = 5 （5×5卷积核感受野）<br>&emsp; * Conv3x3(1): F = ( 5 − 1 ) × 1 + 3 = 7 （7×7卷积核感受野）</p>
+<p>（2）堆叠3×3卷积核后训练参数是否真的减少了？<br>&emsp; 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度。<br>&emsp; 现假设 输入特征矩阵深度 = 输出特征矩阵深度 = C<br>&emsp; *使用7×7卷积核所需参数个数：7 × 7 × C × C = 49 C**2<br>&emsp; *堆叠三个3×3的卷积核所需参数个数：3 × 3 × C × C + 3 × 3 × C × C + 3 × 3 × C × C = 27 C**2 </p>
+<p>5、VGG-16<br>（1）VGG网络有多个版本，一般常用的是VGG-16模型，其网络结构如下如所示：<br><img src="VGG%E7%BD%91%E7%BB%9C/VGG16.JPG" alt="VGG16"><br>（2）稍作计算可以发现，经3×3卷积的特征矩阵的尺寸是不改变的：</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
 
     </div>
+
+    
+    
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="马跑 微信支付">
+        <p>微信支付</p>
+      </div>
+
   </div>
-  
-  
-  
+</div>
 
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>马跑
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://mapao0110.github.io/2023/11/13/VGG%E7%BD%91%E7%BB%9C/" title="VGG网络">https://mapao0110.github.io/2023/11/13/VGG网络/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%98%B6%E6%AE%B5%E5%9B%9B%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E5%AE%9E%E6%88%98/" rel="tag"># 阶段四：图像分类实战</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E4%B8%89%E5%A4%A7%E9%A1%B6%E4%BC%9A/" rel="prev" title="计算机视觉三大顶会">
+      <i class="fa fa-chevron-left"></i> 计算机视觉三大顶会
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-  </nav>
+  
+  
 
 
 
@@ -421,6 +403,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E"><span class="nav-number">1.</span> <span class="nav-text">关于</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E6%B3%A8"><span class="nav-number">3.</span> <span class="nav-text">关注</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
