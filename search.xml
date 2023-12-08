@@ -30,20 +30,20 @@
       </tags>
   </entry>
   <entry>
-    <title>GoogLeNet</title>
-    <url>/2023/11/13/GoogLeNet/</url>
+    <title>LeNet</title>
+    <url>/2023/11/09/LeNet/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：GoogLeNet结构详解<span id="more"></span></li>
+<li>本文简介：LeNet神经网络模型训练<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、关于GoogLeNet网络<br>（1）GoogLeNet在2014年由Google团队提出（与VGG网络同年，注意GoogLeNet中的L大写是为了致敬LeNet），斩获当年ImageNet竞赛中Classification Task (分类任务) 第一名。<br>（2）GoogLeNet 的创新点：<br>&emsp; * 引入了 Inception 结构（融合不同尺度的特征信息）<br>&emsp; * 使用1x1的卷积核进行降维以及映射处理 （虽然VGG网络中也有，但该论文介绍的更详细）<br>&emsp; * 添加两个辅助分类器帮助训练<br>&emsp; * 丢弃全连接层，使用平均池化层（大大减少模型参数，除去两个辅助分类器，网络大小只有vgg的1/20）</p>
-<p>2、inception 结构<br>（1）传统的CNN结构如AlexNet、VggNet都是串联的结构，即将一系列的卷积层和池化层进行串联得到的结构。<br>（2）GoogLeNet 提出了一种并联结构，下图是论文中提出的inception原始结构，将特征矩阵同时输入到多个分支进行处理，并将输出的特征矩阵按深度进行拼接，得到最终输出。<br><img src="/pic/GoogLeNet/inception.png" alt="inception"><br>&emsp; * inception的作用：增加网络深度和宽度的同时减少参数。<br>&emsp; * 注意：每个分支所得特征矩阵的高和宽必须相同（通过调整stride和padding），以保证输出特征能在深度上进行拼接。</p>
-<p>3、inception + 降维<br>（1）在 inception 的基础上，还可以加上降维功能的结构，如下图所示，在原始 inception 结构的基础上，在分支2，3，4上加入了卷积核大小为1x1的卷积层，目的是为了降维（减小深度），减少模型训练参数，减少计算量。<br><img src="/pic/GoogLeNet/inception02.png" alt="inception + 降维"><br>（2）1×1卷积核的降维功能<br>&emsp; 同样是对一个深度为512的特征矩阵使用64个大小为5x5的卷积核进行卷积，不使用1x1卷积核进行降维的 话一共需要819200个参数，如果使用1x1卷积核进行降维一共需要50688个参数，明显少了很多。<br><img src="/pic/GoogLeNet/jc.png" alt="降维功能"><br>&emsp; * 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度</p>
-<p>4、辅助分类器（Auxiliary Classifier）<br>（1）AlexNet 和 VGG 都只有1个输出层，GoogLeNet 有3个输出层，其中的两个是辅助分类层。<br>（2）如下图所示，网络主干右边的 两个分支 就是 辅助分类器，其结构一模一样。在训练模型时，将两个辅助分类器的损失乘以权重（论文中是0.3）加到网络的整体损失上，再进行反向传播。<br><img src="/pic/GoogLeNet/GoogLeNet.png" alt="GoogLeNet"></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、requires_grad<br>（1）在pytorch中，tensor有一个requires_grad参数，如果设置为True，则反向传播时，该tensor就会自动求导。tensor的requires_grad的属性默认为False,若一个节点（叶子变量：自己创建的tensor）requires_grad被设置为True，那么所有依赖它的节点requires_grad都为True（即使其他相依赖的tensor的requires_grad = False）<br>（2）当requires_grad设置为False时,反向传播时就不会自动求导了，因此大大节约了显存或者说内存。<br>（3）值得注意的是：requires_grad的设置只能针对叶子结点（网络的权重w就算，bias也算），如何理解叶子结点呢？叶子节点在数据结构中是一棵树没有子节点的结点，在网络中就是这个结点对应的参数不是由更上一层的tensor计算而来。</p>
+<p>2、with torch.no_grad()<br>（1）在该模块下，所有计算得出的tensor的requires_grad都自动设置为False。<br>（2）即使一个tensor（命名为x）的requires_grad = True，在with torch.no_grad计算，由x得到的新tensor（命名为w-标量）requires_grad也为False，且grad_fn也为None,即不会对w求导。<br>（3）在神经网络训练过程中，测试阶段及预测阶段不需要更新网络参数，使用该模块大大节约了内存的开销。</p>
+<p>3、内存与显存的区别<br>（1）电脑内存是替CPU暂存资料的储存空间。<br>（2）显卡显存是替GPU（显卡芯片）暂存资料的储存空间。<br>（3）内存或显存理论上越大越好。<br>（4）笔记本内存是可以增加的，但是显卡我们一般不能更换，笔记本大多是独立显示芯片或核显。</p>
+<p>4、demo的流程<br>（1）model.py ——定义LeNet网络模型<br>（2）train.py ——加载数据集并训练，训练集计算loss，测试集计算accuracy，保存训练好的网络参数<br>（3）predict.py——得到训练好的网络参数后，用自己找的图像进行分类测试</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -62,20 +62,20 @@
       </tags>
   </entry>
   <entry>
-    <title>LeNet</title>
-    <url>/2023/11/09/LeNet/</url>
+    <title>GoogLeNet</title>
+    <url>/2023/11/13/GoogLeNet/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：LeNet神经网络模型训练<span id="more"></span></li>
+<li>本文简介：GoogLeNet结构详解<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、requires_grad<br>（1）在pytorch中，tensor有一个requires_grad参数，如果设置为True，则反向传播时，该tensor就会自动求导。tensor的requires_grad的属性默认为False,若一个节点（叶子变量：自己创建的tensor）requires_grad被设置为True，那么所有依赖它的节点requires_grad都为True（即使其他相依赖的tensor的requires_grad = False）<br>（2）当requires_grad设置为False时,反向传播时就不会自动求导了，因此大大节约了显存或者说内存。<br>（3）值得注意的是：requires_grad的设置只能针对叶子结点（网络的权重w就算，bias也算），如何理解叶子结点呢？叶子节点在数据结构中是一棵树没有子节点的结点，在网络中就是这个结点对应的参数不是由更上一层的tensor计算而来。</p>
-<p>2、with torch.no_grad()<br>（1）在该模块下，所有计算得出的tensor的requires_grad都自动设置为False。<br>（2）即使一个tensor（命名为x）的requires_grad = True，在with torch.no_grad计算，由x得到的新tensor（命名为w-标量）requires_grad也为False，且grad_fn也为None,即不会对w求导。<br>（3）在神经网络训练过程中，测试阶段及预测阶段不需要更新网络参数，使用该模块大大节约了内存的开销。</p>
-<p>3、内存与显存的区别<br>（1）电脑内存是替CPU暂存资料的储存空间。<br>（2）显卡显存是替GPU（显卡芯片）暂存资料的储存空间。<br>（3）内存或显存理论上越大越好。<br>（4）笔记本内存是可以增加的，但是显卡我们一般不能更换，笔记本大多是独立显示芯片或核显。</p>
-<p>4、demo的流程<br>（1）model.py ——定义LeNet网络模型<br>（2）train.py ——加载数据集并训练，训练集计算loss，测试集计算accuracy，保存训练好的网络参数<br>（3）predict.py——得到训练好的网络参数后，用自己找的图像进行分类测试</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、关于GoogLeNet网络<br>（1）GoogLeNet在2014年由Google团队提出（与VGG网络同年，注意GoogLeNet中的L大写是为了致敬LeNet），斩获当年ImageNet竞赛中Classification Task (分类任务) 第一名。<br>（2）GoogLeNet 的创新点：<br>&emsp; * 引入了 Inception 结构（融合不同尺度的特征信息）<br>&emsp; * 使用1x1的卷积核进行降维以及映射处理 （虽然VGG网络中也有，但该论文介绍的更详细）<br>&emsp; * 添加两个辅助分类器帮助训练<br>&emsp; * 丢弃全连接层，使用平均池化层（大大减少模型参数，除去两个辅助分类器，网络大小只有vgg的1/20）</p>
+<p>2、inception 结构<br>（1）传统的CNN结构如AlexNet、VggNet都是串联的结构，即将一系列的卷积层和池化层进行串联得到的结构。<br>（2）GoogLeNet 提出了一种并联结构，下图是论文中提出的inception原始结构，将特征矩阵同时输入到多个分支进行处理，并将输出的特征矩阵按深度进行拼接，得到最终输出。<br><img src="/pic/GoogLeNet/inception.png" alt="inception"><br>&emsp; * inception的作用：增加网络深度和宽度的同时减少参数。<br>&emsp; * 注意：每个分支所得特征矩阵的高和宽必须相同（通过调整stride和padding），以保证输出特征能在深度上进行拼接。</p>
+<p>3、inception + 降维<br>（1）在 inception 的基础上，还可以加上降维功能的结构，如下图所示，在原始 inception 结构的基础上，在分支2，3，4上加入了卷积核大小为1x1的卷积层，目的是为了降维（减小深度），减少模型训练参数，减少计算量。<br><img src="/pic/GoogLeNet/inception02.png" alt="inception + 降维"><br>（2）1×1卷积核的降维功能<br>&emsp; 同样是对一个深度为512的特征矩阵使用64个大小为5x5的卷积核进行卷积，不使用1x1卷积核进行降维的 话一共需要819200个参数，如果使用1x1卷积核进行降维一共需要50688个参数，明显少了很多。<br><img src="/pic/GoogLeNet/jc.png" alt="降维功能"><br>&emsp; * 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度</p>
+<p>4、辅助分类器（Auxiliary Classifier）<br>（1）AlexNet 和 VGG 都只有1个输出层，GoogLeNet 有3个输出层，其中的两个是辅助分类层。<br>（2）如下图所示，网络主干右边的 两个分支 就是 辅助分类器，其结构一模一样。在训练模型时，将两个辅助分类器的损失乘以权重（论文中是0.3）加到网络的整体损失上，再进行反向传播。<br><img src="/pic/GoogLeNet/GoogLeNet.png" alt="GoogLeNet"></p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -157,42 +157,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PyTorch基础</title>
-    <url>/2023/10/31/PyTorch%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：PyTorch相关基础概念<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
-<li><p>计算图：用来描述运算的有向无环图<br>（1）计算图有两个主要元素：结点（Node）和边（Edge）；<br>（2）结点表示数据，如向量、矩阵、张量，边表示运算，如加减乘除卷积等；<br><img src="/pic/PyTorch%E5%9F%BA%E7%A1%80/jstu.png" alt="计算图表示"><br>（3）PyTorch基于动态图，TensorFlow基于静态图<br>静态图框架好比C++，每次修改之后运行都要重新编译才行，动态图框架好比Python，动态执行，可以交互式查看修改。</p>
-</li>
-<li><p>节点和结点的区别：节点，被认为是一个实体，有处理能力，比如：网络上的一台计算机；而结点则只是一个交叉点，像“结绳记事”，打个结，做个标记，仅此而已，一般算法中点的都是结点。</p>
-</li>
-<li><p>PyTorch的设计遵循tensor-&gt;variable(autograd)-&gt;nn.Module三个由低到高的抽象层次，分别代表高维数组（张量）、自动求导（变量）和神经网络（层/模块）。</p>
-</li>
-</ol>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>深度学习_随心所欲</category>
-      </categories>
-      <tags>
-        <tag>PyTorch</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>VGG网络</title>
     <url>/2023/11/13/VGG%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<hr>
@@ -227,43 +191,24 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo-GitHub</title>
-    <url>/2023/10/29/hexo-github/</url>
+    <title>PyTorch基础</title>
+    <url>/2023/10/31/PyTorch%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：Hexo本地编写博文的相关操作<span id="more"></span></li>
+<li>本文简介：PyTorch相关基础概念<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>&emsp; 把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br></pre></td></tr></table></figure>
-
-<p>2、博客默认布局设置<br>（1）如何自定义布局呢？实际上，布局是一个markdown文件，它们保存在scaffolds/目录下，可以看到hexo自带的三种布局其实就是三个.md文件。</p>
-<p>3、Markdowm的基本使用<br>（1）多少个#号就是多少级标题<br>&emsp; 由于不同 Markdown 应用程序处理 # 和标题之间空白格的方式并不一致，出于兼容性考虑，最好在 # 与标题之间使用一个空格。井号的个数即表示是几级标题，最低可到六级标题，七个井号时就不再有标题效果了。<br>（2）添加列表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 列表1</span><br><span class="line">         a 子列表</span><br><span class="line">         b 子列表</span><br><span class="line">- 列表2</span><br></pre></td></tr></table></figure>
-<p>&emsp; 这样就可以添加列表，挺好tab后可以添加子列表<br>（3）添加链接</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[baidu](http:&#x2F;&#x2F;www.baidu.com)</span><br></pre></td></tr></table></figure>
-<p>&emsp; []中是简介，()中是连接<br>（4）添加图片</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![image](&#x2F;images&#x2F;xxx.xxx)</span><br></pre></td></tr></table></figure>
-<p>（5）斜体</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*斜体*</span><br></pre></td></tr></table></figure>
-<p>&emsp; 在星号中间写文章<br>（6）字体加粗</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**粗体**</span><br></pre></td></tr></table></figure>
-<p>&emsp; 同上，只不过换成两个星号<br>（7）代码块<br>&emsp; 通过tab上面的那个英文符号，两点是单行，六点是多行<br>（8）添加引用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 引用</span><br></pre></td></tr></table></figure>
-<p>&emsp; 当某段内容出自某人之口或者某篇文章时，使用引用可以方便地把引用的部分分开，告诉读者这一段是出自别处。<br>（9）添加横线</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---或者------------------------或者***等方式</span><br></pre></td></tr></table></figure>
-<p>（10）markdown段落中如何产生缩进<br>（粗暴添加）直接在文本前加html中的空格语句</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;nbsp; 半角的不断行的空白格（推荐使用）</span><br><span class="line">&amp;ensp;  半角的空格 </span><br><span class="line">&amp;emsp;  全角的空格</span><br></pre></td></tr></table></figure>
-<p>（11）hexo整合pdf.js<br>&emsp;  首先，安装hexo-pdf</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-pdf </span><br></pre></td></tr></table></figure>
-<p>&emsp;  其次，修改项目的 _config.yml配置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-<p>&emsp;  然后，在source_posts下创建(xxx)目录，放入pdf文件<br>&emsp;  最后，创建与上面目录相同名的md文件；注意：md文件的名称一定要与第三步创建的目录同名，如我的目录是PDF01，那 md 文件名为PDF01.md。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;embed src&#x3D;&quot;.&#x2F;xxx.pdf&quot; width&#x3D;&quot;100%&quot; height&#x3D;&quot;750&quot; type&#x3D;&quot;application&#x2F;pdf&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>&emsp;  在md文件里面添加上述代码；说明：src的路径就为pdf文件的路径，不用加PDF01前缀，因为这个PDF01.md文件默认会找PDF01下的文件。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
+<li><p>计算图：用来描述运算的有向无环图<br>（1）计算图有两个主要元素：结点（Node）和边（Edge）；<br>（2）结点表示数据，如向量、矩阵、张量，边表示运算，如加减乘除卷积等；<br><img src="/pic/PyTorch%E5%9F%BA%E7%A1%80/jstu.png" alt="计算图表示"><br>（3）PyTorch基于动态图，TensorFlow基于静态图<br>静态图框架好比C++，每次修改之后运行都要重新编译才行，动态图框架好比Python，动态执行，可以交互式查看修改。</p>
+</li>
+<li><p>节点和结点的区别：节点，被认为是一个实体，有处理能力，比如：网络上的一台计算机；而结点则只是一个交叉点，像“结绳记事”，打个结，做个标记，仅此而已，一般算法中点的都是结点。</p>
+</li>
+<li><p>PyTorch的设计遵循tensor-&gt;variable(autograd)-&gt;nn.Module三个由低到高的抽象层次，分别代表高维数组（张量）、自动求导（变量）和神经网络（层/模块）。</p>
+</li>
+</ol>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -275,74 +220,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>Hexo_博客随记</category>
+        <category>深度学习_随心所欲</category>
       </categories>
       <tags>
-        <tag>Hexo万花筒</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客模板</title>
-    <url>/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：博客模板制作<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Hexo_博客随记</category>
-      </categories>
-      <tags>
-        <tag>博客模板</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数理统计复习</title>
-    <url>/2023/11/09/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：研一期末数理统计复习<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="考点01"><a href="#考点01" class="headerlink" title="考点01"></a>考点01</h3><p>1、数理统计的基本概念<br>（1）样本均值、样本方差、修正样本方差、样本标准差、样本k阶原点矩及样本k阶中心距(书：p4)<br>（2）样本中位数、极差，经验分布函数(书：p8、p9)<br>（3）分位数、抽样分布定理(书：p21、p22)<br>（4）三大分布：卡方分布、T分布、F分布<br>（5）伽马函数(书：p12)</p>
-<p>2、课后习题<br>（1）1.6(书：p27)、1.13(书：p29)</p>
-<h3 id="考点02"><a href="#考点02" class="headerlink" title="考点02"></a>考点02</h3><p>1、参数估计<br>（1）无偏估计及有效估计(p84-2.8)<br>（2）矩估计(多个未知参数)及极大似然估计(p82-2.1-2.2)<br>&emsp; 书：p32&lt;-&gt;p33-例2.1.2、例2.1.3及拓展的其它重要分布<br>（3）区间估计(p70-p76、例2.4.1)</p>
-<h3 id="考点03"><a href="#考点03" class="headerlink" title="考点03"></a>考点03</h3><p>1、假设检验<br>（1）p98-例3.2.2-例3.2.4</p>
-<h3 id="考点04"><a href="#考点04" class="headerlink" title="考点04"></a>考点04</h3><p>1、最小二乘法<br>（1）p175</p>
-<h3 id="考点05"><a href="#考点05" class="headerlink" title="考点05"></a>考点05</h3><p>1、双因素方差分析<br>（1）方差分析表(p150)<br>（2）p151-例4.2.1</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研一期末复习_记忆宫殿</category>
-      </categories>
-      <tags>
-        <tag>数理统计</tag>
+        <tag>PyTorch</tag>
       </tags>
   </entry>
   <entry>
@@ -415,6 +296,149 @@
       </tags>
   </entry>
   <entry>
+    <title>博客模板</title>
+    <url>/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：博客模板制作<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
+<p>2、<br>（1）</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hexo_博客随记</category>
+      </categories>
+      <tags>
+        <tag>博客模板</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo-GitHub</title>
+    <url>/2023/10/29/hexo-github/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：Hexo本地编写博文的相关操作<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>&emsp; 把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br></pre></td></tr></table></figure>
+
+<p>2、博客默认布局设置<br>（1）如何自定义布局呢？实际上，布局是一个markdown文件，它们保存在scaffolds/目录下，可以看到hexo自带的三种布局其实就是三个.md文件。</p>
+<p>3、Markdowm的基本使用<br>（1）多少个#号就是多少级标题<br>&emsp; 由于不同 Markdown 应用程序处理 # 和标题之间空白格的方式并不一致，出于兼容性考虑，最好在 # 与标题之间使用一个空格。井号的个数即表示是几级标题，最低可到六级标题，七个井号时就不再有标题效果了。<br>（2）添加列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 列表1</span><br><span class="line">         a 子列表</span><br><span class="line">         b 子列表</span><br><span class="line">- 列表2</span><br></pre></td></tr></table></figure>
+<p>&emsp; 这样就可以添加列表，挺好tab后可以添加子列表<br>（3）添加链接</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[baidu](http:&#x2F;&#x2F;www.baidu.com)</span><br></pre></td></tr></table></figure>
+<p>&emsp; []中是简介，()中是连接<br>（4）添加图片</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![image](&#x2F;images&#x2F;xxx.xxx)</span><br></pre></td></tr></table></figure>
+<p>（5）斜体</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*斜体*</span><br></pre></td></tr></table></figure>
+<p>&emsp; 在星号中间写文章<br>（6）字体加粗</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**粗体**</span><br></pre></td></tr></table></figure>
+<p>&emsp; 同上，只不过换成两个星号<br>（7）代码块<br>&emsp; 通过tab上面的那个英文符号，两点是单行，六点是多行<br>（8）添加引用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 引用</span><br></pre></td></tr></table></figure>
+<p>&emsp; 当某段内容出自某人之口或者某篇文章时，使用引用可以方便地把引用的部分分开，告诉读者这一段是出自别处。<br>（9）添加横线</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---或者------------------------或者***等方式</span><br></pre></td></tr></table></figure>
+<p>（10）markdown段落中如何产生缩进<br>（粗暴添加）直接在文本前加html中的空格语句</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;nbsp; 半角的不断行的空白格（推荐使用）</span><br><span class="line">&amp;ensp;  半角的空格 </span><br><span class="line">&amp;emsp;  全角的空格</span><br></pre></td></tr></table></figure>
+<p>（11）hexo整合pdf.js<br>&emsp;  首先，安装hexo-pdf</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-pdf </span><br></pre></td></tr></table></figure>
+<p>&emsp;  其次，修改项目的 _config.yml配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<p>&emsp;  然后，在source_posts下创建(xxx)目录，放入pdf文件<br>&emsp;  最后，创建与上面目录相同名的md文件；注意：md文件的名称一定要与第三步创建的目录同名，如我的目录是PDF01，那 md 文件名为PDF01.md。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;embed src&#x3D;&quot;.&#x2F;xxx.pdf&quot; width&#x3D;&quot;100%&quot; height&#x3D;&quot;750&quot; type&#x3D;&quot;application&#x2F;pdf&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>&emsp;  在md文件里面添加上述代码；说明：src的路径就为pdf文件的路径，不用加PDF01前缀，因为这个PDF01.md文件默认会找PDF01下的文件。</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hexo_博客随记</category>
+      </categories>
+      <tags>
+        <tag>Hexo万花筒</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新时代中国特色社会主义理论与实践</title>
+    <url>/2023/11/11/%E6%96%B0%E6%97%B6%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：博文简介(XXX)<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
+<p>2、<br>（1）</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>数理统计复习</title>
+    <url>/2023/11/09/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：研一期末数理统计复习<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="考点01"><a href="#考点01" class="headerlink" title="考点01"></a>考点01</h3><p>1、数理统计的基本概念<br>（1）样本均值、样本方差、修正样本方差、样本标准差、样本k阶原点矩及样本k阶中心距(书：p4)<br>（2）样本中位数、极差，经验分布函数(书：p8、p9)<br>（3）分位数、抽样分布定理(书：p21、p22)<br>（4）三大分布：卡方分布、T分布、F分布<br>（5）伽马函数(书：p12)</p>
+<p>2、课后习题<br>（1）1.6(书：p27)、1.13(书：p29)</p>
+<h3 id="考点02"><a href="#考点02" class="headerlink" title="考点02"></a>考点02</h3><p>1、参数估计<br>（1）无偏估计及有效估计(p84-2.8)<br>（2）矩估计(多个未知参数)及极大似然估计(p82-2.1-2.2)<br>&emsp; 书：p32&lt;-&gt;p33-例2.1.2、例2.1.3及拓展的其它重要分布<br>（3）区间估计(p70-p76、例2.4.1)</p>
+<h3 id="考点03"><a href="#考点03" class="headerlink" title="考点03"></a>考点03</h3><p>1、假设检验<br>（1）p98-例3.2.2-例3.2.4</p>
+<h3 id="考点04"><a href="#考点04" class="headerlink" title="考点04"></a>考点04</h3><p>1、最小二乘法<br>（1）p175</p>
+<h3 id="考点05"><a href="#考点05" class="headerlink" title="考点05"></a>考点05</h3><p>1、双因素方差分析<br>（1）方差分析表(p150)<br>（2）p151-例4.2.1</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研一期末复习_记忆宫殿</category>
+      </categories>
+      <tags>
+        <tag>数理统计</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>矩阵论复习</title>
     <url>/2023/11/11/%E7%9F%A9%E9%98%B5%E8%AE%BA%E5%A4%8D%E4%B9%A0/</url>
     <content><![CDATA[<hr>
@@ -451,54 +475,6 @@
       </tags>
   </entry>
   <entry>
-    <title>研究生综合英语1</title>
-    <url>/2023/11/11/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%BB%BC%E5%90%88%E8%8B%B1%E8%AF%AD1/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：博文简介(XXX)<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>新时代中国特色社会主义理论与实践</title>
-    <url>/2023/11/11/%E6%96%B0%E6%97%B6%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：博文简介(XXX)<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>机器学习</title>
     <url>/2023/11/12/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<hr>
@@ -526,35 +502,6 @@
       </categories>
       <tags>
         <tag>阶段一：机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机视觉三大顶会</title>
-    <url>/2023/11/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E4%B8%89%E5%A4%A7%E9%A1%B6%E4%BC%9A/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：带你了解ICCV、ECCV、CVPR三大国际会议<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、前言<br>（1）作为刚入门CV的新人，有必要记住计算机视觉方面的三大顶级会议：ICCV,CVPR,ECCV，统称为ICE。<br>（2）与其它学术领域不同，计算机科学使用会议而不是期刊作为发表研究成果的主要方式。<br>2、ICCV、ECCV、CVPR是什么？<br>（1）ICCV 的全称是 IEEE International Conference on Computer Vision，即国际计算机视觉大会，是公认的三个会议中级别最高的。它的举办地方会在世界范围内选，每两年召开一次。<br>（2）ECCV的全称是European Conference on Computer Vision，即欧洲计算机视觉国际会议。每两年召开一次，与ICCV正好错开。<br>（3）CVPR全称是IEEE Conference on Computer Vision and Pattern Recognition，即IEEE国际计算机视觉与模式识别会议。该会议一般在6月举行，举办地是美国，是一个一年一次的会议。<br>3、三大会议链接<br>（1）ICCV:<a href="http://www.informatik.uni-trier.de/~ley/db/conf/iccv/index.html">http://www.informatik.uni-trier.de/~ley/db/conf/iccv/index.html</a><br>（2）ECCV： <a href="http://www.informatik.uni-trier.de/~ley/db/conf/eccv/index.html">http://www.informatik.uni-trier.de/~ley/db/conf/eccv/index.html</a><br>（3）CVPR：<a href="http://dblp.uni-trier.de/db/conf/cvpr/index.html">http://dblp.uni-trier.de/db/conf/cvpr/index.html</a></p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
-      </categories>
-      <tags>
-        <tag>阶段二：预备知识学习阶段</tag>
       </tags>
   </entry>
   <entry>
@@ -589,6 +536,36 @@
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
+<li>本文简介：研一期末高级人工智能复习<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、大题<br>（1）遗传算法<br>（2）人工神经网络<br>（3）专家系统</p>
+<p>2、论述题<br>（1）知识与知识表示<br>（2）搜索策略<br>（3）机器学习<br>（4）进化计算</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研一期末复习_记忆宫殿</category>
+      </categories>
+      <tags>
+        <tag>高级人工智能</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>研究生综合英语1</title>
+    <url>/2023/11/11/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%BB%BC%E5%90%88%E8%8B%B1%E8%AF%AD1/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
 <li>本文简介：博文简介(XXX)<span id="more"></span></li>
 </ul>
 <hr>
@@ -604,6 +581,35 @@
 </li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>计算机视觉三大顶会</title>
+    <url>/2023/11/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E4%B8%89%E5%A4%A7%E9%A1%B6%E4%BC%9A/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：带你了解ICCV、ECCV、CVPR三大国际会议<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、前言<br>（1）作为刚入门CV的新人，有必要记住计算机视觉方面的三大顶级会议：ICCV,CVPR,ECCV，统称为ICE。<br>（2）与其它学术领域不同，计算机科学使用会议而不是期刊作为发表研究成果的主要方式。<br>2、ICCV、ECCV、CVPR是什么？<br>（1）ICCV 的全称是 IEEE International Conference on Computer Vision，即国际计算机视觉大会，是公认的三个会议中级别最高的。它的举办地方会在世界范围内选，每两年召开一次。<br>（2）ECCV的全称是European Conference on Computer Vision，即欧洲计算机视觉国际会议。每两年召开一次，与ICCV正好错开。<br>（3）CVPR全称是IEEE Conference on Computer Vision and Pattern Recognition，即IEEE国际计算机视觉与模式识别会议。该会议一般在6月举行，举办地是美国，是一个一年一次的会议。<br>3、三大会议链接<br>（1）ICCV:<a href="http://www.informatik.uni-trier.de/~ley/db/conf/iccv/index.html">http://www.informatik.uni-trier.de/~ley/db/conf/iccv/index.html</a><br>（2）ECCV： <a href="http://www.informatik.uni-trier.de/~ley/db/conf/eccv/index.html">http://www.informatik.uni-trier.de/~ley/db/conf/eccv/index.html</a><br>（3）CVPR：<a href="http://dblp.uni-trier.de/db/conf/cvpr/index.html">http://dblp.uni-trier.de/db/conf/cvpr/index.html</a></p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研究方向(学习路线_记忆宫殿)</category>
+      </categories>
+      <tags>
+        <tag>阶段二：预备知识学习阶段</tag>
+      </tags>
   </entry>
   <entry>
     <title>面向对象分析与设计</title>
