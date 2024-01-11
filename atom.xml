@@ -6,7 +6,7 @@
   <link href="https://mapao0110.github.io/atom.xml" rel="self"/>
   
   <link href="https://mapao0110.github.io/"/>
-  <updated>2023-11-14T08:43:57.145Z</updated>
+  <updated>2023-12-11T09:52:37.025Z</updated>
   <id>https://mapao0110.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>目标检测网络结构</title>
+    <link href="https://mapao0110.github.io/2023/12/10/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/"/>
+    <id>https://mapao0110.github.io/2023/12/10/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/</id>
+    <published>2023-12-10T08:03:42.000Z</published>
+    <updated>2023-12-11T09:52:37.025Z</updated>
+    
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：Object Detection结构组成理解<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p><p>2、<br>（1）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;hr&gt;
+&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;注：学习交流使用！&lt;/li&gt;
+&lt;li&gt;本文简介：Object Detection结构组成理解</summary>
+    
+    
+    
+    <category term="研究方向(学习路线_记忆宫殿)" scheme="https://mapao0110.github.io/categories/%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF-%E8%AE%B0%E5%BF%86%E5%AE%AB%E6%AE%BF/"/>
+    
+    
+    <category term="阶段五：目标检测实战" scheme="https://mapao0110.github.io/tags/%E9%98%B6%E6%AE%B5%E4%BA%94%EF%BC%9A%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%AE%9E%E6%88%98/"/>
+    
+  </entry>
   
   <entry>
     <title>ResNet</title>
@@ -125,9 +151,9 @@
     <link href="https://mapao0110.github.io/2023/11/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
     <id>https://mapao0110.github.io/2023/11/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</id>
     <published>2023-11-12T12:36:31.000Z</published>
-    <updated>2023-11-12T12:36:31.904Z</updated>
+    <updated>2024-01-11T09:00:21.086Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：博文简介(XXX)<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p><p>2、<br>（1）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：研一期末计算机体系结构复习<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>（7道题）<br>1、题一<br>（1）Amdahl定律（计算题）<br>（2）Risc和Cisc的区别（论述题）</p><p>2、题二<br>（1）代码的相关性，针对这种相关，在流水线中怎么解决？</p><p>3、题三<br>（1）记忆题</p><p>4、题四<br>（1）时空图（吞吐率、加速比、流水线效率）</p><p>5、题五<br>（1）指令级并行一定会考</p><p>6、题六<br>（1）指令调度</p><p>7、题七<br>（1）循环展开（5.1、5.2）</p><p>8、题八<br>（1）向量处理机</p><p>备注：（该老师是老6，复习重点没有用，出题没有按照复习重点出题，要小心）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;hr&gt;
@@ -135,10 +161,14 @@
 &lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;注：学习交流使用！&lt;/li&gt;
-&lt;li&gt;本文简介：博文简介(XXX)</summary>
+&lt;li&gt;本文简介：研一期末计算机体系结构复习</summary>
     
     
     
+    <category term="研一期末复习_记忆宫殿" scheme="https://mapao0110.github.io/categories/%E7%A0%94%E4%B8%80%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0-%E8%AE%B0%E5%BF%86%E5%AE%AB%E6%AE%BF/"/>
+    
+    
+    <category term="计算机体系结构" scheme="https://mapao0110.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
@@ -173,9 +203,9 @@
     <link href="https://mapao0110.github.io/2023/11/12/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/"/>
     <id>https://mapao0110.github.io/2023/11/12/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/</id>
     <published>2023-11-12T12:26:00.000Z</published>
-    <updated>2023-11-12T12:26:00.387Z</updated>
+    <updated>2024-01-11T09:09:56.356Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：博文简介(XXX)<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p><p>2、<br>（1）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：研一期末面向对象分析与设计复习<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）复习历年真题</p><p>2、简答题<br>（1）简述状态图和活动图的区别？<br>（2）简述 OOD 模型的总体结构，并画图表示。<br>（3）操作系统中的资源调度问题为将存在优先顺序的任务（通常抽象为有向无循环图DAG）分配至处理机上执行。请使用面向对象设计思想采用类图设计这种 DAG 结构中的类及类中属性和方法（方法只需要写出名称即可）。<br>（4）简述面向对象技术的三大机制。</p><p>3、综述题<br>（1）画出网上选课系统中选课的时序图。<br>（2）画出网上选课系统中课程的状态图。<br>（3）画出网上选课系统中选课的活动图。</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;hr&gt;
@@ -183,10 +213,14 @@
 &lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;注：学习交流使用！&lt;/li&gt;
-&lt;li&gt;本文简介：博文简介(XXX)</summary>
+&lt;li&gt;本文简介：研一期末面向对象分析与设计复习</summary>
     
     
     
+    <category term="研一期末复习_记忆宫殿" scheme="https://mapao0110.github.io/categories/%E7%A0%94%E4%B8%80%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0-%E8%AE%B0%E5%BF%86%E5%AE%AB%E6%AE%BF/"/>
+    
+    
+    <category term="面向对象分析与设计" scheme="https://mapao0110.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
@@ -221,9 +255,9 @@
     <link href="https://mapao0110.github.io/2023/11/11/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%BB%BC%E5%90%88%E8%8B%B1%E8%AF%AD1/"/>
     <id>https://mapao0110.github.io/2023/11/11/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%BB%BC%E5%90%88%E8%8B%B1%E8%AF%AD1/</id>
     <published>2023-11-11T06:39:03.000Z</published>
-    <updated>2023-11-11T06:39:03.916Z</updated>
+    <updated>2024-01-11T09:09:25.815Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：博文简介(XXX)<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p><p>2、<br>（1）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：研一期末研究生综合英语1复习<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）书上的课后习题选择题原题</p><p>2、完形填空<br>（1）课文内容上的某一段</p><p>3、阅读理解<br>（1）四级真题（15年-最新年份）</p><p>4、翻译<br>（1）中译英：课文上的某一段<br>（2）英译中：课文上的某一段</p><p>5、作文<br>（1）书信（写给导师的自荐信）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;hr&gt;
@@ -231,10 +265,14 @@
 &lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;注：学习交流使用！&lt;/li&gt;
-&lt;li&gt;本文简介：博文简介(XXX)</summary>
+&lt;li&gt;本文简介：研一期末研究生综合英语1复习</summary>
     
     
     
+    <category term="研一期末复习_记忆宫殿" scheme="https://mapao0110.github.io/categories/%E7%A0%94%E4%B8%80%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0-%E8%AE%B0%E5%BF%86%E5%AE%AB%E6%AE%BF/"/>
+    
+    
+    <category term="研究生综合英语1" scheme="https://mapao0110.github.io/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%BB%BC%E5%90%88%E8%8B%B1%E8%AF%AD1/"/>
     
   </entry>
   
@@ -243,9 +281,9 @@
     <link href="https://mapao0110.github.io/2023/11/11/%E6%96%B0%E6%97%B6%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
     <id>https://mapao0110.github.io/2023/11/11/%E6%96%B0%E6%97%B6%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5/</id>
     <published>2023-11-11T06:38:24.000Z</published>
-    <updated>2023-11-11T06:38:24.827Z</updated>
+    <updated>2024-01-11T09:09:12.325Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：博文简介(XXX)<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p><p>2、<br>（1）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：研一期末新时代中国特色社会主义理论与实践复习<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）未知</p><p>2、简答题<br>（1）复习课本</p><p>3、材料题<br>（1）复习课本</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;hr&gt;
@@ -253,10 +291,14 @@
 &lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;注：学习交流使用！&lt;/li&gt;
-&lt;li&gt;本文简介：博文简介(XXX)</summary>
+&lt;li&gt;本文简介：研一期末新时代中国特色社会主义理论与实践复习</summary>
     
     
     
+    <category term="研一期末复习_记忆宫殿" scheme="https://mapao0110.github.io/categories/%E7%A0%94%E4%B8%80%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0-%E8%AE%B0%E5%BF%86%E5%AE%AB%E6%AE%BF/"/>
+    
+    
+    <category term="新时代中国特色社会主义理论与实践" scheme="https://mapao0110.github.io/tags/%E6%96%B0%E6%97%B6%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
     
   </entry>
   
@@ -491,32 +533,6 @@
     
     
     <category term="博客模板" scheme="https://mapao0110.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo-GitHub</title>
-    <link href="https://mapao0110.github.io/2023/10/29/hexo-github/"/>
-    <id>https://mapao0110.github.io/2023/10/29/hexo-github/</id>
-    <published>2023-10-29T11:19:16.000Z</published>
-    <updated>2023-11-12T06:42:52.032Z</updated>
-    
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：Hexo本地编写博文的相关操作<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>&emsp; 把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br></pre></td></tr></table></figure><p>2、博客默认布局设置<br>（1）如何自定义布局呢？实际上，布局是一个markdown文件，它们保存在scaffolds/目录下，可以看到hexo自带的三种布局其实就是三个.md文件。</p><p>3、Markdowm的基本使用<br>（1）多少个#号就是多少级标题<br>&emsp; 由于不同 Markdown 应用程序处理 # 和标题之间空白格的方式并不一致，出于兼容性考虑，最好在 # 与标题之间使用一个空格。井号的个数即表示是几级标题，最低可到六级标题，七个井号时就不再有标题效果了。<br>（2）添加列表</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 列表1</span><br><span class="line">         a 子列表</span><br><span class="line">         b 子列表</span><br><span class="line">- 列表2</span><br></pre></td></tr></table></figure><p>&emsp; 这样就可以添加列表，挺好tab后可以添加子列表<br>（3）添加链接</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[baidu](http:&#x2F;&#x2F;www.baidu.com)</span><br></pre></td></tr></table></figure><p>&emsp; []中是简介，()中是连接<br>（4）添加图片</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![image](&#x2F;images&#x2F;xxx.xxx)</span><br></pre></td></tr></table></figure><p>（5）斜体</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*斜体*</span><br></pre></td></tr></table></figure><p>&emsp; 在星号中间写文章<br>（6）字体加粗</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**粗体**</span><br></pre></td></tr></table></figure><p>&emsp; 同上，只不过换成两个星号<br>（7）代码块<br>&emsp; 通过tab上面的那个英文符号，两点是单行，六点是多行<br>（8）添加引用</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; 引用</span><br></pre></td></tr></table></figure><p>&emsp; 当某段内容出自某人之口或者某篇文章时，使用引用可以方便地把引用的部分分开，告诉读者这一段是出自别处。<br>（9）添加横线</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">---或者------------------------或者***等方式</span><br></pre></td></tr></table></figure><p>（10）markdown段落中如何产生缩进<br>（粗暴添加）直接在文本前加html中的空格语句</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&amp;nbsp; 半角的不断行的空白格（推荐使用）</span><br><span class="line">&amp;ensp;  半角的空格 </span><br><span class="line">&amp;emsp;  全角的空格</span><br></pre></td></tr></table></figure><p>（11）hexo整合pdf.js<br>&emsp;  首先，安装hexo-pdf</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-pdf </span><br></pre></td></tr></table></figure><p>&emsp;  其次，修改项目的 _config.yml配置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure><p>&emsp;  然后，在source_posts下创建(xxx)目录，放入pdf文件<br>&emsp;  最后，创建与上面目录相同名的md文件；注意：md文件的名称一定要与第三步创建的目录同名，如我的目录是PDF01，那 md 文件名为PDF01.md。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;embed src&#x3D;&quot;.&#x2F;xxx.pdf&quot; width&#x3D;&quot;100%&quot; height&#x3D;&quot;750&quot; type&#x3D;&quot;application&#x2F;pdf&quot;&gt;</span><br></pre></td></tr></table></figure><p>&emsp;  在md文件里面添加上述代码；说明：src的路径就为pdf文件的路径，不用加PDF01前缀，因为这个PDF01.md文件默认会找PDF01下的文件。</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
-    
-    
-    <summary type="html">&lt;hr&gt;
-&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;注：学习交流使用！&lt;/li&gt;
-&lt;li&gt;本文简介：Hexo本地编写博文的相关操作</summary>
-    
-    
-    
-    <category term="Hexo_博客随记" scheme="https://mapao0110.github.io/categories/Hexo-%E5%8D%9A%E5%AE%A2%E9%9A%8F%E8%AE%B0/"/>
-    
-    
-    <category term="Hexo万花筒" scheme="https://mapao0110.github.io/tags/Hexo%E4%B8%87%E8%8A%B1%E7%AD%92/"/>
     
   </entry>
   

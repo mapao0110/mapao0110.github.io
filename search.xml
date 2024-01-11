@@ -30,38 +30,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LeNet</title>
-    <url>/2023/11/09/LeNet/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：LeNet神经网络模型训练<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、requires_grad<br>（1）在pytorch中，tensor有一个requires_grad参数，如果设置为True，则反向传播时，该tensor就会自动求导。tensor的requires_grad的属性默认为False,若一个节点（叶子变量：自己创建的tensor）requires_grad被设置为True，那么所有依赖它的节点requires_grad都为True（即使其他相依赖的tensor的requires_grad = False）<br>（2）当requires_grad设置为False时,反向传播时就不会自动求导了，因此大大节约了显存或者说内存。<br>（3）值得注意的是：requires_grad的设置只能针对叶子结点（网络的权重w就算，bias也算），如何理解叶子结点呢？叶子节点在数据结构中是一棵树没有子节点的结点，在网络中就是这个结点对应的参数不是由更上一层的tensor计算而来。</p>
-<p>2、with torch.no_grad()<br>（1）在该模块下，所有计算得出的tensor的requires_grad都自动设置为False。<br>（2）即使一个tensor（命名为x）的requires_grad = True，在with torch.no_grad计算，由x得到的新tensor（命名为w-标量）requires_grad也为False，且grad_fn也为None,即不会对w求导。<br>（3）在神经网络训练过程中，测试阶段及预测阶段不需要更新网络参数，使用该模块大大节约了内存的开销。</p>
-<p>3、内存与显存的区别<br>（1）电脑内存是替CPU暂存资料的储存空间。<br>（2）显卡显存是替GPU（显卡芯片）暂存资料的储存空间。<br>（3）内存或显存理论上越大越好。<br>（4）笔记本内存是可以增加的，但是显卡我们一般不能更换，笔记本大多是独立显示芯片或核显。</p>
-<p>4、demo的流程<br>（1）model.py ——定义LeNet网络模型<br>（2）train.py ——加载数据集并训练，训练集计算loss，测试集计算accuracy，保存训练好的网络参数<br>（3）predict.py——得到训练好的网络参数后，用自己找的图像进行分类测试</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
-      </categories>
-      <tags>
-        <tag>阶段四：图像分类实战</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>GoogLeNet</title>
     <url>/2023/11/13/GoogLeNet/</url>
     <content><![CDATA[<hr>
@@ -94,22 +62,20 @@
       </tags>
   </entry>
   <entry>
-    <title>ResNet</title>
-    <url>/2023/11/14/ResNet/</url>
+    <title>LeNet</title>
+    <url>/2023/11/09/LeNet/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：ResNet网络结构详解与迁移学习<span id="more"></span></li>
+<li>本文简介：LeNet神经网络模型训练<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、ResNet 详解<br>（1）ResNet 网络是在 2015年 由微软实验室提出，斩获当年ImageNet竞赛中分类任务第一名，目标检测第一名。获得COCO数据集中目标检测第一名，图像分割第一名。<br>（2）ResNet网络的创新点：<br>&emsp; * 提出 Residual 结构（残差结构），并搭建超深的网络结构（可突破1000层）。<br>&emsp; * 使用 Batch Normalization 加速训练（丢弃dropout）。</p>
-<p>2、Why residual?<br>（1）在ResNet网络提出之前，传统的卷积神经网络都是通过将一系列卷积层与池化层进行堆叠得到的。<br>（2）一般我们会觉得网络越深，特征信息越丰富，模型效果应该越好。但是实验证明，当网络堆叠到一定深度时，会出现两个问题：<br>&emsp; 梯度消失或梯度爆炸：<br>&emsp; * 若每一层的误差梯度小于1，反向传播时，网络越深，梯度越趋近于0<br>&emsp; * 反之，若每一层的误差梯度大于1，反向传播时，网路越深，梯度越来越大<br>&emsp; 退化问题(degradation problem)：<br>&emsp; * 在解决了梯度消失、爆炸问题后，仍然存在深层网络的效果可能比浅层网络差的现象<br>&emsp; 当网络堆叠到一定深度时，反而会出现深层网络比浅层网络效果差的情况。<br>&emsp; 如下图所示，20层网络 反而比 56层网络 的误差更小：<br><img src="/pic/ResNet/rs01.png"><br>&emsp; 对于梯度消失或梯度爆炸问题，ResNet论文提出通过数据的预处理以及在网络中使用 BN（Batch Normalization）层来解决。<br>&emsp; 对于退化问题，ResNet论文提出了 residual结构（残差结构）来减轻退化问题，下图是使用residual结构的卷积网络，可以看到随着网络的不断加深，效果并没有变差，而是变的更好了。（虚线是train error，实线是test error）<br><img src="/pic/ResNet/rs02.png"></p>
-<p>3、What is residual？<br>（1）为了解决深层网络中的退化问题，可以人为地让神经网络某些层跳过下一层神经元的连接，隔层相连，弱化每层之间的强联系。这种神经网络被称为 残差网络 (ResNets)。<br>（2）残差网络由许多隔层相连的神经元子模块组成，我们称之为 残差块 Residual block。单个残差块的结构如下图所示：<br><img src="/pic/ResNet/rs03.png"><br><img src="/pic/ResNet/rs04.jpg"></p>
-<p>4、ResNet中的残差结构<br>（1）实际应用中，残差结构的 short cut 不一定是隔一层连接，也可以中间隔多层，ResNet所提出的残差网络中就是隔多层。<br>（2）下图中左侧残差结构称为 BasicBlock，右侧残差结构称为 Bottleneck<br><img src="/pic/ResNet/rs05.png"><br>对于深层的 Bottleneck，1×1的卷积核起到降维和升维（特征矩阵深度）的作用，同时可以大大减少网络参数。<br><img src="/pic/ResNet/rs06.jpg"></p>
-<p>5、降维时的 short cut<br>（1）观察下图的 ResNet18层网络，可以发现有些残差块的 short cut 是实线的，而有些则是虚线的。这些虚线的 short cut 上通过1×1的卷积核进行了维度处理（特征矩阵在长宽方向降采样，深度方向调整成下一层残差结构所需要的channel）。<br><img src="/pic/ResNet/rs07.png"></p>
-<p>6、迁移学习简介<br>（1）迁移学习是一个比较大的领域，我们这里说的迁移学习是指神经网络训练中使用到的迁移学习。<br>（2）在迁移学习中，我们希望利用源任务（Source Task）学到的知识帮助学习目标任务 (Target Task)。例如，一个训练好的图像分类网络能够被用于另一个图像相关的任务。再比如，一个网络在仿真环境学习的知识可以被迁移到真实环境的网络。迁移学习一个典型的例子就是载入训练好VGG网络，这个大规模分类网络能将图像分到1000个类别，然后把这个网络用于另一个任务，如医学图像分类。<br>（3）为什么可以这么做呢？如下图所示，神经网络逐层提取图像的深层信息，这样，预训练网络就相当于一个特征提取器。<br><img src="/pic/ResNet/rs08.png"><br>（4）使用迁移学习的优势：<br>&emsp; * 能够快速的训练出一个理想的结果<br>&emsp; * 当数据集较小时也能训练出理想的效果<br>&emsp; （注意：使用别人预训练好的模型参数时，要注意别人的预处理方式。）<br>（5）常见的迁移学习方式：<br>&emsp; * 载入权重后训练所有参数<br>&emsp; * 载入权重后只训练最后几层参数<br>&emsp; * 载入权重后在原网络基础上再添加一层全连接层，仅训练最后一个全连接层<br><img src="/pic/ResNet/rs09.png"></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、requires_grad<br>（1）在pytorch中，tensor有一个requires_grad参数，如果设置为True，则反向传播时，该tensor就会自动求导。tensor的requires_grad的属性默认为False,若一个节点（叶子变量：自己创建的tensor）requires_grad被设置为True，那么所有依赖它的节点requires_grad都为True（即使其他相依赖的tensor的requires_grad = False）<br>（2）当requires_grad设置为False时,反向传播时就不会自动求导了，因此大大节约了显存或者说内存。<br>（3）值得注意的是：requires_grad的设置只能针对叶子结点（网络的权重w就算，bias也算），如何理解叶子结点呢？叶子节点在数据结构中是一棵树没有子节点的结点，在网络中就是这个结点对应的参数不是由更上一层的tensor计算而来。</p>
+<p>2、with torch.no_grad()<br>（1）在该模块下，所有计算得出的tensor的requires_grad都自动设置为False。<br>（2）即使一个tensor（命名为x）的requires_grad = True，在with torch.no_grad计算，由x得到的新tensor（命名为w-标量）requires_grad也为False，且grad_fn也为None,即不会对w求导。<br>（3）在神经网络训练过程中，测试阶段及预测阶段不需要更新网络参数，使用该模块大大节约了内存的开销。</p>
+<p>3、内存与显存的区别<br>（1）电脑内存是替CPU暂存资料的储存空间。<br>（2）显卡显存是替GPU（显卡芯片）暂存资料的储存空间。<br>（3）内存或显存理论上越大越好。<br>（4）笔记本内存是可以增加的，但是显卡我们一般不能更换，笔记本大多是独立显示芯片或核显。</p>
+<p>4、demo的流程<br>（1）model.py ——定义LeNet网络模型<br>（2）train.py ——加载数据集并训练，训练集计算loss，测试集计算accuracy，保存训练好的网络参数<br>（3）predict.py——得到训练好的网络参数后，用自己找的图像进行分类测试</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -157,22 +123,43 @@
       </tags>
   </entry>
   <entry>
-    <title>VGG网络</title>
-    <url>/2023/11/13/VGG%E7%BD%91%E7%BB%9C/</url>
+    <title>Hexo-GitHub</title>
+    <url>/2023/10/29/hexo-github/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：VGG网络详解<span id="more"></span></li>
+<li>本文简介：Hexo本地编写博文的相关操作<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、VGG 在2014年由牛津大学著名研究组 VGG（Visual Geometry Group）提出。</p>
-<p>2、VGG网络的创新点<br>（1）通过堆叠多个小卷积核来替代大尺度卷积核，可以减少训练参数，同时能保证相同的感受野。<br>（2）论文中提到，可以通过堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。</p>
-<p>3、CNN感受野<br>（1）卷积神经网络中，决定某一层输出结果中一个元素所对应的输入层的区域大小，被称作感受野（receptive field）。<br>（2）通俗的解释是，输出feature map上的一个单元 对应 输入层上的区域大小。<br>（3）以下图为例，输出层 layer3 中一个单元 对应 输入层 layer2 上区域大小为2×2（池化操作），对应输入层 layer1 上大小为5×5（可以这么理解，layer2中 2×2区域中的每一块对应一个3×3的卷积核，又因为 stride=2，所以layer1的感受野为5×5）<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/gsy.jpg" alt="感受野"><br>（4）感受野的计算公式为：<br>&emsp; F(i)=(F(i+1)−1)×Stride +Ksize<br>&emsp;  * F(i) 为第i层感受野<br>&emsp; * Stride为第i层的步距<br>&emsp; * Ksize为 卷积核 或 池化核 尺寸<br>&emsp; 以上图为例：<br>&emsp; * Feature map: F ( 3 ) = 1<br>&emsp; * Pool1：F ( 2 ) = ( 1 − 1 ) × 2 + 2 = 2<br>&emsp; * Conv1: F ( 1 ) = ( 2 − 1 ) × 2 + 3 = 5</p>
-<p>4、小卷积核<br>（1）堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。替代前后感受野是否相同？<br>（注：VGG网络中卷积的Stride默认为1）<br>&emsp; Feature map: F = 1 F=1F=1<br>&emsp; * Conv3x3(3): F = ( 1 − 1 ) × 1 + 3 = 3<br>&emsp; * Conv3x3(2): F = ( 3 − 1 ) × 1 + 3 = 5 （5×5卷积核感受野）<br>&emsp; * Conv3x3(1): F = ( 5 − 1 ) × 1 + 3 = 7 （7×7卷积核感受野）</p>
-<p>（2）堆叠3×3卷积核后训练参数是否真的减少了？<br>&emsp; 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度。<br>&emsp; 现假设 输入特征矩阵深度 = 输出特征矩阵深度 = C<br>&emsp; *使用7×7卷积核所需参数个数：7 × 7 × C × C = 49 C**2<br>&emsp; *堆叠三个3×3的卷积核所需参数个数：3 × 3 × C × C + 3 × 3 × C × C + 3 × 3 × C × C = 27 C**2 </p>
-<p>5、VGG-16<br>（1）VGG网络有多个版本，一般常用的是VGG-16模型，其网络结构如下如所示：<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/VGG16.jpg" alt="VGG16"><br>（2）稍作计算可以发现，经3×3卷积的特征矩阵的尺寸是不改变的：</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>&emsp; 把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br></pre></td></tr></table></figure>
+
+<p>2、博客默认布局设置<br>（1）如何自定义布局呢？实际上，布局是一个markdown文件，它们保存在scaffolds/目录下，可以看到hexo自带的三种布局其实就是三个.md文件。</p>
+<p>3、Markdowm的基本使用<br>（1）多少个#号就是多少级标题<br>&emsp; 由于不同 Markdown 应用程序处理 # 和标题之间空白格的方式并不一致，出于兼容性考虑，最好在 # 与标题之间使用一个空格。井号的个数即表示是几级标题，最低可到六级标题，七个井号时就不再有标题效果了。<br>（2）添加列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 列表1</span><br><span class="line">         a 子列表</span><br><span class="line">         b 子列表</span><br><span class="line">- 列表2</span><br></pre></td></tr></table></figure>
+<p>&emsp; 这样就可以添加列表，挺好tab后可以添加子列表<br>（3）添加链接</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[baidu](http:&#x2F;&#x2F;www.baidu.com)</span><br></pre></td></tr></table></figure>
+<p>&emsp; []中是简介，()中是连接<br>（4）添加图片</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![image](&#x2F;images&#x2F;xxx.xxx)</span><br></pre></td></tr></table></figure>
+<p>（5）斜体</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*斜体*</span><br></pre></td></tr></table></figure>
+<p>&emsp; 在星号中间写文章<br>（6）字体加粗</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**粗体**</span><br></pre></td></tr></table></figure>
+<p>&emsp; 同上，只不过换成两个星号<br>（7）代码块<br>&emsp; 通过tab上面的那个英文符号，两点是单行，六点是多行<br>（8）添加引用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 引用</span><br></pre></td></tr></table></figure>
+<p>&emsp; 当某段内容出自某人之口或者某篇文章时，使用引用可以方便地把引用的部分分开，告诉读者这一段是出自别处。<br>（9）添加横线</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---或者------------------------或者***等方式</span><br></pre></td></tr></table></figure>
+<p>（10）markdown段落中如何产生缩进<br>（粗暴添加）直接在文本前加html中的空格语句</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;nbsp; 半角的不断行的空白格（推荐使用）</span><br><span class="line">&amp;ensp;  半角的空格 </span><br><span class="line">&amp;emsp;  全角的空格</span><br></pre></td></tr></table></figure>
+<p>（11）hexo整合pdf.js<br>&emsp;  首先，安装hexo-pdf</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-pdf </span><br></pre></td></tr></table></figure>
+<p>&emsp;  其次，修改项目的 _config.yml配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<p>&emsp;  然后，在source_posts下创建(xxx)目录，放入pdf文件<br>&emsp;  最后，创建与上面目录相同名的md文件；注意：md文件的名称一定要与第三步创建的目录同名，如我的目录是PDF01，那 md 文件名为PDF01.md。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;embed src&#x3D;&quot;.&#x2F;xxx.pdf&quot; width&#x3D;&quot;100%&quot; height&#x3D;&quot;750&quot; type&#x3D;&quot;application&#x2F;pdf&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>&emsp;  在md文件里面添加上述代码；说明：src的路径就为pdf文件的路径，不用加PDF01前缀，因为这个PDF01.md文件默认会找PDF01下的文件。</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -184,10 +171,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
+        <category>Hexo_博客随记</category>
       </categories>
       <tags>
-        <tag>阶段四：图像分类实战</tag>
+        <tag>Hexo万花筒</tag>
       </tags>
   </entry>
   <entry>
@@ -266,18 +253,22 @@
       </tags>
   </entry>
   <entry>
-    <title>常用快捷键随记</title>
-    <url>/2023/11/11/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9A%8F%E8%AE%B0/</url>
+    <title>VGG网络</title>
+    <url>/2023/11/13/VGG%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：电脑常用快捷键随记<span id="more"></span></li>
+<li>本文简介：VGG网络详解<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、截图<br>（1）win10自带：Win+Shift+S</p>
-<p>2、系统控制<br>（1）任务管理器：Ctrl+Shift+Esc</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、VGG 在2014年由牛津大学著名研究组 VGG（Visual Geometry Group）提出。</p>
+<p>2、VGG网络的创新点<br>（1）通过堆叠多个小卷积核来替代大尺度卷积核，可以减少训练参数，同时能保证相同的感受野。<br>（2）论文中提到，可以通过堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。</p>
+<p>3、CNN感受野<br>（1）卷积神经网络中，决定某一层输出结果中一个元素所对应的输入层的区域大小，被称作感受野（receptive field）。<br>（2）通俗的解释是，输出feature map上的一个单元 对应 输入层上的区域大小。<br>（3）以下图为例，输出层 layer3 中一个单元 对应 输入层 layer2 上区域大小为2×2（池化操作），对应输入层 layer1 上大小为5×5（可以这么理解，layer2中 2×2区域中的每一块对应一个3×3的卷积核，又因为 stride=2，所以layer1的感受野为5×5）<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/gsy.jpg" alt="感受野"><br>（4）感受野的计算公式为：<br>&emsp; F(i)=(F(i+1)−1)×Stride +Ksize<br>&emsp;  * F(i) 为第i层感受野<br>&emsp; * Stride为第i层的步距<br>&emsp; * Ksize为 卷积核 或 池化核 尺寸<br>&emsp; 以上图为例：<br>&emsp; * Feature map: F ( 3 ) = 1<br>&emsp; * Pool1：F ( 2 ) = ( 1 − 1 ) × 2 + 2 = 2<br>&emsp; * Conv1: F ( 1 ) = ( 2 − 1 ) × 2 + 3 = 5</p>
+<p>4、小卷积核<br>（1）堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。替代前后感受野是否相同？<br>（注：VGG网络中卷积的Stride默认为1）<br>&emsp; Feature map: F = 1 F=1F=1<br>&emsp; * Conv3x3(3): F = ( 1 − 1 ) × 1 + 3 = 3<br>&emsp; * Conv3x3(2): F = ( 3 − 1 ) × 1 + 3 = 5 （5×5卷积核感受野）<br>&emsp; * Conv3x3(1): F = ( 5 − 1 ) × 1 + 3 = 7 （7×7卷积核感受野）</p>
+<p>（2）堆叠3×3卷积核后训练参数是否真的减少了？<br>&emsp; 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度。<br>&emsp; 现假设 输入特征矩阵深度 = 输出特征矩阵深度 = C<br>&emsp; *使用7×7卷积核所需参数个数：7 × 7 × C × C = 49 C**2<br>&emsp; *堆叠三个3×3的卷积核所需参数个数：3 × 3 × C × C + 3 × 3 × C × C + 3 × 3 × C × C = 27 C**2 </p>
+<p>5、VGG-16<br>（1）VGG网络有多个版本，一般常用的是VGG-16模型，其网络结构如下如所示：<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/VGG16.jpg" alt="VGG16"><br>（2）稍作计算可以发现，经3×3卷积的特征矩阵的尺寸是不改变的：</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -289,10 +280,44 @@
 </ul>
 ]]></content>
       <categories>
-        <category>工具小世界</category>
+        <category>研究方向(学习路线_记忆宫殿)</category>
       </categories>
       <tags>
-        <tag>电脑办公</tag>
+        <tag>阶段四：图像分类实战</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ResNet</title>
+    <url>/2023/11/14/ResNet/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：ResNet网络结构详解与迁移学习<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、ResNet 详解<br>（1）ResNet 网络是在 2015年 由微软实验室提出，斩获当年ImageNet竞赛中分类任务第一名，目标检测第一名。获得COCO数据集中目标检测第一名，图像分割第一名。<br>（2）ResNet网络的创新点：<br>&emsp; * 提出 Residual 结构（残差结构），并搭建超深的网络结构（可突破1000层）。<br>&emsp; * 使用 Batch Normalization 加速训练（丢弃dropout）。</p>
+<p>2、Why residual?<br>（1）在ResNet网络提出之前，传统的卷积神经网络都是通过将一系列卷积层与池化层进行堆叠得到的。<br>（2）一般我们会觉得网络越深，特征信息越丰富，模型效果应该越好。但是实验证明，当网络堆叠到一定深度时，会出现两个问题：<br>&emsp; 梯度消失或梯度爆炸：<br>&emsp; * 若每一层的误差梯度小于1，反向传播时，网络越深，梯度越趋近于0<br>&emsp; * 反之，若每一层的误差梯度大于1，反向传播时，网路越深，梯度越来越大<br>&emsp; 退化问题(degradation problem)：<br>&emsp; * 在解决了梯度消失、爆炸问题后，仍然存在深层网络的效果可能比浅层网络差的现象<br>&emsp; 当网络堆叠到一定深度时，反而会出现深层网络比浅层网络效果差的情况。<br>&emsp; 如下图所示，20层网络 反而比 56层网络 的误差更小：<br><img src="/pic/ResNet/rs01.png"><br>&emsp; 对于梯度消失或梯度爆炸问题，ResNet论文提出通过数据的预处理以及在网络中使用 BN（Batch Normalization）层来解决。<br>&emsp; 对于退化问题，ResNet论文提出了 residual结构（残差结构）来减轻退化问题，下图是使用residual结构的卷积网络，可以看到随着网络的不断加深，效果并没有变差，而是变的更好了。（虚线是train error，实线是test error）<br><img src="/pic/ResNet/rs02.png"></p>
+<p>3、What is residual？<br>（1）为了解决深层网络中的退化问题，可以人为地让神经网络某些层跳过下一层神经元的连接，隔层相连，弱化每层之间的强联系。这种神经网络被称为 残差网络 (ResNets)。<br>（2）残差网络由许多隔层相连的神经元子模块组成，我们称之为 残差块 Residual block。单个残差块的结构如下图所示：<br><img src="/pic/ResNet/rs03.png"><br><img src="/pic/ResNet/rs04.jpg"></p>
+<p>4、ResNet中的残差结构<br>（1）实际应用中，残差结构的 short cut 不一定是隔一层连接，也可以中间隔多层，ResNet所提出的残差网络中就是隔多层。<br>（2）下图中左侧残差结构称为 BasicBlock，右侧残差结构称为 Bottleneck<br><img src="/pic/ResNet/rs05.png"><br>对于深层的 Bottleneck，1×1的卷积核起到降维和升维（特征矩阵深度）的作用，同时可以大大减少网络参数。<br><img src="/pic/ResNet/rs06.jpg"></p>
+<p>5、降维时的 short cut<br>（1）观察下图的 ResNet18层网络，可以发现有些残差块的 short cut 是实线的，而有些则是虚线的。这些虚线的 short cut 上通过1×1的卷积核进行了维度处理（特征矩阵在长宽方向降采样，深度方向调整成下一层残差结构所需要的channel）。<br><img src="/pic/ResNet/rs07.png"></p>
+<p>6、迁移学习简介<br>（1）迁移学习是一个比较大的领域，我们这里说的迁移学习是指神经网络训练中使用到的迁移学习。<br>（2）在迁移学习中，我们希望利用源任务（Source Task）学到的知识帮助学习目标任务 (Target Task)。例如，一个训练好的图像分类网络能够被用于另一个图像相关的任务。再比如，一个网络在仿真环境学习的知识可以被迁移到真实环境的网络。迁移学习一个典型的例子就是载入训练好VGG网络，这个大规模分类网络能将图像分到1000个类别，然后把这个网络用于另一个任务，如医学图像分类。<br>（3）为什么可以这么做呢？如下图所示，神经网络逐层提取图像的深层信息，这样，预训练网络就相当于一个特征提取器。<br><img src="/pic/ResNet/rs08.png"><br>（4）使用迁移学习的优势：<br>&emsp; * 能够快速的训练出一个理想的结果<br>&emsp; * 当数据集较小时也能训练出理想的效果<br>&emsp; （注意：使用别人预训练好的模型参数时，要注意别人的预处理方式。）<br>（5）常见的迁移学习方式：<br>&emsp; * 载入权重后训练所有参数<br>&emsp; * 载入权重后只训练最后几层参数<br>&emsp; * 载入权重后在原网络基础上再添加一层全连接层，仅训练最后一个全连接层<br><img src="/pic/ResNet/rs09.png"></p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研究方向(学习路线_记忆宫殿)</category>
+      </categories>
+      <tags>
+        <tag>阶段四：图像分类实战</tag>
       </tags>
   </entry>
   <entry>
@@ -326,85 +351,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo-GitHub</title>
-    <url>/2023/10/29/hexo-github/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：Hexo本地编写博文的相关操作<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、使用hexo创建博文，然后部署到GitHub<br>（1）新建博文：hexo new ‘xxx’<br>（2）清除缓存文件：hexo clean<br>（3）生成网站静态文件到默认设置的 public 文件夹：hexo g<br>（4）自动生成网站静态文件，并部署到设定的仓库：hexo d<br>（5）本地浏览：hexo s<br>（6）hexo插入图片：在Hexo的目录source中创建一个图片文件夹，例如pic。<br>&emsp; 把你要插入的图片文件放到该目录下面，在你的文章中正常使用markdown的语法插入图片即可</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![img](&#x2F;pic&#x2F;xxx.png)</span><br></pre></td></tr></table></figure>
-
-<p>2、博客默认布局设置<br>（1）如何自定义布局呢？实际上，布局是一个markdown文件，它们保存在scaffolds/目录下，可以看到hexo自带的三种布局其实就是三个.md文件。</p>
-<p>3、Markdowm的基本使用<br>（1）多少个#号就是多少级标题<br>&emsp; 由于不同 Markdown 应用程序处理 # 和标题之间空白格的方式并不一致，出于兼容性考虑，最好在 # 与标题之间使用一个空格。井号的个数即表示是几级标题，最低可到六级标题，七个井号时就不再有标题效果了。<br>（2）添加列表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 列表1</span><br><span class="line">         a 子列表</span><br><span class="line">         b 子列表</span><br><span class="line">- 列表2</span><br></pre></td></tr></table></figure>
-<p>&emsp; 这样就可以添加列表，挺好tab后可以添加子列表<br>（3）添加链接</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[baidu](http:&#x2F;&#x2F;www.baidu.com)</span><br></pre></td></tr></table></figure>
-<p>&emsp; []中是简介，()中是连接<br>（4）添加图片</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![image](&#x2F;images&#x2F;xxx.xxx)</span><br></pre></td></tr></table></figure>
-<p>（5）斜体</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*斜体*</span><br></pre></td></tr></table></figure>
-<p>&emsp; 在星号中间写文章<br>（6）字体加粗</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**粗体**</span><br></pre></td></tr></table></figure>
-<p>&emsp; 同上，只不过换成两个星号<br>（7）代码块<br>&emsp; 通过tab上面的那个英文符号，两点是单行，六点是多行<br>（8）添加引用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 引用</span><br></pre></td></tr></table></figure>
-<p>&emsp; 当某段内容出自某人之口或者某篇文章时，使用引用可以方便地把引用的部分分开，告诉读者这一段是出自别处。<br>（9）添加横线</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---或者------------------------或者***等方式</span><br></pre></td></tr></table></figure>
-<p>（10）markdown段落中如何产生缩进<br>（粗暴添加）直接在文本前加html中的空格语句</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;nbsp; 半角的不断行的空白格（推荐使用）</span><br><span class="line">&amp;ensp;  半角的空格 </span><br><span class="line">&amp;emsp;  全角的空格</span><br></pre></td></tr></table></figure>
-<p>（11）hexo整合pdf.js<br>&emsp;  首先，安装hexo-pdf</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-pdf </span><br></pre></td></tr></table></figure>
-<p>&emsp;  其次，修改项目的 _config.yml配置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-<p>&emsp;  然后，在source_posts下创建(xxx)目录，放入pdf文件<br>&emsp;  最后，创建与上面目录相同名的md文件；注意：md文件的名称一定要与第三步创建的目录同名，如我的目录是PDF01，那 md 文件名为PDF01.md。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;embed src&#x3D;&quot;.&#x2F;xxx.pdf&quot; width&#x3D;&quot;100%&quot; height&#x3D;&quot;750&quot; type&#x3D;&quot;application&#x2F;pdf&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>&emsp;  在md文件里面添加上述代码；说明：src的路径就为pdf文件的路径，不用加PDF01前缀，因为这个PDF01.md文件默认会找PDF01下的文件。</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Hexo_博客随记</category>
-      </categories>
-      <tags>
-        <tag>Hexo万花筒</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新时代中国特色社会主义理论与实践</title>
-    <url>/2023/11/11/%E6%96%B0%E6%97%B6%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：博文简介(XXX)<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>数理统计复习</title>
     <url>/2023/11/09/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0/</url>
     <content><![CDATA[<hr>
@@ -436,6 +382,97 @@
       </categories>
       <tags>
         <tag>数理统计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用快捷键随记</title>
+    <url>/2023/11/11/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9A%8F%E8%AE%B0/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：电脑常用快捷键随记<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、截图<br>（1）win10自带：Win+Shift+S</p>
+<p>2、系统控制<br>（1）任务管理器：Ctrl+Shift+Esc</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具小世界</category>
+      </categories>
+      <tags>
+        <tag>电脑办公</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新时代中国特色社会主义理论与实践</title>
+    <url>/2023/11/11/%E6%96%B0%E6%97%B6%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：研一期末新时代中国特色社会主义理论与实践复习<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）未知</p>
+<p>2、简答题<br>（1）复习课本</p>
+<p>3、材料题<br>（1）复习课本</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研一期末复习_记忆宫殿</category>
+      </categories>
+      <tags>
+        <tag>新时代中国特色社会主义理论与实践</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>目标检测网络结构</title>
+    <url>/2023/12/10/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：Object Detection结构组成理解<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
+<p>2、<br>（1）</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研究方向(学习路线_记忆宫殿)</category>
+      </categories>
+      <tags>
+        <tag>阶段五：目标检测实战</tag>
       </tags>
   </entry>
   <entry>
@@ -512,35 +549,18 @@
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：博文简介(XXX)<span id="more"></span></li>
+<li>本文简介：研一期末计算机体系结构复习<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>高级人工智能</title>
-    <url>/2023/11/12/%E9%AB%98%E7%BA%A7%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：研一期末高级人工智能复习<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、大题<br>（1）遗传算法<br>（2）人工神经网络<br>（3）专家系统</p>
-<p>2、论述题<br>（1）知识与知识表示<br>（2）搜索策略<br>（3）机器学习<br>（4）进化计算</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>（7道题）<br>1、题一<br>（1）Amdahl定律（计算题）<br>（2）Risc和Cisc的区别（论述题）</p>
+<p>2、题二<br>（1）代码的相关性，针对这种相关，在流水线中怎么解决？</p>
+<p>3、题三<br>（1）记忆题</p>
+<p>4、题四<br>（1）时空图（吞吐率、加速比、流水线效率）</p>
+<p>5、题五<br>（1）指令级并行一定会考</p>
+<p>6、题六<br>（1）指令调度</p>
+<p>7、题七<br>（1）循环展开（5.1、5.2）</p>
+<p>8、题八<br>（1）向量处理机</p>
+<p>备注：（该老师是老6，复习重点没有用，出题没有按照复习重点出题，要小心）</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -555,7 +575,7 @@
         <category>研一期末复习_记忆宫殿</category>
       </categories>
       <tags>
-        <tag>高级人工智能</tag>
+        <tag>计算机体系结构</tag>
       </tags>
   </entry>
   <entry>
@@ -566,11 +586,14 @@
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：博文简介(XXX)<span id="more"></span></li>
+<li>本文简介：研一期末研究生综合英语1复习<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）书上的课后习题选择题原题</p>
+<p>2、完形填空<br>（1）课文内容上的某一段</p>
+<p>3、阅读理解<br>（1）四级真题（15年-最新年份）</p>
+<p>4、翻译<br>（1）中译英：课文上的某一段<br>（2）英译中：课文上的某一段</p>
+<p>5、作文<br>（1）书信（写给导师的自荐信）</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -581,6 +604,43 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>研一期末复习_记忆宫殿</category>
+      </categories>
+      <tags>
+        <tag>研究生综合英语1</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象分析与设计</title>
+    <url>/2023/11/12/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：研一期末面向对象分析与设计复习<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）复习历年真题</p>
+<p>2、简答题<br>（1）简述状态图和活动图的区别？<br>（2）简述 OOD 模型的总体结构，并画图表示。<br>（3）操作系统中的资源调度问题为将存在优先顺序的任务（通常抽象为有向无循环图DAG）分配至处理机上执行。请使用面向对象设计思想采用类图设计这种 DAG 结构中的类及类中属性和方法（方法只需要写出名称即可）。<br>（4）简述面向对象技术的三大机制。</p>
+<p>3、综述题<br>（1）画出网上选课系统中选课的时序图。<br>（2）画出网上选课系统中课程的状态图。<br>（3）画出网上选课系统中选课的活动图。</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研一期末复习_记忆宫殿</category>
+      </categories>
+      <tags>
+        <tag>面向对象分析与设计</tag>
+      </tags>
   </entry>
   <entry>
     <title>计算机视觉三大顶会</title>
@@ -612,18 +672,18 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象分析与设计</title>
-    <url>/2023/11/12/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/</url>
+    <title>高级人工智能</title>
+    <url>/2023/11/12/%E9%AB%98%E7%BA%A7%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：博文简介(XXX)<span id="more"></span></li>
+<li>本文简介：研一期末高级人工智能复习<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、大题<br>（1）遗传算法<br>（2）人工神经网络<br>（3）专家系统</p>
+<p>2、论述题<br>（1）知识与知识表示<br>（2）搜索策略<br>（3）机器学习<br>（4）进化计算</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -634,5 +694,11 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>研一期末复习_记忆宫殿</category>
+      </categories>
+      <tags>
+        <tag>高级人工智能</tag>
+      </tags>
   </entry>
 </search>
