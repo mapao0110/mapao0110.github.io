@@ -6,7 +6,7 @@
   <link href="https://mapao0110.github.io/atom.xml" rel="self"/>
   
   <link href="https://mapao0110.github.io/"/>
-  <updated>2024-01-11T14:23:29.139Z</updated>
+  <updated>2024-01-11T14:31:57.299Z</updated>
   <id>https://mapao0110.github.io/</id>
   
   <author>
@@ -17,13 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>目标检测的评价指标</title>
+    <link href="https://mapao0110.github.io/2024/01/11/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/"/>
+    <id>https://mapao0110.github.io/2024/01/11/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/</id>
+    <published>2024-01-11T14:27:44.000Z</published>
+    <updated>2024-01-11T14:31:57.299Z</updated>
+    
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：目标检测常用的评价指标<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p><p>2、<br>（1）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;hr&gt;
+&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;注：学习交流使用！&lt;/li&gt;
+&lt;li&gt;本文简介：目标检测常用的评价指标</summary>
+    
+    
+    
+    <category term="研究方向(学习路线_记忆宫殿)" scheme="https://mapao0110.github.io/categories/%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF-%E8%AE%B0%E5%BF%86%E5%AE%AB%E6%AE%BF/"/>
+    
+    
+    <category term="阶段五：目标检测实战" scheme="https://mapao0110.github.io/tags/%E9%98%B6%E6%AE%B5%E4%BA%94%EF%BC%9A%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%AE%9E%E6%88%98/"/>
+    
+  </entry>
+  
+  <entry>
     <title>目标检测网络结构</title>
     <link href="https://mapao0110.github.io/2023/12/10/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/"/>
     <id>https://mapao0110.github.io/2023/12/10/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/</id>
     <published>2023-12-10T08:03:42.000Z</published>
-    <updated>2024-01-11T14:23:29.139Z</updated>
+    <updated>2024-01-11T14:37:00.763Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：Object Detection结构组成<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、目标检测的核心组成<br>目标检测的结构可以分成三个部分：Backbone、Neck、Head。<br>（1）Backbone<br>①Backbone（主干网络）。既然说他是网络，Backbone充当了整个目标检测网络的一部分。Backbone在整个目标检测网络当中指的是特征提取网络，其作用是提取图片当中的特征信息。在CV领域，使用卷积神经网络(CNN)来提取所输入的图片的特征，提取彼此之间的共同点，通过不断地卷积，缩小特征图尺寸，从而找到最核心的部分。<br>②常用的Backbone主要有：</p><ul><li>提取能力强：VGG、ResNet（ResNet18，50，100）、ResNeXt、DenseNet等</li><li>轻量：MobileNet、GhostNet、VoVNet、ShuffleNet、ThunderNet等<br>（2）Neck<br>①Neck（颈部）。Neck是目标检测框架中承上启下的关键环节。Neck在目标检测网络主要是把Backbone提取的特征进行融合，使得网络学习到的特征更具备多样性，提高检测网络的性能。更好地融合/提取Backbone所给出的feature，然后再交由后续的Head去检测，从而提高网络的性能。<br>它对Backbone提取到的重要特征进行再加工及合理利用，有利于下一步Head的具体任务学习，如分类、回归、keypoint、instance mask等常见的任务。Neck放在backbone和head之间的，是为了更好的利用backbone提取的特征。 像是最著名的FPN——《Feature Pyramid NetworksforObject Detection》 提出的FPN结构，将不同尺度的特征进行融合，充分利用Backbone提取的特征信息。<br>②常用的Neck主要有：</li><li>Additional blocks：SPP、ASPP、RFB、SAM</li><li>Path-aggregation blocks：FPN、PAN、NAS-FPN、Fully-connected FPN、BiFPN、ASFF、SFAM、NAS-FPN<br>（3）Head<br>①Head（头部）。在目标检测网络中一般叫做检测头。Head是获取网络输出内容的网络，利用之前提取的特征，Head利用这些特征，做出预测。Head可以理解为是根据Backbone提取出来的特征，从这些特征中预测目标的位置和类别。目标检测除了识别出物体的类别，更重要的是还要对物体进行定位，主要作用是定位和分类。<br>②常用的Head主要有：</li><li>Dense Prediction (one-stage)：RPN、SSD、YOLO、RetinaNet(anchor based)、CornerNet、CenterNet、MatrixNet、FCOS(anchor free)</li><li>Sparse Prediction (two-stage)：Faster R-CNN、R-FCN、Mask RCNN (anchor based)、RepPoints(anchor free)<br>（4）总结<br>通过对目标检测各个组成部分的介绍和描述。一个目标检测网络的组成可以由一个公式来描述<br>Detector = Backbone + Neck + Head<br>其中</li><li>Backbone：提取基础特征网络</li><li>Neck：提出一个好的结构或模块，更好适应 feature</li><li>Head：分类+定位</li></ul><p>备注：基于transformer结构的新的目标检测范式（有兴趣学习一下）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：Object Detection结构组成<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、目标检测的核心组成<br>目标检测的结构可以分成三个部分：Backbone、Neck、Head。</p><p>（1）Backbone<br>①Backbone（主干网络）。既然说他是网络，Backbone充当了整个目标检测网络的一部分。Backbone在整个目标检测网络当中指的是特征提取网络，其作用是提取图片当中的特征信息。在CV领域，使用卷积神经网络(CNN)来提取所输入的图片的特征，提取彼此之间的共同点，通过不断地卷积，缩小特征图尺寸，从而找到最核心的部分。<br>②常用的Backbone主要有：</p><ul><li>提取能力强：VGG、ResNet（ResNet18，50，100）、ResNeXt、DenseNet等</li><li>轻量：MobileNet、GhostNet、VoVNet、ShuffleNet、ThunderNet等</li></ul><p>（2）Neck<br>①Neck（颈部）。Neck是目标检测框架中承上启下的关键环节。Neck在目标检测网络主要是把Backbone提取的特征进行融合，使得网络学习到的特征更具备多样性，提高检测网络的性能。更好地融合/提取Backbone所给出的feature，然后再交由后续的Head去检测，从而提高网络的性能。<br>它对Backbone提取到的重要特征进行再加工及合理利用，有利于下一步Head的具体任务学习，如分类、回归、keypoint、instance mask等常见的任务。Neck放在backbone和head之间的，是为了更好的利用backbone提取的特征。 像是最著名的FPN——《Feature Pyramid NetworksforObject Detection》 提出的FPN结构，将不同尺度的特征进行融合，充分利用Backbone提取的特征信息。<br>②常用的Neck主要有：</p><ul><li>Additional blocks：SPP、ASPP、RFB、SAM</li><li>Path-aggregation blocks：FPN、PAN、NAS-FPN、Fully-connected FPN、BiFPN、ASFF、SFAM、NAS-FPN</li></ul><p>（3）Head<br>①Head（头部）。在目标检测网络中一般叫做检测头。Head是获取网络输出内容的网络，利用之前提取的特征，Head利用这些特征，做出预测。Head可以理解为是根据Backbone提取出来的特征，从这些特征中预测目标的位置和类别。目标检测除了识别出物体的类别，更重要的是还要对物体进行定位，主要作用是定位和分类。<br>②常用的Head主要有：</p><ul><li>Dense Prediction (one-stage)：RPN、SSD、YOLO、RetinaNet(anchor based)、CornerNet、CenterNet、MatrixNet、FCOS(anchor free)</li><li>Sparse Prediction (two-stage)：Faster R-CNN、R-FCN、Mask RCNN (anchor based)、RepPoints(anchor free)</li></ul><p>（4）总结<br>通过对目标检测各个组成部分的介绍和描述。一个目标检测网络的组成可以由一个公式来描述<br>Detector = Backbone + Neck + Head<br>其中</p><ul><li>Backbone：提取基础特征网络</li><li>Neck：提出一个好的结构或模块，更好适应 feature</li><li>Head：分类+定位</li></ul><p>备注：基于transformer结构的新的目标检测范式（有兴趣学习一下）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;hr&gt;
@@ -507,32 +533,6 @@
     
     
     <category term="PyTorch" scheme="https://mapao0110.github.io/tags/PyTorch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>博客模板</title>
-    <link href="https://mapao0110.github.io/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/"/>
-    <id>https://mapao0110.github.io/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</id>
-    <published>2023-10-31T07:16:15.000Z</published>
-    <updated>2023-11-09T13:46:34.580Z</updated>
-    
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：博客模板制作<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p><p>2、<br>（1）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
-    
-    
-    <summary type="html">&lt;hr&gt;
-&lt;h2 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;个人微信公众号： Mn2+&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/Mnpao?type=blog&quot;&gt;个人博客首页&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;注：学习交流使用！&lt;/li&gt;
-&lt;li&gt;本文简介：博客模板制作</summary>
-    
-    
-    
-    <category term="Hexo_博客随记" scheme="https://mapao0110.github.io/categories/Hexo-%E5%8D%9A%E5%AE%A2%E9%9A%8F%E8%AE%B0/"/>
-    
-    
-    <category term="博客模板" scheme="https://mapao0110.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/"/>
     
   </entry>
   

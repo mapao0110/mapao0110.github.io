@@ -62,6 +62,74 @@
       </tags>
   </entry>
   <entry>
+    <title>LeNet</title>
+    <url>/2023/11/09/LeNet/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：LeNet神经网络模型训练<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、requires_grad<br>（1）在pytorch中，tensor有一个requires_grad参数，如果设置为True，则反向传播时，该tensor就会自动求导。tensor的requires_grad的属性默认为False,若一个节点（叶子变量：自己创建的tensor）requires_grad被设置为True，那么所有依赖它的节点requires_grad都为True（即使其他相依赖的tensor的requires_grad = False）<br>（2）当requires_grad设置为False时,反向传播时就不会自动求导了，因此大大节约了显存或者说内存。<br>（3）值得注意的是：requires_grad的设置只能针对叶子结点（网络的权重w就算，bias也算），如何理解叶子结点呢？叶子节点在数据结构中是一棵树没有子节点的结点，在网络中就是这个结点对应的参数不是由更上一层的tensor计算而来。</p>
+<p>2、with torch.no_grad()<br>（1）在该模块下，所有计算得出的tensor的requires_grad都自动设置为False。<br>（2）即使一个tensor（命名为x）的requires_grad = True，在with torch.no_grad计算，由x得到的新tensor（命名为w-标量）requires_grad也为False，且grad_fn也为None,即不会对w求导。<br>（3）在神经网络训练过程中，测试阶段及预测阶段不需要更新网络参数，使用该模块大大节约了内存的开销。</p>
+<p>3、内存与显存的区别<br>（1）电脑内存是替CPU暂存资料的储存空间。<br>（2）显卡显存是替GPU（显卡芯片）暂存资料的储存空间。<br>（3）内存或显存理论上越大越好。<br>（4）笔记本内存是可以增加的，但是显卡我们一般不能更换，笔记本大多是独立显示芯片或核显。</p>
+<p>4、demo的流程<br>（1）model.py ——定义LeNet网络模型<br>（2）train.py ——加载数据集并训练，训练集计算loss，测试集计算accuracy，保存训练好的网络参数<br>（3）predict.py——得到训练好的网络参数后，用自己找的图像进行分类测试</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研究方向(学习路线_记忆宫殿)</category>
+      </categories>
+      <tags>
+        <tag>阶段四：图像分类实战</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PyTorch基础</title>
+    <url>/2023/10/31/PyTorch%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：PyTorch相关基础概念<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
+<li><p>计算图：用来描述运算的有向无环图<br>（1）计算图有两个主要元素：结点（Node）和边（Edge）；<br>（2）结点表示数据，如向量、矩阵、张量，边表示运算，如加减乘除卷积等；<br><img src="/pic/PyTorch%E5%9F%BA%E7%A1%80/jstu.png" alt="计算图表示"><br>（3）PyTorch基于动态图，TensorFlow基于静态图<br>静态图框架好比C++，每次修改之后运行都要重新编译才行，动态图框架好比Python，动态执行，可以交互式查看修改。</p>
+</li>
+<li><p>节点和结点的区别：节点，被认为是一个实体，有处理能力，比如：网络上的一台计算机；而结点则只是一个交叉点，像“结绳记事”，打个结，做个标记，仅此而已，一般算法中点的都是结点。</p>
+</li>
+<li><p>PyTorch的设计遵循tensor-&gt;variable(autograd)-&gt;nn.Module三个由低到高的抽象层次，分别代表高维数组（张量）、自动求导（变量）和神经网络（层/模块）。</p>
+</li>
+</ol>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>深度学习_随心所欲</category>
+      </categories>
+      <tags>
+        <tag>PyTorch</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pycharm导包遇到的问题</title>
     <url>/2023/11/08/Pycharm%E5%AF%BC%E5%8C%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<hr>
@@ -91,20 +159,22 @@
       </tags>
   </entry>
   <entry>
-    <title>LeNet</title>
-    <url>/2023/11/09/LeNet/</url>
+    <title>VGG网络</title>
+    <url>/2023/11/13/VGG%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：LeNet神经网络模型训练<span id="more"></span></li>
+<li>本文简介：VGG网络详解<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、requires_grad<br>（1）在pytorch中，tensor有一个requires_grad参数，如果设置为True，则反向传播时，该tensor就会自动求导。tensor的requires_grad的属性默认为False,若一个节点（叶子变量：自己创建的tensor）requires_grad被设置为True，那么所有依赖它的节点requires_grad都为True（即使其他相依赖的tensor的requires_grad = False）<br>（2）当requires_grad设置为False时,反向传播时就不会自动求导了，因此大大节约了显存或者说内存。<br>（3）值得注意的是：requires_grad的设置只能针对叶子结点（网络的权重w就算，bias也算），如何理解叶子结点呢？叶子节点在数据结构中是一棵树没有子节点的结点，在网络中就是这个结点对应的参数不是由更上一层的tensor计算而来。</p>
-<p>2、with torch.no_grad()<br>（1）在该模块下，所有计算得出的tensor的requires_grad都自动设置为False。<br>（2）即使一个tensor（命名为x）的requires_grad = True，在with torch.no_grad计算，由x得到的新tensor（命名为w-标量）requires_grad也为False，且grad_fn也为None,即不会对w求导。<br>（3）在神经网络训练过程中，测试阶段及预测阶段不需要更新网络参数，使用该模块大大节约了内存的开销。</p>
-<p>3、内存与显存的区别<br>（1）电脑内存是替CPU暂存资料的储存空间。<br>（2）显卡显存是替GPU（显卡芯片）暂存资料的储存空间。<br>（3）内存或显存理论上越大越好。<br>（4）笔记本内存是可以增加的，但是显卡我们一般不能更换，笔记本大多是独立显示芯片或核显。</p>
-<p>4、demo的流程<br>（1）model.py ——定义LeNet网络模型<br>（2）train.py ——加载数据集并训练，训练集计算loss，测试集计算accuracy，保存训练好的网络参数<br>（3）predict.py——得到训练好的网络参数后，用自己找的图像进行分类测试</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、VGG 在2014年由牛津大学著名研究组 VGG（Visual Geometry Group）提出。</p>
+<p>2、VGG网络的创新点<br>（1）通过堆叠多个小卷积核来替代大尺度卷积核，可以减少训练参数，同时能保证相同的感受野。<br>（2）论文中提到，可以通过堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。</p>
+<p>3、CNN感受野<br>（1）卷积神经网络中，决定某一层输出结果中一个元素所对应的输入层的区域大小，被称作感受野（receptive field）。<br>（2）通俗的解释是，输出feature map上的一个单元 对应 输入层上的区域大小。<br>（3）以下图为例，输出层 layer3 中一个单元 对应 输入层 layer2 上区域大小为2×2（池化操作），对应输入层 layer1 上大小为5×5（可以这么理解，layer2中 2×2区域中的每一块对应一个3×3的卷积核，又因为 stride=2，所以layer1的感受野为5×5）<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/gsy.jpg" alt="感受野"><br>（4）感受野的计算公式为：<br>&emsp; F(i)=(F(i+1)−1)×Stride +Ksize<br>&emsp;  * F(i) 为第i层感受野<br>&emsp; * Stride为第i层的步距<br>&emsp; * Ksize为 卷积核 或 池化核 尺寸<br>&emsp; 以上图为例：<br>&emsp; * Feature map: F ( 3 ) = 1<br>&emsp; * Pool1：F ( 2 ) = ( 1 − 1 ) × 2 + 2 = 2<br>&emsp; * Conv1: F ( 1 ) = ( 2 − 1 ) × 2 + 3 = 5</p>
+<p>4、小卷积核<br>（1）堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。替代前后感受野是否相同？<br>（注：VGG网络中卷积的Stride默认为1）<br>&emsp; Feature map: F = 1 F=1F=1<br>&emsp; * Conv3x3(3): F = ( 1 − 1 ) × 1 + 3 = 3<br>&emsp; * Conv3x3(2): F = ( 3 − 1 ) × 1 + 3 = 5 （5×5卷积核感受野）<br>&emsp; * Conv3x3(1): F = ( 5 − 1 ) × 1 + 3 = 7 （7×7卷积核感受野）</p>
+<p>（2）堆叠3×3卷积核后训练参数是否真的减少了？<br>&emsp; 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度。<br>&emsp; 现假设 输入特征矩阵深度 = 输出特征矩阵深度 = C<br>&emsp; *使用7×7卷积核所需参数个数：7 × 7 × C × C = 49 C**2<br>&emsp; *堆叠三个3×3的卷积核所需参数个数：3 × 3 × C × C + 3 × 3 × C × C + 3 × 3 × C × C = 27 C**2 </p>
+<p>5、VGG-16<br>（1）VGG网络有多个版本，一般常用的是VGG-16模型，其网络结构如下如所示：<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/VGG16.jpg" alt="VGG16"><br>（2）稍作计算可以发现，经3×3卷积的特征矩阵的尺寸是不改变的：</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -212,22 +282,18 @@
       </tags>
   </entry>
   <entry>
-    <title>VGG网络</title>
-    <url>/2023/11/13/VGG%E7%BD%91%E7%BB%9C/</url>
+    <title>博客模板</title>
+    <url>/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：VGG网络详解<span id="more"></span></li>
+<li>本文简介：博客模板制作<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、VGG 在2014年由牛津大学著名研究组 VGG（Visual Geometry Group）提出。</p>
-<p>2、VGG网络的创新点<br>（1）通过堆叠多个小卷积核来替代大尺度卷积核，可以减少训练参数，同时能保证相同的感受野。<br>（2）论文中提到，可以通过堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。</p>
-<p>3、CNN感受野<br>（1）卷积神经网络中，决定某一层输出结果中一个元素所对应的输入层的区域大小，被称作感受野（receptive field）。<br>（2）通俗的解释是，输出feature map上的一个单元 对应 输入层上的区域大小。<br>（3）以下图为例，输出层 layer3 中一个单元 对应 输入层 layer2 上区域大小为2×2（池化操作），对应输入层 layer1 上大小为5×5（可以这么理解，layer2中 2×2区域中的每一块对应一个3×3的卷积核，又因为 stride=2，所以layer1的感受野为5×5）<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/gsy.jpg" alt="感受野"><br>（4）感受野的计算公式为：<br>&emsp; F(i)=(F(i+1)−1)×Stride +Ksize<br>&emsp;  * F(i) 为第i层感受野<br>&emsp; * Stride为第i层的步距<br>&emsp; * Ksize为 卷积核 或 池化核 尺寸<br>&emsp; 以上图为例：<br>&emsp; * Feature map: F ( 3 ) = 1<br>&emsp; * Pool1：F ( 2 ) = ( 1 − 1 ) × 2 + 2 = 2<br>&emsp; * Conv1: F ( 1 ) = ( 2 − 1 ) × 2 + 3 = 5</p>
-<p>4、小卷积核<br>（1）堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。替代前后感受野是否相同？<br>（注：VGG网络中卷积的Stride默认为1）<br>&emsp; Feature map: F = 1 F=1F=1<br>&emsp; * Conv3x3(3): F = ( 1 − 1 ) × 1 + 3 = 3<br>&emsp; * Conv3x3(2): F = ( 3 − 1 ) × 1 + 3 = 5 （5×5卷积核感受野）<br>&emsp; * Conv3x3(1): F = ( 5 − 1 ) × 1 + 3 = 7 （7×7卷积核感受野）</p>
-<p>（2）堆叠3×3卷积核后训练参数是否真的减少了？<br>&emsp; 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度。<br>&emsp; 现假设 输入特征矩阵深度 = 输出特征矩阵深度 = C<br>&emsp; *使用7×7卷积核所需参数个数：7 × 7 × C × C = 49 C**2<br>&emsp; *堆叠三个3×3的卷积核所需参数个数：3 × 3 × C × C + 3 × 3 × C × C + 3 × 3 × C × C = 27 C**2 </p>
-<p>5、VGG-16<br>（1）VGG网络有多个版本，一般常用的是VGG-16模型，其网络结构如下如所示：<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/VGG16.jpg" alt="VGG16"><br>（2）稍作计算可以发现，经3×3卷积的特征矩阵的尺寸是不改变的：</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
+<p>2、<br>（1）</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -239,46 +305,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
+        <category>Hexo_博客随记</category>
       </categories>
       <tags>
-        <tag>阶段四：图像分类实战</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PyTorch基础</title>
-    <url>/2023/10/31/PyTorch%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：PyTorch相关基础概念<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
-<li><p>计算图：用来描述运算的有向无环图<br>（1）计算图有两个主要元素：结点（Node）和边（Edge）；<br>（2）结点表示数据，如向量、矩阵、张量，边表示运算，如加减乘除卷积等；<br><img src="/pic/PyTorch%E5%9F%BA%E7%A1%80/jstu.png" alt="计算图表示"><br>（3）PyTorch基于动态图，TensorFlow基于静态图<br>静态图框架好比C++，每次修改之后运行都要重新编译才行，动态图框架好比Python，动态执行，可以交互式查看修改。</p>
-</li>
-<li><p>节点和结点的区别：节点，被认为是一个实体，有处理能力，比如：网络上的一台计算机；而结点则只是一个交叉点，像“结绳记事”，打个结，做个标记，仅此而已，一般算法中点的都是结点。</p>
-</li>
-<li><p>PyTorch的设计遵循tensor-&gt;variable(autograd)-&gt;nn.Module三个由低到高的抽象层次，分别代表高维数组（张量）、自动求导（变量）和神经网络（层/模块）。</p>
-</li>
-</ol>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>深度学习_随心所欲</category>
-      </categories>
-      <tags>
-        <tag>PyTorch</tag>
+        <tag>博客模板</tag>
       </tags>
   </entry>
   <entry>
@@ -321,6 +351,36 @@
       </tags>
   </entry>
   <entry>
+    <title>常用快捷键随记</title>
+    <url>/2023/11/11/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9A%8F%E8%AE%B0/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：电脑常用快捷键随记<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、截图<br>（1）win10自带：Win+Shift+S</p>
+<p>2、系统控制<br>（1）任务管理器：Ctrl+Shift+Esc</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具小世界</category>
+      </categories>
+      <tags>
+        <tag>电脑办公</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数理统计复习</title>
     <url>/2023/11/09/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0/</url>
     <content><![CDATA[<hr>
@@ -355,36 +415,6 @@
       </tags>
   </entry>
   <entry>
-    <title>博客模板</title>
-    <url>/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：博客模板制作<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Hexo_博客随记</category>
-      </categories>
-      <tags>
-        <tag>博客模板</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>新时代中国特色社会主义理论与实践</title>
     <url>/2023/11/11/%E6%96%B0%E6%97%B6%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5/</url>
     <content><![CDATA[<hr>
@@ -413,47 +443,6 @@
       </categories>
       <tags>
         <tag>新时代中国特色社会主义理论与实践</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>目标检测网络结构</title>
-    <url>/2023/12/10/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：Object Detection结构组成<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、目标检测的核心组成<br>目标检测的结构可以分成三个部分：Backbone、Neck、Head。<br>（1）Backbone<br>①Backbone（主干网络）。既然说他是网络，Backbone充当了整个目标检测网络的一部分。Backbone在整个目标检测网络当中指的是特征提取网络，其作用是提取图片当中的特征信息。在CV领域，使用卷积神经网络(CNN)来提取所输入的图片的特征，提取彼此之间的共同点，通过不断地卷积，缩小特征图尺寸，从而找到最核心的部分。<br>②常用的Backbone主要有：</p>
-<ul>
-<li>提取能力强：VGG、ResNet（ResNet18，50，100）、ResNeXt、DenseNet等</li>
-<li>轻量：MobileNet、GhostNet、VoVNet、ShuffleNet、ThunderNet等<br>（2）Neck<br>①Neck（颈部）。Neck是目标检测框架中承上启下的关键环节。Neck在目标检测网络主要是把Backbone提取的特征进行融合，使得网络学习到的特征更具备多样性，提高检测网络的性能。更好地融合/提取Backbone所给出的feature，然后再交由后续的Head去检测，从而提高网络的性能。<br>它对Backbone提取到的重要特征进行再加工及合理利用，有利于下一步Head的具体任务学习，如分类、回归、keypoint、instance mask等常见的任务。Neck放在backbone和head之间的，是为了更好的利用backbone提取的特征。 像是最著名的FPN——《Feature Pyramid NetworksforObject Detection》 提出的FPN结构，将不同尺度的特征进行融合，充分利用Backbone提取的特征信息。<br>②常用的Neck主要有：</li>
-<li>Additional blocks：SPP、ASPP、RFB、SAM</li>
-<li>Path-aggregation blocks：FPN、PAN、NAS-FPN、Fully-connected FPN、BiFPN、ASFF、SFAM、NAS-FPN<br>（3）Head<br>①Head（头部）。在目标检测网络中一般叫做检测头。Head是获取网络输出内容的网络，利用之前提取的特征，Head利用这些特征，做出预测。Head可以理解为是根据Backbone提取出来的特征，从这些特征中预测目标的位置和类别。目标检测除了识别出物体的类别，更重要的是还要对物体进行定位，主要作用是定位和分类。<br>②常用的Head主要有：</li>
-<li>Dense Prediction (one-stage)：RPN、SSD、YOLO、RetinaNet(anchor based)、CornerNet、CenterNet、MatrixNet、FCOS(anchor free)</li>
-<li>Sparse Prediction (two-stage)：Faster R-CNN、R-FCN、Mask RCNN (anchor based)、RepPoints(anchor free)<br>（4）总结<br>通过对目标检测各个组成部分的介绍和描述。一个目标检测网络的组成可以由一个公式来描述<br>Detector = Backbone + Neck + Head<br>其中</li>
-<li>Backbone：提取基础特征网络</li>
-<li>Neck：提出一个好的结构或模块，更好适应 feature</li>
-<li>Head：分类+定位</li>
-</ul>
-<p>备注：基于transformer结构的新的目标检测范式（有兴趣学习一下）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
-      </categories>
-      <tags>
-        <tag>阶段五：目标检测实战</tag>
       </tags>
   </entry>
   <entry>
@@ -487,18 +476,39 @@
       </tags>
   </entry>
   <entry>
-    <title>常用快捷键随记</title>
-    <url>/2023/11/11/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9A%8F%E8%AE%B0/</url>
+    <title>目标检测网络结构</title>
+    <url>/2023/12/10/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：电脑常用快捷键随记<span id="more"></span></li>
+<li>本文简介：Object Detection结构组成<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、截图<br>（1）win10自带：Win+Shift+S</p>
-<p>2、系统控制<br>（1）任务管理器：Ctrl+Shift+Esc</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、目标检测的核心组成<br>目标检测的结构可以分成三个部分：Backbone、Neck、Head。</p>
+<p>（1）Backbone<br>①Backbone（主干网络）。既然说他是网络，Backbone充当了整个目标检测网络的一部分。Backbone在整个目标检测网络当中指的是特征提取网络，其作用是提取图片当中的特征信息。在CV领域，使用卷积神经网络(CNN)来提取所输入的图片的特征，提取彼此之间的共同点，通过不断地卷积，缩小特征图尺寸，从而找到最核心的部分。<br>②常用的Backbone主要有：</p>
+<ul>
+<li>提取能力强：VGG、ResNet（ResNet18，50，100）、ResNeXt、DenseNet等</li>
+<li>轻量：MobileNet、GhostNet、VoVNet、ShuffleNet、ThunderNet等</li>
+</ul>
+<p>（2）Neck<br>①Neck（颈部）。Neck是目标检测框架中承上启下的关键环节。Neck在目标检测网络主要是把Backbone提取的特征进行融合，使得网络学习到的特征更具备多样性，提高检测网络的性能。更好地融合/提取Backbone所给出的feature，然后再交由后续的Head去检测，从而提高网络的性能。<br>它对Backbone提取到的重要特征进行再加工及合理利用，有利于下一步Head的具体任务学习，如分类、回归、keypoint、instance mask等常见的任务。Neck放在backbone和head之间的，是为了更好的利用backbone提取的特征。 像是最著名的FPN——《Feature Pyramid NetworksforObject Detection》 提出的FPN结构，将不同尺度的特征进行融合，充分利用Backbone提取的特征信息。<br>②常用的Neck主要有：</p>
+<ul>
+<li>Additional blocks：SPP、ASPP、RFB、SAM</li>
+<li>Path-aggregation blocks：FPN、PAN、NAS-FPN、Fully-connected FPN、BiFPN、ASFF、SFAM、NAS-FPN</li>
+</ul>
+<p>（3）Head<br>①Head（头部）。在目标检测网络中一般叫做检测头。Head是获取网络输出内容的网络，利用之前提取的特征，Head利用这些特征，做出预测。Head可以理解为是根据Backbone提取出来的特征，从这些特征中预测目标的位置和类别。目标检测除了识别出物体的类别，更重要的是还要对物体进行定位，主要作用是定位和分类。<br>②常用的Head主要有：</p>
+<ul>
+<li>Dense Prediction (one-stage)：RPN、SSD、YOLO、RetinaNet(anchor based)、CornerNet、CenterNet、MatrixNet、FCOS(anchor free)</li>
+<li>Sparse Prediction (two-stage)：Faster R-CNN、R-FCN、Mask RCNN (anchor based)、RepPoints(anchor free)</li>
+</ul>
+<p>（4）总结<br>通过对目标检测各个组成部分的介绍和描述。一个目标检测网络的组成可以由一个公式来描述<br>Detector = Backbone + Neck + Head<br>其中</p>
+<ul>
+<li>Backbone：提取基础特征网络</li>
+<li>Neck：提出一个好的结构或模块，更好适应 feature</li>
+<li>Head：分类+定位</li>
+</ul>
+<p>备注：基于transformer结构的新的目标检测范式（有兴趣学习一下）</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -510,10 +520,40 @@
 </ul>
 ]]></content>
       <categories>
-        <category>工具小世界</category>
+        <category>研究方向(学习路线_记忆宫殿)</category>
       </categories>
       <tags>
-        <tag>电脑办公</tag>
+        <tag>阶段五：目标检测实战</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>目标检测的评价指标</title>
+    <url>/2024/01/11/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：目标检测常用的评价指标<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
+<p>2、<br>（1）</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研究方向(学习路线_记忆宫殿)</category>
+      </categories>
+      <tags>
+        <tag>阶段五：目标检测实战</tag>
       </tags>
   </entry>
   <entry>
@@ -586,19 +626,17 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象分析与设计</title>
-    <url>/2023/11/12/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/</url>
+    <title>计算机视觉三大顶会</title>
+    <url>/2023/11/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E4%B8%89%E5%A4%A7%E9%A1%B6%E4%BC%9A/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：研一期末面向对象分析与设计复习<span id="more"></span></li>
+<li>本文简介：带你了解ICCV、ECCV、CVPR三大国际会议<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）复习历年真题</p>
-<p>2、简答题<br>（1）简述状态图和活动图的区别？<br>（2）简述 OOD 模型的总体结构，并画图表示。<br>（3）操作系统中的资源调度问题为将存在优先顺序的任务（通常抽象为有向无循环图DAG）分配至处理机上执行。请使用面向对象设计思想采用类图设计这种 DAG 结构中的类及类中属性和方法（方法只需要写出名称即可）。<br>（4）简述面向对象技术的三大机制。</p>
-<p>3、综述题<br>（1）画出网上选课系统中选课的时序图。<br>（2）画出网上选课系统中课程的状态图。<br>（3）画出网上选课系统中选课的活动图。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、前言<br>（1）作为刚入门CV的新人，有必要记住计算机视觉方面的三大顶级会议：ICCV,CVPR,ECCV，统称为ICE。<br>（2）与其它学术领域不同，计算机科学使用会议而不是期刊作为发表研究成果的主要方式。<br>2、ICCV、ECCV、CVPR是什么？<br>（1）ICCV 的全称是 IEEE International Conference on Computer Vision，即国际计算机视觉大会，是公认的三个会议中级别最高的。它的举办地方会在世界范围内选，每两年召开一次。<br>（2）ECCV的全称是European Conference on Computer Vision，即欧洲计算机视觉国际会议。每两年召开一次，与ICCV正好错开。<br>（3）CVPR全称是IEEE Conference on Computer Vision and Pattern Recognition，即IEEE国际计算机视觉与模式识别会议。该会议一般在6月举行，举办地是美国，是一个一年一次的会议。<br>3、三大会议链接<br>（1）ICCV:<a href="http://www.informatik.uni-trier.de/~ley/db/conf/iccv/index.html">http://www.informatik.uni-trier.de/~ley/db/conf/iccv/index.html</a><br>（2）ECCV： <a href="http://www.informatik.uni-trier.de/~ley/db/conf/eccv/index.html">http://www.informatik.uni-trier.de/~ley/db/conf/eccv/index.html</a><br>（3）CVPR：<a href="http://dblp.uni-trier.de/db/conf/cvpr/index.html">http://dblp.uni-trier.de/db/conf/cvpr/index.html</a></p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -610,10 +648,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>研一期末复习_记忆宫殿</category>
+        <category>研究方向(学习路线_记忆宫殿)</category>
       </categories>
       <tags>
-        <tag>面向对象分析与设计</tag>
+        <tag>阶段二：预备知识学习阶段</tag>
       </tags>
   </entry>
   <entry>
@@ -654,35 +692,6 @@
       </tags>
   </entry>
   <entry>
-    <title>计算机视觉三大顶会</title>
-    <url>/2023/11/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E4%B8%89%E5%A4%A7%E9%A1%B6%E4%BC%9A/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：带你了解ICCV、ECCV、CVPR三大国际会议<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、前言<br>（1）作为刚入门CV的新人，有必要记住计算机视觉方面的三大顶级会议：ICCV,CVPR,ECCV，统称为ICE。<br>（2）与其它学术领域不同，计算机科学使用会议而不是期刊作为发表研究成果的主要方式。<br>2、ICCV、ECCV、CVPR是什么？<br>（1）ICCV 的全称是 IEEE International Conference on Computer Vision，即国际计算机视觉大会，是公认的三个会议中级别最高的。它的举办地方会在世界范围内选，每两年召开一次。<br>（2）ECCV的全称是European Conference on Computer Vision，即欧洲计算机视觉国际会议。每两年召开一次，与ICCV正好错开。<br>（3）CVPR全称是IEEE Conference on Computer Vision and Pattern Recognition，即IEEE国际计算机视觉与模式识别会议。该会议一般在6月举行，举办地是美国，是一个一年一次的会议。<br>3、三大会议链接<br>（1）ICCV:<a href="http://www.informatik.uni-trier.de/~ley/db/conf/iccv/index.html">http://www.informatik.uni-trier.de/~ley/db/conf/iccv/index.html</a><br>（2）ECCV： <a href="http://www.informatik.uni-trier.de/~ley/db/conf/eccv/index.html">http://www.informatik.uni-trier.de/~ley/db/conf/eccv/index.html</a><br>（3）CVPR：<a href="http://dblp.uni-trier.de/db/conf/cvpr/index.html">http://dblp.uni-trier.de/db/conf/cvpr/index.html</a></p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
-      </categories>
-      <tags>
-        <tag>阶段二：预备知识学习阶段</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>高级人工智能</title>
     <url>/2023/11/12/%E9%AB%98%E7%BA%A7%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</url>
     <content><![CDATA[<hr>
@@ -710,6 +719,37 @@
       </categories>
       <tags>
         <tag>高级人工智能</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象分析与设计</title>
+    <url>/2023/11/12/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：研一期末面向对象分析与设计复习<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）复习历年真题</p>
+<p>2、简答题<br>（1）简述状态图和活动图的区别？<br>（2）简述 OOD 模型的总体结构，并画图表示。<br>（3）操作系统中的资源调度问题为将存在优先顺序的任务（通常抽象为有向无循环图DAG）分配至处理机上执行。请使用面向对象设计思想采用类图设计这种 DAG 结构中的类及类中属性和方法（方法只需要写出名称即可）。<br>（4）简述面向对象技术的三大机制。</p>
+<p>3、综述题<br>（1）画出网上选课系统中选课的时序图。<br>（2）画出网上选课系统中课程的状态图。<br>（3）画出网上选课系统中选课的活动图。</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研一期末复习_记忆宫殿</category>
+      </categories>
+      <tags>
+        <tag>面向对象分析与设计</tag>
       </tags>
   </entry>
 </search>

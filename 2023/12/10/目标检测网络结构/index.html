@@ -30,7 +30,7 @@
 <meta property="og:description" content="关于 个人微信公众号： Mn2+ 个人博客首页 注：学习交流使用！ 本文简介：Object Detection结构组成">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-10T08:03:42.000Z">
-<meta property="article:modified_time" content="2024-01-11T14:23:29.139Z">
+<meta property="article:modified_time" content="2024-01-11T14:37:00.763Z">
 <meta property="article:author" content="马跑">
 <meta property="article:tag" content="阶段五：目标检测实战">
 <meta name="twitter:card" content="summary">
@@ -221,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-01-11 22:23:29" itemprop="dateModified" datetime="2024-01-11T22:23:29+08:00">2024-01-11</time>
+                <time title="修改时间：2024-01-11 22:37:00" itemprop="dateModified" datetime="2024-01-11T22:37:00+08:00">2024-01-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,14 +269,24 @@
 <li>本文简介：Object Detection结构组成<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、目标检测的核心组成<br>目标检测的结构可以分成三个部分：Backbone、Neck、Head。<br>（1）Backbone<br>①Backbone（主干网络）。既然说他是网络，Backbone充当了整个目标检测网络的一部分。Backbone在整个目标检测网络当中指的是特征提取网络，其作用是提取图片当中的特征信息。在CV领域，使用卷积神经网络(CNN)来提取所输入的图片的特征，提取彼此之间的共同点，通过不断地卷积，缩小特征图尺寸，从而找到最核心的部分。<br>②常用的Backbone主要有：</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、目标检测的核心组成<br>目标检测的结构可以分成三个部分：Backbone、Neck、Head。</p>
+<p>（1）Backbone<br>①Backbone（主干网络）。既然说他是网络，Backbone充当了整个目标检测网络的一部分。Backbone在整个目标检测网络当中指的是特征提取网络，其作用是提取图片当中的特征信息。在CV领域，使用卷积神经网络(CNN)来提取所输入的图片的特征，提取彼此之间的共同点，通过不断地卷积，缩小特征图尺寸，从而找到最核心的部分。<br>②常用的Backbone主要有：</p>
 <ul>
 <li>提取能力强：VGG、ResNet（ResNet18，50，100）、ResNeXt、DenseNet等</li>
-<li>轻量：MobileNet、GhostNet、VoVNet、ShuffleNet、ThunderNet等<br>（2）Neck<br>①Neck（颈部）。Neck是目标检测框架中承上启下的关键环节。Neck在目标检测网络主要是把Backbone提取的特征进行融合，使得网络学习到的特征更具备多样性，提高检测网络的性能。更好地融合/提取Backbone所给出的feature，然后再交由后续的Head去检测，从而提高网络的性能。<br>它对Backbone提取到的重要特征进行再加工及合理利用，有利于下一步Head的具体任务学习，如分类、回归、keypoint、instance mask等常见的任务。Neck放在backbone和head之间的，是为了更好的利用backbone提取的特征。 像是最著名的FPN——《Feature Pyramid NetworksforObject Detection》 提出的FPN结构，将不同尺度的特征进行融合，充分利用Backbone提取的特征信息。<br>②常用的Neck主要有：</li>
+<li>轻量：MobileNet、GhostNet、VoVNet、ShuffleNet、ThunderNet等</li>
+</ul>
+<p>（2）Neck<br>①Neck（颈部）。Neck是目标检测框架中承上启下的关键环节。Neck在目标检测网络主要是把Backbone提取的特征进行融合，使得网络学习到的特征更具备多样性，提高检测网络的性能。更好地融合/提取Backbone所给出的feature，然后再交由后续的Head去检测，从而提高网络的性能。<br>它对Backbone提取到的重要特征进行再加工及合理利用，有利于下一步Head的具体任务学习，如分类、回归、keypoint、instance mask等常见的任务。Neck放在backbone和head之间的，是为了更好的利用backbone提取的特征。 像是最著名的FPN——《Feature Pyramid NetworksforObject Detection》 提出的FPN结构，将不同尺度的特征进行融合，充分利用Backbone提取的特征信息。<br>②常用的Neck主要有：</p>
+<ul>
 <li>Additional blocks：SPP、ASPP、RFB、SAM</li>
-<li>Path-aggregation blocks：FPN、PAN、NAS-FPN、Fully-connected FPN、BiFPN、ASFF、SFAM、NAS-FPN<br>（3）Head<br>①Head（头部）。在目标检测网络中一般叫做检测头。Head是获取网络输出内容的网络，利用之前提取的特征，Head利用这些特征，做出预测。Head可以理解为是根据Backbone提取出来的特征，从这些特征中预测目标的位置和类别。目标检测除了识别出物体的类别，更重要的是还要对物体进行定位，主要作用是定位和分类。<br>②常用的Head主要有：</li>
+<li>Path-aggregation blocks：FPN、PAN、NAS-FPN、Fully-connected FPN、BiFPN、ASFF、SFAM、NAS-FPN</li>
+</ul>
+<p>（3）Head<br>①Head（头部）。在目标检测网络中一般叫做检测头。Head是获取网络输出内容的网络，利用之前提取的特征，Head利用这些特征，做出预测。Head可以理解为是根据Backbone提取出来的特征，从这些特征中预测目标的位置和类别。目标检测除了识别出物体的类别，更重要的是还要对物体进行定位，主要作用是定位和分类。<br>②常用的Head主要有：</p>
+<ul>
 <li>Dense Prediction (one-stage)：RPN、SSD、YOLO、RetinaNet(anchor based)、CornerNet、CenterNet、MatrixNet、FCOS(anchor free)</li>
-<li>Sparse Prediction (two-stage)：Faster R-CNN、R-FCN、Mask RCNN (anchor based)、RepPoints(anchor free)<br>（4）总结<br>通过对目标检测各个组成部分的介绍和描述。一个目标检测网络的组成可以由一个公式来描述<br>Detector = Backbone + Neck + Head<br>其中</li>
+<li>Sparse Prediction (two-stage)：Faster R-CNN、R-FCN、Mask RCNN (anchor based)、RepPoints(anchor free)</li>
+</ul>
+<p>（4）总结<br>通过对目标检测各个组成部分的介绍和描述。一个目标检测网络的组成可以由一个公式来描述<br>Detector = Backbone + Neck + Head<br>其中</p>
+<ul>
 <li>Backbone：提取基础特征网络</li>
 <li>Neck：提出一个好的结构或模块，更好适应 feature</li>
 <li>Head：分类+定位</li>
@@ -354,7 +364,10 @@
     <a href="/2023/11/14/ResNet/" rel="prev" title="ResNet">
       <i class="fa fa-chevron-left"></i> ResNet
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2024/01/11/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/" rel="next" title="目标检测的评价指标">
+      目标检测的评价指标 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -429,7 +442,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -515,7 +528,7 @@
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共8.1k字</span>
+  <span class="post-count">博客全站共8.2k字</span>
   <span class="post-meta-divider">|</span>
   本站总访问量<span id="busuanzi_value_site_pv"></span>次
   <span class="post-meta-divider">|</span>
