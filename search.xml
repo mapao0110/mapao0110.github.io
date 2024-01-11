@@ -62,6 +62,35 @@
       </tags>
   </entry>
   <entry>
+    <title>Pycharm导包遇到的问题</title>
+    <url>/2023/11/08/Pycharm%E5%AF%BC%E5%8C%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：Pycharm导包遇到的小问题及解决办法。<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、Pycharm中导入matplotlib遇到问题，但在控制台(cmd、conda)中pip list能够找到matplotlib包<br>（1）原因：因为在anaconda中创建了tensorflow、pytorch等多个虚拟环境，第一次在tensorflow中安装了matplotlib，所以pip list能够看到matplotlib安装包，<br>但在pytorch下因为没有安装所以找不到module。<br>（2）搞心态：此时在pycharm中install matplotlib会显示失败，在cdm和conda中pip install matplotlib也会失败，仿佛怎么也弄不好。<br>（3）解决办法：进入anaconda prompt，然后进入pytorch环境（activate pytorch）,再在里面通过pip install matplotlib安装包，问题解决。<br>（4）举一反三：在切换python解释器的时候，其它相应的包如果遇到同样的问题，可对症下药。</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>深度学习_随心所欲</category>
+      </categories>
+      <tags>
+        <tag>Pycharm导包</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeNet</title>
     <url>/2023/11/09/LeNet/</url>
     <content><![CDATA[<hr>
@@ -94,17 +123,22 @@
       </tags>
   </entry>
   <entry>
-    <title>Pycharm导包遇到的问题</title>
-    <url>/2023/11/08/Pycharm%E5%AF%BC%E5%8C%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <title>ResNet</title>
+    <url>/2023/11/14/ResNet/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：Pycharm导包遇到的小问题及解决办法。<span id="more"></span></li>
+<li>本文简介：ResNet网络结构详解与迁移学习<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、Pycharm中导入matplotlib遇到问题，但在控制台(cmd、conda)中pip list能够找到matplotlib包<br>（1）原因：因为在anaconda中创建了tensorflow、pytorch等多个虚拟环境，第一次在tensorflow中安装了matplotlib，所以pip list能够看到matplotlib安装包，<br>但在pytorch下因为没有安装所以找不到module。<br>（2）搞心态：此时在pycharm中install matplotlib会显示失败，在cdm和conda中pip install matplotlib也会失败，仿佛怎么也弄不好。<br>（3）解决办法：进入anaconda prompt，然后进入pytorch环境（activate pytorch）,再在里面通过pip install matplotlib安装包，问题解决。<br>（4）举一反三：在切换python解释器的时候，其它相应的包如果遇到同样的问题，可对症下药。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、ResNet 详解<br>（1）ResNet 网络是在 2015年 由微软实验室提出，斩获当年ImageNet竞赛中分类任务第一名，目标检测第一名。获得COCO数据集中目标检测第一名，图像分割第一名。<br>（2）ResNet网络的创新点：<br>&emsp; * 提出 Residual 结构（残差结构），并搭建超深的网络结构（可突破1000层）。<br>&emsp; * 使用 Batch Normalization 加速训练（丢弃dropout）。</p>
+<p>2、Why residual?<br>（1）在ResNet网络提出之前，传统的卷积神经网络都是通过将一系列卷积层与池化层进行堆叠得到的。<br>（2）一般我们会觉得网络越深，特征信息越丰富，模型效果应该越好。但是实验证明，当网络堆叠到一定深度时，会出现两个问题：<br>&emsp; 梯度消失或梯度爆炸：<br>&emsp; * 若每一层的误差梯度小于1，反向传播时，网络越深，梯度越趋近于0<br>&emsp; * 反之，若每一层的误差梯度大于1，反向传播时，网路越深，梯度越来越大<br>&emsp; 退化问题(degradation problem)：<br>&emsp; * 在解决了梯度消失、爆炸问题后，仍然存在深层网络的效果可能比浅层网络差的现象<br>&emsp; 当网络堆叠到一定深度时，反而会出现深层网络比浅层网络效果差的情况。<br>&emsp; 如下图所示，20层网络 反而比 56层网络 的误差更小：<br><img src="/pic/ResNet/rs01.png"><br>&emsp; 对于梯度消失或梯度爆炸问题，ResNet论文提出通过数据的预处理以及在网络中使用 BN（Batch Normalization）层来解决。<br>&emsp; 对于退化问题，ResNet论文提出了 residual结构（残差结构）来减轻退化问题，下图是使用residual结构的卷积网络，可以看到随着网络的不断加深，效果并没有变差，而是变的更好了。（虚线是train error，实线是test error）<br><img src="/pic/ResNet/rs02.png"></p>
+<p>3、What is residual？<br>（1）为了解决深层网络中的退化问题，可以人为地让神经网络某些层跳过下一层神经元的连接，隔层相连，弱化每层之间的强联系。这种神经网络被称为 残差网络 (ResNets)。<br>（2）残差网络由许多隔层相连的神经元子模块组成，我们称之为 残差块 Residual block。单个残差块的结构如下图所示：<br><img src="/pic/ResNet/rs03.png"><br><img src="/pic/ResNet/rs04.jpg"></p>
+<p>4、ResNet中的残差结构<br>（1）实际应用中，残差结构的 short cut 不一定是隔一层连接，也可以中间隔多层，ResNet所提出的残差网络中就是隔多层。<br>（2）下图中左侧残差结构称为 BasicBlock，右侧残差结构称为 Bottleneck<br><img src="/pic/ResNet/rs05.png"><br>对于深层的 Bottleneck，1×1的卷积核起到降维和升维（特征矩阵深度）的作用，同时可以大大减少网络参数。<br><img src="/pic/ResNet/rs06.jpg"></p>
+<p>5、降维时的 short cut<br>（1）观察下图的 ResNet18层网络，可以发现有些残差块的 short cut 是实线的，而有些则是虚线的。这些虚线的 short cut 上通过1×1的卷积核进行了维度处理（特征矩阵在长宽方向降采样，深度方向调整成下一层残差结构所需要的channel）。<br><img src="/pic/ResNet/rs07.png"></p>
+<p>6、迁移学习简介<br>（1）迁移学习是一个比较大的领域，我们这里说的迁移学习是指神经网络训练中使用到的迁移学习。<br>（2）在迁移学习中，我们希望利用源任务（Source Task）学到的知识帮助学习目标任务 (Target Task)。例如，一个训练好的图像分类网络能够被用于另一个图像相关的任务。再比如，一个网络在仿真环境学习的知识可以被迁移到真实环境的网络。迁移学习一个典型的例子就是载入训练好VGG网络，这个大规模分类网络能将图像分到1000个类别，然后把这个网络用于另一个任务，如医学图像分类。<br>（3）为什么可以这么做呢？如下图所示，神经网络逐层提取图像的深层信息，这样，预训练网络就相当于一个特征提取器。<br><img src="/pic/ResNet/rs08.png"><br>（4）使用迁移学习的优势：<br>&emsp; * 能够快速的训练出一个理想的结果<br>&emsp; * 当数据集较小时也能训练出理想的效果<br>&emsp; （注意：使用别人预训练好的模型参数时，要注意别人的预处理方式。）<br>（5）常见的迁移学习方式：<br>&emsp; * 载入权重后训练所有参数<br>&emsp; * 载入权重后只训练最后几层参数<br>&emsp; * 载入权重后在原网络基础上再添加一层全连接层，仅训练最后一个全连接层<br><img src="/pic/ResNet/rs09.png"></p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -116,10 +150,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>深度学习_随心所欲</category>
+        <category>研究方向(学习路线_记忆宫殿)</category>
       </categories>
       <tags>
-        <tag>Pycharm导包</tag>
+        <tag>阶段四：图像分类实战</tag>
       </tags>
   </entry>
   <entry>
@@ -175,6 +209,40 @@
       </categories>
       <tags>
         <tag>Hexo万花筒</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VGG网络</title>
+    <url>/2023/11/13/VGG%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：VGG网络详解<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、VGG 在2014年由牛津大学著名研究组 VGG（Visual Geometry Group）提出。</p>
+<p>2、VGG网络的创新点<br>（1）通过堆叠多个小卷积核来替代大尺度卷积核，可以减少训练参数，同时能保证相同的感受野。<br>（2）论文中提到，可以通过堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。</p>
+<p>3、CNN感受野<br>（1）卷积神经网络中，决定某一层输出结果中一个元素所对应的输入层的区域大小，被称作感受野（receptive field）。<br>（2）通俗的解释是，输出feature map上的一个单元 对应 输入层上的区域大小。<br>（3）以下图为例，输出层 layer3 中一个单元 对应 输入层 layer2 上区域大小为2×2（池化操作），对应输入层 layer1 上大小为5×5（可以这么理解，layer2中 2×2区域中的每一块对应一个3×3的卷积核，又因为 stride=2，所以layer1的感受野为5×5）<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/gsy.jpg" alt="感受野"><br>（4）感受野的计算公式为：<br>&emsp; F(i)=(F(i+1)−1)×Stride +Ksize<br>&emsp;  * F(i) 为第i层感受野<br>&emsp; * Stride为第i层的步距<br>&emsp; * Ksize为 卷积核 或 池化核 尺寸<br>&emsp; 以上图为例：<br>&emsp; * Feature map: F ( 3 ) = 1<br>&emsp; * Pool1：F ( 2 ) = ( 1 − 1 ) × 2 + 2 = 2<br>&emsp; * Conv1: F ( 1 ) = ( 2 − 1 ) × 2 + 3 = 5</p>
+<p>4、小卷积核<br>（1）堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。替代前后感受野是否相同？<br>（注：VGG网络中卷积的Stride默认为1）<br>&emsp; Feature map: F = 1 F=1F=1<br>&emsp; * Conv3x3(3): F = ( 1 − 1 ) × 1 + 3 = 3<br>&emsp; * Conv3x3(2): F = ( 3 − 1 ) × 1 + 3 = 5 （5×5卷积核感受野）<br>&emsp; * Conv3x3(1): F = ( 5 − 1 ) × 1 + 3 = 7 （7×7卷积核感受野）</p>
+<p>（2）堆叠3×3卷积核后训练参数是否真的减少了？<br>&emsp; 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度。<br>&emsp; 现假设 输入特征矩阵深度 = 输出特征矩阵深度 = C<br>&emsp; *使用7×7卷积核所需参数个数：7 × 7 × C × C = 49 C**2<br>&emsp; *堆叠三个3×3的卷积核所需参数个数：3 × 3 × C × C + 3 × 3 × C × C + 3 × 3 × C × C = 27 C**2 </p>
+<p>5、VGG-16<br>（1）VGG网络有多个版本，一般常用的是VGG-16模型，其网络结构如下如所示：<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/VGG16.jpg" alt="VGG16"><br>（2）稍作计算可以发现，经3×3卷积的特征矩阵的尺寸是不改变的：</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研究方向(学习路线_记忆宫殿)</category>
+      </categories>
+      <tags>
+        <tag>阶段四：图像分类实战</tag>
       </tags>
   </entry>
   <entry>
@@ -253,104 +321,6 @@
       </tags>
   </entry>
   <entry>
-    <title>VGG网络</title>
-    <url>/2023/11/13/VGG%E7%BD%91%E7%BB%9C/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：VGG网络详解<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、VGG 在2014年由牛津大学著名研究组 VGG（Visual Geometry Group）提出。</p>
-<p>2、VGG网络的创新点<br>（1）通过堆叠多个小卷积核来替代大尺度卷积核，可以减少训练参数，同时能保证相同的感受野。<br>（2）论文中提到，可以通过堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。</p>
-<p>3、CNN感受野<br>（1）卷积神经网络中，决定某一层输出结果中一个元素所对应的输入层的区域大小，被称作感受野（receptive field）。<br>（2）通俗的解释是，输出feature map上的一个单元 对应 输入层上的区域大小。<br>（3）以下图为例，输出层 layer3 中一个单元 对应 输入层 layer2 上区域大小为2×2（池化操作），对应输入层 layer1 上大小为5×5（可以这么理解，layer2中 2×2区域中的每一块对应一个3×3的卷积核，又因为 stride=2，所以layer1的感受野为5×5）<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/gsy.jpg" alt="感受野"><br>（4）感受野的计算公式为：<br>&emsp; F(i)=(F(i+1)−1)×Stride +Ksize<br>&emsp;  * F(i) 为第i层感受野<br>&emsp; * Stride为第i层的步距<br>&emsp; * Ksize为 卷积核 或 池化核 尺寸<br>&emsp; 以上图为例：<br>&emsp; * Feature map: F ( 3 ) = 1<br>&emsp; * Pool1：F ( 2 ) = ( 1 − 1 ) × 2 + 2 = 2<br>&emsp; * Conv1: F ( 1 ) = ( 2 − 1 ) × 2 + 3 = 5</p>
-<p>4、小卷积核<br>（1）堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。替代前后感受野是否相同？<br>（注：VGG网络中卷积的Stride默认为1）<br>&emsp; Feature map: F = 1 F=1F=1<br>&emsp; * Conv3x3(3): F = ( 1 − 1 ) × 1 + 3 = 3<br>&emsp; * Conv3x3(2): F = ( 3 − 1 ) × 1 + 3 = 5 （5×5卷积核感受野）<br>&emsp; * Conv3x3(1): F = ( 5 − 1 ) × 1 + 3 = 7 （7×7卷积核感受野）</p>
-<p>（2）堆叠3×3卷积核后训练参数是否真的减少了？<br>&emsp; 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度。<br>&emsp; 现假设 输入特征矩阵深度 = 输出特征矩阵深度 = C<br>&emsp; *使用7×7卷积核所需参数个数：7 × 7 × C × C = 49 C**2<br>&emsp; *堆叠三个3×3的卷积核所需参数个数：3 × 3 × C × C + 3 × 3 × C × C + 3 × 3 × C × C = 27 C**2 </p>
-<p>5、VGG-16<br>（1）VGG网络有多个版本，一般常用的是VGG-16模型，其网络结构如下如所示：<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/VGG16.jpg" alt="VGG16"><br>（2）稍作计算可以发现，经3×3卷积的特征矩阵的尺寸是不改变的：</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
-      </categories>
-      <tags>
-        <tag>阶段四：图像分类实战</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ResNet</title>
-    <url>/2023/11/14/ResNet/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：ResNet网络结构详解与迁移学习<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、ResNet 详解<br>（1）ResNet 网络是在 2015年 由微软实验室提出，斩获当年ImageNet竞赛中分类任务第一名，目标检测第一名。获得COCO数据集中目标检测第一名，图像分割第一名。<br>（2）ResNet网络的创新点：<br>&emsp; * 提出 Residual 结构（残差结构），并搭建超深的网络结构（可突破1000层）。<br>&emsp; * 使用 Batch Normalization 加速训练（丢弃dropout）。</p>
-<p>2、Why residual?<br>（1）在ResNet网络提出之前，传统的卷积神经网络都是通过将一系列卷积层与池化层进行堆叠得到的。<br>（2）一般我们会觉得网络越深，特征信息越丰富，模型效果应该越好。但是实验证明，当网络堆叠到一定深度时，会出现两个问题：<br>&emsp; 梯度消失或梯度爆炸：<br>&emsp; * 若每一层的误差梯度小于1，反向传播时，网络越深，梯度越趋近于0<br>&emsp; * 反之，若每一层的误差梯度大于1，反向传播时，网路越深，梯度越来越大<br>&emsp; 退化问题(degradation problem)：<br>&emsp; * 在解决了梯度消失、爆炸问题后，仍然存在深层网络的效果可能比浅层网络差的现象<br>&emsp; 当网络堆叠到一定深度时，反而会出现深层网络比浅层网络效果差的情况。<br>&emsp; 如下图所示，20层网络 反而比 56层网络 的误差更小：<br><img src="/pic/ResNet/rs01.png"><br>&emsp; 对于梯度消失或梯度爆炸问题，ResNet论文提出通过数据的预处理以及在网络中使用 BN（Batch Normalization）层来解决。<br>&emsp; 对于退化问题，ResNet论文提出了 residual结构（残差结构）来减轻退化问题，下图是使用residual结构的卷积网络，可以看到随着网络的不断加深，效果并没有变差，而是变的更好了。（虚线是train error，实线是test error）<br><img src="/pic/ResNet/rs02.png"></p>
-<p>3、What is residual？<br>（1）为了解决深层网络中的退化问题，可以人为地让神经网络某些层跳过下一层神经元的连接，隔层相连，弱化每层之间的强联系。这种神经网络被称为 残差网络 (ResNets)。<br>（2）残差网络由许多隔层相连的神经元子模块组成，我们称之为 残差块 Residual block。单个残差块的结构如下图所示：<br><img src="/pic/ResNet/rs03.png"><br><img src="/pic/ResNet/rs04.jpg"></p>
-<p>4、ResNet中的残差结构<br>（1）实际应用中，残差结构的 short cut 不一定是隔一层连接，也可以中间隔多层，ResNet所提出的残差网络中就是隔多层。<br>（2）下图中左侧残差结构称为 BasicBlock，右侧残差结构称为 Bottleneck<br><img src="/pic/ResNet/rs05.png"><br>对于深层的 Bottleneck，1×1的卷积核起到降维和升维（特征矩阵深度）的作用，同时可以大大减少网络参数。<br><img src="/pic/ResNet/rs06.jpg"></p>
-<p>5、降维时的 short cut<br>（1）观察下图的 ResNet18层网络，可以发现有些残差块的 short cut 是实线的，而有些则是虚线的。这些虚线的 short cut 上通过1×1的卷积核进行了维度处理（特征矩阵在长宽方向降采样，深度方向调整成下一层残差结构所需要的channel）。<br><img src="/pic/ResNet/rs07.png"></p>
-<p>6、迁移学习简介<br>（1）迁移学习是一个比较大的领域，我们这里说的迁移学习是指神经网络训练中使用到的迁移学习。<br>（2）在迁移学习中，我们希望利用源任务（Source Task）学到的知识帮助学习目标任务 (Target Task)。例如，一个训练好的图像分类网络能够被用于另一个图像相关的任务。再比如，一个网络在仿真环境学习的知识可以被迁移到真实环境的网络。迁移学习一个典型的例子就是载入训练好VGG网络，这个大规模分类网络能将图像分到1000个类别，然后把这个网络用于另一个任务，如医学图像分类。<br>（3）为什么可以这么做呢？如下图所示，神经网络逐层提取图像的深层信息，这样，预训练网络就相当于一个特征提取器。<br><img src="/pic/ResNet/rs08.png"><br>（4）使用迁移学习的优势：<br>&emsp; * 能够快速的训练出一个理想的结果<br>&emsp; * 当数据集较小时也能训练出理想的效果<br>&emsp; （注意：使用别人预训练好的模型参数时，要注意别人的预处理方式。）<br>（5）常见的迁移学习方式：<br>&emsp; * 载入权重后训练所有参数<br>&emsp; * 载入权重后只训练最后几层参数<br>&emsp; * 载入权重后在原网络基础上再添加一层全连接层，仅训练最后一个全连接层<br><img src="/pic/ResNet/rs09.png"></p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
-      </categories>
-      <tags>
-        <tag>阶段四：图像分类实战</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客模板</title>
-    <url>/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：博客模板制作<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Hexo_博客随记</category>
-      </categories>
-      <tags>
-        <tag>博客模板</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数理统计复习</title>
     <url>/2023/11/09/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0/</url>
     <content><![CDATA[<hr>
@@ -385,18 +355,18 @@
       </tags>
   </entry>
   <entry>
-    <title>常用快捷键随记</title>
-    <url>/2023/11/11/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9A%8F%E8%AE%B0/</url>
+    <title>博客模板</title>
+    <url>/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：电脑常用快捷键随记<span id="more"></span></li>
+<li>本文简介：博客模板制作<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、截图<br>（1）win10自带：Win+Shift+S</p>
-<p>2、系统控制<br>（1）任务管理器：Ctrl+Shift+Esc</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
+<p>2、<br>（1）</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -408,10 +378,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>工具小世界</category>
+        <category>Hexo_博客随记</category>
       </categories>
       <tags>
-        <tag>电脑办公</tag>
+        <tag>博客模板</tag>
       </tags>
   </entry>
   <entry>
@@ -453,11 +423,22 @@
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：Object Detection结构组成理解<span id="more"></span></li>
+<li>本文简介：Object Detection结构组成<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、目标检测的核心组成<br>目标检测的结构可以分成三个部分：Backbone、Neck、Head。<br>（1）Backbone<br>①Backbone（主干网络）。既然说他是网络，Backbone充当了整个目标检测网络的一部分。Backbone在整个目标检测网络当中指的是特征提取网络，其作用是提取图片当中的特征信息。在CV领域，使用卷积神经网络(CNN)来提取所输入的图片的特征，提取彼此之间的共同点，通过不断地卷积，缩小特征图尺寸，从而找到最核心的部分。<br>②常用的Backbone主要有：</p>
+<ul>
+<li>提取能力强：VGG、ResNet（ResNet18，50，100）、ResNeXt、DenseNet等</li>
+<li>轻量：MobileNet、GhostNet、VoVNet、ShuffleNet、ThunderNet等<br>（2）Neck<br>①Neck（颈部）。Neck是目标检测框架中承上启下的关键环节。Neck在目标检测网络主要是把Backbone提取的特征进行融合，使得网络学习到的特征更具备多样性，提高检测网络的性能。更好地融合/提取Backbone所给出的feature，然后再交由后续的Head去检测，从而提高网络的性能。<br>它对Backbone提取到的重要特征进行再加工及合理利用，有利于下一步Head的具体任务学习，如分类、回归、keypoint、instance mask等常见的任务。Neck放在backbone和head之间的，是为了更好的利用backbone提取的特征。 像是最著名的FPN——《Feature Pyramid NetworksforObject Detection》 提出的FPN结构，将不同尺度的特征进行融合，充分利用Backbone提取的特征信息。<br>②常用的Neck主要有：</li>
+<li>Additional blocks：SPP、ASPP、RFB、SAM</li>
+<li>Path-aggregation blocks：FPN、PAN、NAS-FPN、Fully-connected FPN、BiFPN、ASFF、SFAM、NAS-FPN<br>（3）Head<br>①Head（头部）。在目标检测网络中一般叫做检测头。Head是获取网络输出内容的网络，利用之前提取的特征，Head利用这些特征，做出预测。Head可以理解为是根据Backbone提取出来的特征，从这些特征中预测目标的位置和类别。目标检测除了识别出物体的类别，更重要的是还要对物体进行定位，主要作用是定位和分类。<br>②常用的Head主要有：</li>
+<li>Dense Prediction (one-stage)：RPN、SSD、YOLO、RetinaNet(anchor based)、CornerNet、CenterNet、MatrixNet、FCOS(anchor free)</li>
+<li>Sparse Prediction (two-stage)：Faster R-CNN、R-FCN、Mask RCNN (anchor based)、RepPoints(anchor free)<br>（4）总结<br>通过对目标检测各个组成部分的介绍和描述。一个目标检测网络的组成可以由一个公式来描述<br>Detector = Backbone + Neck + Head<br>其中</li>
+<li>Backbone：提取基础特征网络</li>
+<li>Neck：提出一个好的结构或模块，更好适应 feature</li>
+<li>Head：分类+定位</li>
+</ul>
+<p>备注：基于transformer结构的新的目标检测范式（有兴趣学习一下）</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -473,6 +454,66 @@
       </categories>
       <tags>
         <tag>阶段五：目标检测实战</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习</title>
+    <url>/2023/11/12/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：机器学习与sklearn<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、算法选择指导<br>（1）如果数据量小于50，一般是无法使用sklearn的机器学习算法建模的。<br>（2）如果数据有类别标签，请使用分类模型。<br>（3）如果数据需要预测精确值，请使用回归模型。<br>（4）如果想查看数据分布情况，可以考虑使用降维算法。<br>（5）如果数据没有类别标签，可以使用聚类算法。</p>
+<p>2、<br>（1）</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研究方向(学习路线_记忆宫殿)</category>
+      </categories>
+      <tags>
+        <tag>阶段一：机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用快捷键随记</title>
+    <url>/2023/11/11/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9A%8F%E8%AE%B0/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：电脑常用快捷键随记<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、截图<br>（1）win10自带：Win+Shift+S</p>
+<p>2、系统控制<br>（1）任务管理器：Ctrl+Shift+Esc</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具小世界</category>
+      </categories>
+      <tags>
+        <tag>电脑办公</tag>
       </tags>
   </entry>
   <entry>
@@ -509,73 +550,6 @@
       </categories>
       <tags>
         <tag>矩阵论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>机器学习</title>
-    <url>/2023/11/12/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：机器学习与sklearn<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、算法选择指导<br>（1）如果数据量小于50，一般是无法使用sklearn的机器学习算法建模的。<br>（2）如果数据有类别标签，请使用分类模型。<br>（3）如果数据需要预测精确值，请使用回归模型。<br>（4）如果想查看数据分布情况，可以考虑使用降维算法。<br>（5）如果数据没有类别标签，可以使用聚类算法。</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
-      </categories>
-      <tags>
-        <tag>阶段一：机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机体系结构</title>
-    <url>/2023/11/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：研一期末计算机体系结构复习<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>（7道题）<br>1、题一<br>（1）Amdahl定律（计算题）<br>（2）Risc和Cisc的区别（论述题）</p>
-<p>2、题二<br>（1）代码的相关性，针对这种相关，在流水线中怎么解决？</p>
-<p>3、题三<br>（1）记忆题</p>
-<p>4、题四<br>（1）时空图（吞吐率、加速比、流水线效率）</p>
-<p>5、题五<br>（1）指令级并行一定会考</p>
-<p>6、题六<br>（1）指令调度</p>
-<p>7、题七<br>（1）循环展开（5.1、5.2）</p>
-<p>8、题八<br>（1）向量处理机</p>
-<p>备注：（该老师是老6，复习重点没有用，出题没有按照复习重点出题，要小心）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研一期末复习_记忆宫殿</category>
-      </categories>
-      <tags>
-        <tag>计算机体系结构</tag>
       </tags>
   </entry>
   <entry>
@@ -640,6 +614,43 @@
       </categories>
       <tags>
         <tag>面向对象分析与设计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机体系结构</title>
+    <url>/2023/11/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：研一期末计算机体系结构复习<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>（7道题）<br>1、题一<br>（1）Amdahl定律（计算题）<br>（2）Risc和Cisc的区别（论述题）</p>
+<p>2、题二<br>（1）代码的相关性，针对这种相关，在流水线中怎么解决？</p>
+<p>3、题三<br>（1）记忆题</p>
+<p>4、题四<br>（1）时空图（吞吐率、加速比、流水线效率）</p>
+<p>5、题五<br>（1）指令级并行一定会考</p>
+<p>6、题六<br>（1）指令调度</p>
+<p>7、题七<br>（1）循环展开（5.1、5.2）</p>
+<p>8、题八<br>（1）向量处理机</p>
+<p>备注：（该老师是老6，复习重点没有用，出题没有按照复习重点出题，要小心）</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研一期末复习_记忆宫殿</category>
+      </categories>
+      <tags>
+        <tag>计算机体系结构</tag>
       </tags>
   </entry>
   <entry>
