@@ -6,7 +6,7 @@
   <link href="https://mapao0110.github.io/atom.xml" rel="self"/>
   
   <link href="https://mapao0110.github.io/"/>
-  <updated>2024-01-11T14:31:57.299Z</updated>
+  <updated>2024-01-15T13:46:01.560Z</updated>
   <id>https://mapao0110.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://mapao0110.github.io/2024/01/11/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/"/>
     <id>https://mapao0110.github.io/2024/01/11/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/</id>
     <published>2024-01-11T14:27:44.000Z</published>
-    <updated>2024-01-11T14:31:57.299Z</updated>
+    <updated>2024-01-15T13:46:01.560Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：目标检测常用的评价指标<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p><p>2、<br>（1）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：目标检测常用的评价指标<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、精确率（Precision），召回率（Recall），准确率（Accuracy）<br>（1）假设我们的分类目标只有两类，计为正例（positive）和负例（negtive）<br>①True positives(TP): 被正确地划分为正例的个数，即实际为正例且被分类器划分为正例的实例数（样本数）；<br>②False positives(FP): 被错误地划分为正例的个数，即实际为负例但被分类器划分为正例的实例数；<br>③False negatives(FN): 被错误地划分为负例的个数，即实际为正例但被分类器划分为负例的实例数；<br>④True negatives(TN): 被正确地划分为负例的个数，即实际为负例且被分类器划分为负例的实例数。</p><p>（2）准确率(Precision)：表示预测为正样本的样本中真正为正样本的比例。<br>①计算方法为：Precision = TP/(TP + FP)<br>②准确率衡量了目标检测器在所有预测结果中预测正确的比例。</p><p>（3）召回率(Recall)：表示真正的正样本中被检测出来的比例。<br>①计算方法为：Recall = TP/(TP + FN)<br>②召回率衡量了目标检测器找到了多少正样本。</p><p>（4）准确率(Accuracy)：表示在所有样本中，你预测对的占多少。<br>①计算方法为：Acc = （TP+TN）/(TP + FP+TN+FN)</p><p>2、平均精度（Average Precision，AP），平均AP值（Mean Average Precision，mAP）<br>（1）AP的计算过程如下：<br>①对于每个类别，根据预测框和真实标注框的匹配情况，计算每个预测框的置信度分数和其对应的真实框的IOU值；<br>②对置信度分数按照从大到小的顺序排序，得到一个分数列表，列表中每个分数对应一个预测框；<br>③对每张图像的每个检测框与groundTruth计算IOU，大于阈值的为TP，否则为FP；<br>④根据计算的准确率和召回率，得到一个Precision-Recall曲线（PR曲线）；<br>⑤通过对PR曲线下面的面积进行积分，即可得到该类别的AP值。</p><p> （2）mAP：即 Mean Average Precision即平均AP值，是对多个验证集个体求平均AP值，作为 object dection中衡量检测精度的指标。</p><p>3、预测框和目标框的交/并比IOU<br>（1）目标检测中的IoU（Intersection over Union）是检测框和真实框之间的相交面积占两者并集面积的比例，通常用于度量目标检测算法中物体定位准确性。<br>（2）计算公式如下：IOU = Area of Overlap/Area of Union<br>其中：</p><ul><li>Area of Overlap：两个框的交集面积，可以通过计算两个框的左上角和右下角坐标来得到。</li><li>Area of Union：两个框的并集面积，即两个框的面积之和减去交集面积。<br>（3）通常在目标检测中，当IOU值大于等于某个阈值（如0.5或0.7）时，我们就认为该检测框正确地定位了目标。</li></ul><p>4、FPS<br>（1）除了检测准确度，目标检测算法的另外一个重要性能指标是速度，只有速度快，才能实现实时检测，这对一些应用场景极其重要。评估速度的常用指标是每秒帧率（Frame Per Second，FPS），即每秒内可以处理的图片数量。当然要对比FPS，你需要在同一硬件上进行。另外也可以使用处理一张图片所需时间来评估检测速度，时间越短，速度越快。</p><p>5、NMS(非极大抑制)<br>（1）NMS即non maximum suppression即非极大抑制，顾名思义就是抑制不是极大值的元素，搜索局部的极大值。<br>（2）在物体检测中，NMS 应用十分广泛，其目的是为了清除多余的框，找到最佳的物体检测的位置。</p><p>6、置信度分数<br>（1）在目标检测中，每个预测框都会被分配一个置信度分数，表示该框中包含物体的概率。一般来说，这个分数是通过网络输出的框框得分（box score）和物体类别得分（object score）进行加权得到的。<br>（2）具体来说，对于一个预测框，它的得分由两个因素组成：<br>①框框得分（box score）：表示该框与目标边界框的重合程度，通常是通过计算交/并比（IOU）来评估。如果框框与目标边界框的IOU越大，框框得分就越高。<br>②物体得分（object score）：表示该框中存在某个物体的概率。在一些目标检测模型中，这个分数是通过对每个预设的类别分别进行二分类来得到的。即，对于每个预测框，都会输出一个它属于每个类别的概率值。通常，我们将每个预测框的最高分数看作其物体得分。</p><p>7、AP@50<br>（1）AP@50是一种常用的评估指标，它表示在Recall为50%时的平均精度（Average Precision，AP）值。在COCO数据集中，AP@50通常用于衡量目标检测器的性能。</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;hr&gt;
