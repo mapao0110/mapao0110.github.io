@@ -251,13 +251,13 @@
   </entry>
   
   <entry>
-    <title>机器学习</title>
-    <link href="https://mapao0110.github.io/2023/11/12/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://mapao0110.github.io/2023/11/12/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</id>
+    <title>机器学习与sklearn</title>
+    <link href="https://mapao0110.github.io/2023/11/12/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8Esklearn/"/>
+    <id>https://mapao0110.github.io/2023/11/12/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8Esklearn/</id>
     <published>2023-11-12T12:18:02.000Z</published>
-    <updated>2023-11-12T12:55:58.910Z</updated>
+    <updated>2024-02-03T04:18:25.464Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：机器学习与sklearn<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、算法选择指导<br>（1）如果数据量小于50，一般是无法使用sklearn的机器学习算法建模的。<br>（2）如果数据有类别标签，请使用分类模型。<br>（3）如果数据需要预测精确值，请使用回归模型。<br>（4）如果想查看数据分布情况，可以考虑使用降维算法。<br>（5）如果数据没有类别标签，可以使用聚类算法。</p><p>2、<br>（1）</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul><li>个人微信公众号： Mn2+</li><li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li><li>注：学习交流使用！</li><li>本文简介：机器学习与sklearn<span id="more"></span></li></ul><hr><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、sklearn提供了分类、回归、聚类和降维4个类别的经典算法<br>（1）如果数据量小于50，一般是无法使用sklearn的机器学习算法建模的。<br>（2）如果数据有类别标签，请使用分类模型。<br>（3）如果数据需要预测精确值，请使用回归模型。<br>（4）如果想查看数据分布情况，可以考虑使用降维算法。<br>（5）如果数据没有类别标签，可以使用聚类算法。</p><p>2、sklearn环境配置<br>（1）如果你使用的Python环境是Anaconda，那么默认已经安装了sklearn。<br>（2）安装命令：<br><code>pip install scikit-learn</code></p><p>3、数据集<br>（1）人工智能的核心在于数据支持。<br>（2）在机器学习任务中，数据集有三大功能：训练、验证和测试。<br>① 训练即拟合模型的过程，模型会通过分析数据、调节内部参数从而得到最优的模型效果。<br>② 验证即验证模型效果，效果可以指导我们调整模型中的超参数（在开始训练之前设置参数，而不是通过训练得到参数），通常会使用少量未参与训练的数据对模型进行验证。<br>③ 测试的作用是检查模型是否具有泛化能力。<br>（3）自带的小型数据集<br>① load_iris：该数据集包含了150条鸢(yuan)尾花数据。<br>② load_boston：是关于波士顿房屋特征与房价之间关系的数据集，包含13个房屋特征。<br>③ load_digits：是一个比MNIST更小的手写数字图片数据集。<br>（4）在线下载的数据集<br>Fetch系列函数用于获取较大规模的数据集，这些数据集会自动从网上下载。<br>（5）计算机生成的数据集<br>用sklearn生成的数据集可以用来测试一些基础的模型功能，比如多分类数据集、聚类数据集以及高斯分布数据集等。</p><p>4、分类<br>（1）<br>（2）</p><p>5、</p><hr><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul><li><p>个人微信公众号：Mn2+</p></li><li><p>哔哩哔哩：不爱码字的小懒马儿</p></li><li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;hr&gt;

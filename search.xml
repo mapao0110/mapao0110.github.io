@@ -1,74 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>GoogLeNet</title>
-    <url>/2023/11/13/GoogLeNet/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：GoogLeNet结构详解<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、关于GoogLeNet网络<br>（1）GoogLeNet在2014年由Google团队提出（与VGG网络同年，注意GoogLeNet中的L大写是为了致敬LeNet），斩获当年ImageNet竞赛中Classification Task (分类任务) 第一名。<br>（2）GoogLeNet 的创新点：<br>&emsp; * 引入了 Inception 结构（融合不同尺度的特征信息）<br>&emsp; * 使用1x1的卷积核进行降维以及映射处理 （虽然VGG网络中也有，但该论文介绍的更详细）<br>&emsp; * 添加两个辅助分类器帮助训练<br>&emsp; * 丢弃全连接层，使用平均池化层（大大减少模型参数，除去两个辅助分类器，网络大小只有vgg的1/20）</p>
-<p>2、inception 结构<br>（1）传统的CNN结构如AlexNet、VggNet都是串联的结构，即将一系列的卷积层和池化层进行串联得到的结构。<br>（2）GoogLeNet 提出了一种并联结构，下图是论文中提出的inception原始结构，将特征矩阵同时输入到多个分支进行处理，并将输出的特征矩阵按深度进行拼接，得到最终输出。<br><img src="/pic/GoogLeNet/inception.png" alt="inception"><br>&emsp; * inception的作用：增加网络深度和宽度的同时减少参数。<br>&emsp; * 注意：每个分支所得特征矩阵的高和宽必须相同（通过调整stride和padding），以保证输出特征能在深度上进行拼接。</p>
-<p>3、inception + 降维<br>（1）在 inception 的基础上，还可以加上降维功能的结构，如下图所示，在原始 inception 结构的基础上，在分支2，3，4上加入了卷积核大小为1x1的卷积层，目的是为了降维（减小深度），减少模型训练参数，减少计算量。<br><img src="/pic/GoogLeNet/inception02.png" alt="inception + 降维"><br>（2）1×1卷积核的降维功能<br>&emsp; 同样是对一个深度为512的特征矩阵使用64个大小为5x5的卷积核进行卷积，不使用1x1卷积核进行降维的 话一共需要819200个参数，如果使用1x1卷积核进行降维一共需要50688个参数，明显少了很多。<br><img src="/pic/GoogLeNet/jc.png" alt="降维功能"><br>&emsp; * 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度</p>
-<p>4、辅助分类器（Auxiliary Classifier）<br>（1）AlexNet 和 VGG 都只有1个输出层，GoogLeNet 有3个输出层，其中的两个是辅助分类层。<br>（2）如下图所示，网络主干右边的 两个分支 就是 辅助分类器，其结构一模一样。在训练模型时，将两个辅助分类器的损失乘以权重（论文中是0.3）加到网络的整体损失上，再进行反向传播。<br><img src="/pic/GoogLeNet/GoogLeNet.png" alt="GoogLeNet"></p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
-      </categories>
-      <tags>
-        <tag>阶段四：图像分类实战</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PyTorch基础</title>
-    <url>/2023/10/31/PyTorch%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：PyTorch相关基础概念<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
-<li><p>计算图：用来描述运算的有向无环图<br>（1）计算图有两个主要元素：结点（Node）和边（Edge）；<br>（2）结点表示数据，如向量、矩阵、张量，边表示运算，如加减乘除卷积等；<br><img src="/pic/PyTorch%E5%9F%BA%E7%A1%80/jstu.png" alt="计算图表示"><br>（3）PyTorch基于动态图，TensorFlow基于静态图<br>静态图框架好比C++，每次修改之后运行都要重新编译才行，动态图框架好比Python，动态执行，可以交互式查看修改。</p>
-</li>
-<li><p>节点和结点的区别：节点，被认为是一个实体，有处理能力，比如：网络上的一台计算机；而结点则只是一个交叉点，像“结绳记事”，打个结，做个标记，仅此而已，一般算法中点的都是结点。</p>
-</li>
-<li><p>PyTorch的设计遵循tensor-&gt;variable(autograd)-&gt;nn.Module三个由低到高的抽象层次，分别代表高维数组（张量）、自动求导（变量）和神经网络（层/模块）。</p>
-</li>
-</ol>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>深度学习_随心所欲</category>
-      </categories>
-      <tags>
-        <tag>PyTorch</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeNet</title>
     <url>/2023/11/09/LeNet/</url>
     <content><![CDATA[<hr>
@@ -130,6 +62,67 @@
       </tags>
   </entry>
   <entry>
+    <title>GoogLeNet</title>
+    <url>/2023/11/13/GoogLeNet/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：GoogLeNet结构详解<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、关于GoogLeNet网络<br>（1）GoogLeNet在2014年由Google团队提出（与VGG网络同年，注意GoogLeNet中的L大写是为了致敬LeNet），斩获当年ImageNet竞赛中Classification Task (分类任务) 第一名。<br>（2）GoogLeNet 的创新点：<br>&emsp; * 引入了 Inception 结构（融合不同尺度的特征信息）<br>&emsp; * 使用1x1的卷积核进行降维以及映射处理 （虽然VGG网络中也有，但该论文介绍的更详细）<br>&emsp; * 添加两个辅助分类器帮助训练<br>&emsp; * 丢弃全连接层，使用平均池化层（大大减少模型参数，除去两个辅助分类器，网络大小只有vgg的1/20）</p>
+<p>2、inception 结构<br>（1）传统的CNN结构如AlexNet、VggNet都是串联的结构，即将一系列的卷积层和池化层进行串联得到的结构。<br>（2）GoogLeNet 提出了一种并联结构，下图是论文中提出的inception原始结构，将特征矩阵同时输入到多个分支进行处理，并将输出的特征矩阵按深度进行拼接，得到最终输出。<br><img src="/pic/GoogLeNet/inception.png" alt="inception"><br>&emsp; * inception的作用：增加网络深度和宽度的同时减少参数。<br>&emsp; * 注意：每个分支所得特征矩阵的高和宽必须相同（通过调整stride和padding），以保证输出特征能在深度上进行拼接。</p>
+<p>3、inception + 降维<br>（1）在 inception 的基础上，还可以加上降维功能的结构，如下图所示，在原始 inception 结构的基础上，在分支2，3，4上加入了卷积核大小为1x1的卷积层，目的是为了降维（减小深度），减少模型训练参数，减少计算量。<br><img src="/pic/GoogLeNet/inception02.png" alt="inception + 降维"><br>（2）1×1卷积核的降维功能<br>&emsp; 同样是对一个深度为512的特征矩阵使用64个大小为5x5的卷积核进行卷积，不使用1x1卷积核进行降维的 话一共需要819200个参数，如果使用1x1卷积核进行降维一共需要50688个参数，明显少了很多。<br><img src="/pic/GoogLeNet/jc.png" alt="降维功能"><br>&emsp; * 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度</p>
+<p>4、辅助分类器（Auxiliary Classifier）<br>（1）AlexNet 和 VGG 都只有1个输出层，GoogLeNet 有3个输出层，其中的两个是辅助分类层。<br>（2）如下图所示，网络主干右边的 两个分支 就是 辅助分类器，其结构一模一样。在训练模型时，将两个辅助分类器的损失乘以权重（论文中是0.3）加到网络的整体损失上，再进行反向传播。<br><img src="/pic/GoogLeNet/GoogLeNet.png" alt="GoogLeNet"></p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研究方向(学习路线_记忆宫殿)</category>
+      </categories>
+      <tags>
+        <tag>阶段四：图像分类实战</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pycharm导包遇到的问题</title>
+    <url>/2023/11/08/Pycharm%E5%AF%BC%E5%8C%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：Pycharm导包遇到的小问题及解决办法。<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、Pycharm中导入matplotlib遇到问题，但在控制台(cmd、conda)中pip list能够找到matplotlib包<br>（1）原因：因为在anaconda中创建了tensorflow、pytorch等多个虚拟环境，第一次在tensorflow中安装了matplotlib，所以pip list能够看到matplotlib安装包，<br>但在pytorch下因为没有安装所以找不到module。<br>（2）搞心态：此时在pycharm中install matplotlib会显示失败，在cdm和conda中pip install matplotlib也会失败，仿佛怎么也弄不好。<br>（3）解决办法：进入anaconda prompt，然后进入pytorch环境（activate pytorch）,再在里面通过pip install matplotlib安装包，问题解决。<br>（4）举一反三：在切换python解释器的时候，其它相应的包如果遇到同样的问题，可对症下药。</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>深度学习_随心所欲</category>
+      </categories>
+      <tags>
+        <tag>Pycharm导包</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ResNet</title>
     <url>/2023/11/14/ResNet/</url>
     <content><![CDATA[<hr>
@@ -164,22 +157,18 @@
       </tags>
   </entry>
   <entry>
-    <title>VGG网络</title>
-    <url>/2023/11/13/VGG%E7%BD%91%E7%BB%9C/</url>
+    <title>博客模板</title>
+    <url>/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：VGG网络详解<span id="more"></span></li>
+<li>本文简介：博客模板制作<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、VGG 在2014年由牛津大学著名研究组 VGG（Visual Geometry Group）提出。</p>
-<p>2、VGG网络的创新点<br>（1）通过堆叠多个小卷积核来替代大尺度卷积核，可以减少训练参数，同时能保证相同的感受野。<br>（2）论文中提到，可以通过堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。</p>
-<p>3、CNN感受野<br>（1）卷积神经网络中，决定某一层输出结果中一个元素所对应的输入层的区域大小，被称作感受野（receptive field）。<br>（2）通俗的解释是，输出feature map上的一个单元 对应 输入层上的区域大小。<br>（3）以下图为例，输出层 layer3 中一个单元 对应 输入层 layer2 上区域大小为2×2（池化操作），对应输入层 layer1 上大小为5×5（可以这么理解，layer2中 2×2区域中的每一块对应一个3×3的卷积核，又因为 stride=2，所以layer1的感受野为5×5）<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/gsy.jpg" alt="感受野"><br>（4）感受野的计算公式为：<br>&emsp; F(i)=(F(i+1)−1)×Stride +Ksize<br>&emsp;  * F(i) 为第i层感受野<br>&emsp; * Stride为第i层的步距<br>&emsp; * Ksize为 卷积核 或 池化核 尺寸<br>&emsp; 以上图为例：<br>&emsp; * Feature map: F ( 3 ) = 1<br>&emsp; * Pool1：F ( 2 ) = ( 1 − 1 ) × 2 + 2 = 2<br>&emsp; * Conv1: F ( 1 ) = ( 2 − 1 ) × 2 + 3 = 5</p>
-<p>4、小卷积核<br>（1）堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。替代前后感受野是否相同？<br>（注：VGG网络中卷积的Stride默认为1）<br>&emsp; Feature map: F = 1 F=1F=1<br>&emsp; * Conv3x3(3): F = ( 1 − 1 ) × 1 + 3 = 3<br>&emsp; * Conv3x3(2): F = ( 3 − 1 ) × 1 + 3 = 5 （5×5卷积核感受野）<br>&emsp; * Conv3x3(1): F = ( 5 − 1 ) × 1 + 3 = 7 （7×7卷积核感受野）</p>
-<p>（2）堆叠3×3卷积核后训练参数是否真的减少了？<br>&emsp; 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度。<br>&emsp; 现假设 输入特征矩阵深度 = 输出特征矩阵深度 = C<br>&emsp; *使用7×7卷积核所需参数个数：7 × 7 × C × C = 49 C**2<br>&emsp; *堆叠三个3×3的卷积核所需参数个数：3 × 3 × C × C + 3 × 3 × C × C + 3 × 3 × C × C = 27 C**2 </p>
-<p>5、VGG-16<br>（1）VGG网络有多个版本，一般常用的是VGG-16模型，其网络结构如下如所示：<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/VGG16.jpg" alt="VGG16"><br>（2）稍作计算可以发现，经3×3卷积的特征矩阵的尺寸是不改变的：</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
+<p>2、<br>（1）</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -191,10 +180,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
+        <category>Hexo_博客随记</category>
       </categories>
       <tags>
-        <tag>阶段四：图像分类实战</tag>
+        <tag>博客模板</tag>
       </tags>
   </entry>
   <entry>
@@ -253,78 +242,24 @@
       </tags>
   </entry>
   <entry>
-    <title>博客模板</title>
-    <url>/2023/10/31/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF/</url>
+    <title>PyTorch基础</title>
+    <url>/2023/10/31/PyTorch%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：博客模板制作<span id="more"></span></li>
+<li>本文简介：PyTorch相关基础概念<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、<br>（1）</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
+<li><p>计算图：用来描述运算的有向无环图<br>（1）计算图有两个主要元素：结点（Node）和边（Edge）；<br>（2）结点表示数据，如向量、矩阵、张量，边表示运算，如加减乘除卷积等；<br><img src="/pic/PyTorch%E5%9F%BA%E7%A1%80/jstu.png" alt="计算图表示"><br>（3）PyTorch基于动态图，TensorFlow基于静态图<br>静态图框架好比C++，每次修改之后运行都要重新编译才行，动态图框架好比Python，动态执行，可以交互式查看修改。</p>
 </li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+<li><p>节点和结点的区别：节点，被认为是一个实体，有处理能力，比如：网络上的一台计算机；而结点则只是一个交叉点，像“结绳记事”，打个结，做个标记，仅此而已，一般算法中点的都是结点。</p>
 </li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+<li><p>PyTorch的设计遵循tensor-&gt;variable(autograd)-&gt;nn.Module三个由低到高的抽象层次，分别代表高维数组（张量）、自动求导（变量）和神经网络（层/模块）。</p>
 </li>
-</ul>
-]]></content>
-      <categories>
-        <category>Hexo_博客随记</category>
-      </categories>
-      <tags>
-        <tag>博客模板</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新时代中国特色社会主义理论与实践</title>
-    <url>/2023/11/11/%E6%96%B0%E6%97%B6%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：研一期末新时代中国特色社会主义理论与实践复习<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）未知</p>
-<p>2、简答题<br>（1）复习课本</p>
-<p>3、材料题<br>（1）复习课本</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研一期末复习_记忆宫殿</category>
-      </categories>
-      <tags>
-        <tag>新时代中国特色社会主义理论与实践</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pycharm导包遇到的问题</title>
-    <url>/2023/11/08/Pycharm%E5%AF%BC%E5%8C%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：Pycharm导包遇到的小问题及解决办法。<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、Pycharm中导入matplotlib遇到问题，但在控制台(cmd、conda)中pip list能够找到matplotlib包<br>（1）原因：因为在anaconda中创建了tensorflow、pytorch等多个虚拟环境，第一次在tensorflow中安装了matplotlib，所以pip list能够看到matplotlib安装包，<br>但在pytorch下因为没有安装所以找不到module。<br>（2）搞心态：此时在pycharm中install matplotlib会显示失败，在cdm和conda中pip install matplotlib也会失败，仿佛怎么也弄不好。<br>（3）解决办法：进入anaconda prompt，然后进入pytorch环境（activate pytorch）,再在里面通过pip install matplotlib安装包，问题解决。<br>（4）举一反三：在切换python解释器的时候，其它相应的包如果遇到同样的问题，可对症下药。</p>
+</ol>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -339,7 +274,7 @@
         <category>深度学习_随心所欲</category>
       </categories>
       <tags>
-        <tag>Pycharm导包</tag>
+        <tag>PyTorch</tag>
       </tags>
   </entry>
   <entry>
@@ -382,22 +317,22 @@
       </tags>
   </entry>
   <entry>
-    <title>数理统计复习</title>
-    <url>/2023/11/09/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0/</url>
+    <title>VGG网络</title>
+    <url>/2023/11/13/VGG%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：研一期末数理统计复习<span id="more"></span></li>
+<li>本文简介：VGG网络详解<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="考点01"><a href="#考点01" class="headerlink" title="考点01"></a>考点01</h3><p>1、数理统计的基本概念<br>（1）样本均值、样本方差、修正样本方差、样本标准差、样本k阶原点矩及样本k阶中心距(书：p4)<br>（2）样本中位数、极差，经验分布函数(书：p8、p9)<br>（3）分位数、抽样分布定理(书：p21、p22)<br>（4）三大分布：卡方分布、T分布、F分布<br>（5）伽马函数(书：p12)</p>
-<p>2、课后习题<br>（1）1.6(书：p27)、1.13(书：p29)</p>
-<h3 id="考点02"><a href="#考点02" class="headerlink" title="考点02"></a>考点02</h3><p>1、参数估计<br>（1）无偏估计及有效估计(p84-2.8)<br>（2）矩估计(多个未知参数)及极大似然估计(p82-2.1-2.2)<br>&emsp; 书：p32&lt;-&gt;p33-例2.1.2、例2.1.3及拓展的其它重要分布<br>（3）区间估计(p70-p76、例2.4.1)</p>
-<h3 id="考点03"><a href="#考点03" class="headerlink" title="考点03"></a>考点03</h3><p>1、假设检验<br>（1）p98-例3.2.2-例3.2.4</p>
-<h3 id="考点04"><a href="#考点04" class="headerlink" title="考点04"></a>考点04</h3><p>1、最小二乘法<br>（1）p175</p>
-<h3 id="考点05"><a href="#考点05" class="headerlink" title="考点05"></a>考点05</h3><p>1、双因素方差分析<br>（1）方差分析表(p150)<br>（2）p151-例4.2.1</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、VGG 在2014年由牛津大学著名研究组 VGG（Visual Geometry Group）提出。</p>
+<p>2、VGG网络的创新点<br>（1）通过堆叠多个小卷积核来替代大尺度卷积核，可以减少训练参数，同时能保证相同的感受野。<br>（2）论文中提到，可以通过堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。</p>
+<p>3、CNN感受野<br>（1）卷积神经网络中，决定某一层输出结果中一个元素所对应的输入层的区域大小，被称作感受野（receptive field）。<br>（2）通俗的解释是，输出feature map上的一个单元 对应 输入层上的区域大小。<br>（3）以下图为例，输出层 layer3 中一个单元 对应 输入层 layer2 上区域大小为2×2（池化操作），对应输入层 layer1 上大小为5×5（可以这么理解，layer2中 2×2区域中的每一块对应一个3×3的卷积核，又因为 stride=2，所以layer1的感受野为5×5）<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/gsy.jpg" alt="感受野"><br>（4）感受野的计算公式为：<br>&emsp; F(i)=(F(i+1)−1)×Stride +Ksize<br>&emsp;  * F(i) 为第i层感受野<br>&emsp; * Stride为第i层的步距<br>&emsp; * Ksize为 卷积核 或 池化核 尺寸<br>&emsp; 以上图为例：<br>&emsp; * Feature map: F ( 3 ) = 1<br>&emsp; * Pool1：F ( 2 ) = ( 1 − 1 ) × 2 + 2 = 2<br>&emsp; * Conv1: F ( 1 ) = ( 2 − 1 ) × 2 + 3 = 5</p>
+<p>4、小卷积核<br>（1）堆叠两个3×3的卷积核替代5x5的卷积核，堆叠三个3×3的卷积核替代7x7的卷积核。替代前后感受野是否相同？<br>（注：VGG网络中卷积的Stride默认为1）<br>&emsp; Feature map: F = 1 F=1F=1<br>&emsp; * Conv3x3(3): F = ( 1 − 1 ) × 1 + 3 = 3<br>&emsp; * Conv3x3(2): F = ( 3 − 1 ) × 1 + 3 = 5 （5×5卷积核感受野）<br>&emsp; * Conv3x3(1): F = ( 5 − 1 ) × 1 + 3 = 7 （7×7卷积核感受野）</p>
+<p>（2）堆叠3×3卷积核后训练参数是否真的减少了？<br>&emsp; 注：CNN参数个数 = 卷积核尺寸×卷积核深度 × 卷积核组数 = 卷积核尺寸 × 输入特征矩阵深度 × 输出特征矩阵深度。<br>&emsp; 现假设 输入特征矩阵深度 = 输出特征矩阵深度 = C<br>&emsp; *使用7×7卷积核所需参数个数：7 × 7 × C × C = 49 C**2<br>&emsp; *堆叠三个3×3的卷积核所需参数个数：3 × 3 × C × C + 3 × 3 × C × C + 3 × 3 × C × C = 27 C**2 </p>
+<p>5、VGG-16<br>（1）VGG网络有多个版本，一般常用的是VGG-16模型，其网络结构如下如所示：<br><img src="/pic/VGG%E7%BD%91%E7%BB%9C/VGG16.jpg" alt="VGG16"><br>（2）稍作计算可以发现，经3×3卷积的特征矩阵的尺寸是不改变的：</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -409,10 +344,73 @@
 </ul>
 ]]></content>
       <categories>
-        <category>研一期末复习_记忆宫殿</category>
+        <category>研究方向(学习路线_记忆宫殿)</category>
       </categories>
       <tags>
-        <tag>数理统计</tag>
+        <tag>阶段四：图像分类实战</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习与sklearn</title>
+    <url>/2023/11/12/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8Esklearn/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：机器学习与sklearn<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、sklearn提供了分类、回归、聚类和降维4个类别的经典算法<br>（1）如果数据量小于50，一般是无法使用sklearn的机器学习算法建模的。<br>（2）如果数据有类别标签，请使用分类模型。<br>（3）如果数据需要预测精确值，请使用回归模型。<br>（4）如果想查看数据分布情况，可以考虑使用降维算法。<br>（5）如果数据没有类别标签，可以使用聚类算法。</p>
+<p>2、sklearn环境配置<br>（1）如果你使用的Python环境是Anaconda，那么默认已经安装了sklearn。<br>（2）安装命令：<br><code>pip install scikit-learn</code></p>
+<p>3、数据集<br>（1）人工智能的核心在于数据支持。<br>（2）在机器学习任务中，数据集有三大功能：训练、验证和测试。<br>① 训练即拟合模型的过程，模型会通过分析数据、调节内部参数从而得到最优的模型效果。<br>② 验证即验证模型效果，效果可以指导我们调整模型中的超参数（在开始训练之前设置参数，而不是通过训练得到参数），通常会使用少量未参与训练的数据对模型进行验证。<br>③ 测试的作用是检查模型是否具有泛化能力。<br>（3）自带的小型数据集<br>① load_iris：该数据集包含了150条鸢(yuan)尾花数据。<br>② load_boston：是关于波士顿房屋特征与房价之间关系的数据集，包含13个房屋特征。<br>③ load_digits：是一个比MNIST更小的手写数字图片数据集。<br>（4）在线下载的数据集<br>Fetch系列函数用于获取较大规模的数据集，这些数据集会自动从网上下载。<br>（5）计算机生成的数据集<br>用sklearn生成的数据集可以用来测试一些基础的模型功能，比如多分类数据集、聚类数据集以及高斯分布数据集等。</p>
+<p>4、分类<br>（1）<br>（2）</p>
+<p>5、</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研究方向(学习路线_记忆宫殿)</category>
+      </categories>
+      <tags>
+        <tag>阶段一：机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用快捷键随记</title>
+    <url>/2023/11/11/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9A%8F%E8%AE%B0/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：电脑常用快捷键随记<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、截图<br>（1）win10自带：Win+Shift+S</p>
+<p>2、系统控制<br>（1）任务管理器：Ctrl+Shift+Esc</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具小世界</category>
+      </categories>
+      <tags>
+        <tag>电脑办公</tag>
       </tags>
   </entry>
   <entry>
@@ -459,51 +457,22 @@
       </tags>
   </entry>
   <entry>
-    <title>机器学习</title>
-    <url>/2023/11/12/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</url>
+    <title>数理统计复习</title>
+    <url>/2023/11/09/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：机器学习与sklearn<span id="more"></span></li>
+<li>本文简介：研一期末数理统计复习<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、算法选择指导<br>（1）如果数据量小于50，一般是无法使用sklearn的机器学习算法建模的。<br>（2）如果数据有类别标签，请使用分类模型。<br>（3）如果数据需要预测精确值，请使用回归模型。<br>（4）如果想查看数据分布情况，可以考虑使用降维算法。<br>（5）如果数据没有类别标签，可以使用聚类算法。</p>
-<p>2、<br>（1）</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
-      </categories>
-      <tags>
-        <tag>阶段一：机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>研究生综合英语1</title>
-    <url>/2023/11/11/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%BB%BC%E5%90%88%E8%8B%B1%E8%AF%AD1/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：研一期末研究生综合英语1复习<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）书上的课后习题选择题原题</p>
-<p>2、完形填空<br>（1）课文内容上的某一段</p>
-<p>3、阅读理解<br>（1）四级真题（15年-最新年份）</p>
-<p>4、翻译<br>（1）中译英：课文上的某一段<br>（2）英译中：课文上的某一段</p>
-<p>5、作文<br>（1）书信（写给导师的自荐信）</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="考点01"><a href="#考点01" class="headerlink" title="考点01"></a>考点01</h3><p>1、数理统计的基本概念<br>（1）样本均值、样本方差、修正样本方差、样本标准差、样本k阶原点矩及样本k阶中心距(书：p4)<br>（2）样本中位数、极差，经验分布函数(书：p8、p9)<br>（3）分位数、抽样分布定理(书：p21、p22)<br>（4）三大分布：卡方分布、T分布、F分布<br>（5）伽马函数(书：p12)</p>
+<p>2、课后习题<br>（1）1.6(书：p27)、1.13(书：p29)</p>
+<h3 id="考点02"><a href="#考点02" class="headerlink" title="考点02"></a>考点02</h3><p>1、参数估计<br>（1）无偏估计及有效估计(p84-2.8)<br>（2）矩估计(多个未知参数)及极大似然估计(p82-2.1-2.2)<br>&emsp; 书：p32&lt;-&gt;p33-例2.1.2、例2.1.3及拓展的其它重要分布<br>（3）区间估计(p70-p76、例2.4.1)</p>
+<h3 id="考点03"><a href="#考点03" class="headerlink" title="考点03"></a>考点03</h3><p>1、假设检验<br>（1）p98-例3.2.2-例3.2.4</p>
+<h3 id="考点04"><a href="#考点04" class="headerlink" title="考点04"></a>考点04</h3><p>1、最小二乘法<br>（1）p175</p>
+<h3 id="考点05"><a href="#考点05" class="headerlink" title="考点05"></a>考点05</h3><p>1、双因素方差分析<br>（1）方差分析表(p150)<br>（2）p151-例4.2.1</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -518,29 +487,23 @@
         <category>研一期末复习_记忆宫殿</category>
       </categories>
       <tags>
-        <tag>研究生综合英语1</tag>
+        <tag>数理统计</tag>
       </tags>
   </entry>
   <entry>
-    <title>计算机体系结构</title>
-    <url>/2023/11/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</url>
+    <title>新时代中国特色社会主义理论与实践</title>
+    <url>/2023/11/11/%E6%96%B0%E6%97%B6%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：研一期末计算机体系结构复习<span id="more"></span></li>
+<li>本文简介：研一期末新时代中国特色社会主义理论与实践复习<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>（7道题）<br>1、题一<br>（1）Amdahl定律（计算题）<br>（2）Risc和Cisc的区别（论述题）</p>
-<p>2、题二<br>（1）代码的相关性，针对这种相关，在流水线中怎么解决？</p>
-<p>3、题三<br>（1）记忆题</p>
-<p>4、题四<br>（1）时空图（吞吐率、加速比、流水线效率）</p>
-<p>5、题五<br>（1）指令级并行一定会考</p>
-<p>6、题六<br>（1）指令调度</p>
-<p>7、题七<br>（1）循环展开（5.1、5.2）</p>
-<p>8、题八<br>（1）向量处理机</p>
-<p>备注：（该老师是老6，复习重点没有用，出题没有按照复习重点出题，要小心）</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）未知</p>
+<p>2、简答题<br>（1）复习课本</p>
+<p>3、材料题<br>（1）复习课本</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -555,102 +518,7 @@
         <category>研一期末复习_记忆宫殿</category>
       </categories>
       <tags>
-        <tag>计算机体系结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>矩阵论复习</title>
-    <url>/2023/11/11/%E7%9F%A9%E9%98%B5%E8%AE%BA%E5%A4%8D%E4%B9%A0/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：研一期末矩阵论复习<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="考点01（线性空间与线性变换）"><a href="#考点01（线性空间与线性变换）" class="headerlink" title="考点01（线性空间与线性变换）"></a>考点01（线性空间与线性变换）</h3><p>1、基变换与坐标变换<br>（1）基变换：新基=旧基<em>p<br>（2）坐标变换：新坐标=p逆</em>旧坐标<br>（3）正交化（施密特）<br>（4）习题：p6-例题11、p32-11-12</p>
-<h3 id="考点02（Jordan标准形）"><a href="#考点02（Jordan标准形）" class="headerlink" title="考点02（Jordan标准形）"></a>考点02（Jordan标准形）</h3><p>1、Jordan矩阵<br>（1）p44-例题(5-7)_特别是例7(向量重选)、p59-(12、13)</p>
-<p>2、最小多项式：尝试法(20分)</p>
-<h3 id="考点03（矩阵的分解）"><a href="#考点03（矩阵的分解）" class="headerlink" title="考点03（矩阵的分解）"></a>考点03（矩阵的分解）</h3><p>1、满秩分解(M-P逆)</p>
-<p>2、奇异值分解(20分)</p>
-<h3 id="考点04（矩阵的广义逆）"><a href="#考点04（矩阵的广义逆）" class="headerlink" title="考点04（矩阵的广义逆）"></a>考点04（矩阵的广义逆）</h3><p>1、求M-P逆(p99-例3)(满秩分解)</p>
-<h3 id="考点05（矩阵分析）"><a href="#考点05（矩阵分析）" class="headerlink" title="考点05（矩阵分析）"></a>考点05（矩阵分析）</h3><p>1、求范数(V,M)</p>
-<p>2、求矩阵函数e^A，sinA<br>（1）p135-15</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研一期末复习_记忆宫殿</category>
-      </categories>
-      <tags>
-        <tag>矩阵论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机视觉三大顶会</title>
-    <url>/2023/11/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E4%B8%89%E5%A4%A7%E9%A1%B6%E4%BC%9A/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：带你了解ICCV、ECCV、CVPR三大国际会议<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、前言<br>（1）作为刚入门CV的新人，有必要记住计算机视觉方面的三大顶级会议：ICCV,CVPR,ECCV，统称为ICE。<br>（2）与其它学术领域不同，计算机科学使用会议而不是期刊作为发表研究成果的主要方式。<br>2、ICCV、ECCV、CVPR是什么？<br>（1）ICCV 的全称是 IEEE International Conference on Computer Vision，即国际计算机视觉大会，是公认的三个会议中级别最高的。它的举办地方会在世界范围内选，每两年召开一次。<br>（2）ECCV的全称是European Conference on Computer Vision，即欧洲计算机视觉国际会议。每两年召开一次，与ICCV正好错开。<br>（3）CVPR全称是IEEE Conference on Computer Vision and Pattern Recognition，即IEEE国际计算机视觉与模式识别会议。该会议一般在6月举行，举办地是美国，是一个一年一次的会议。<br>3、三大会议链接<br>（1）ICCV:<a href="http://www.informatik.uni-trier.de/~ley/db/conf/iccv/index.html">http://www.informatik.uni-trier.de/~ley/db/conf/iccv/index.html</a><br>（2）ECCV： <a href="http://www.informatik.uni-trier.de/~ley/db/conf/eccv/index.html">http://www.informatik.uni-trier.de/~ley/db/conf/eccv/index.html</a><br>（3）CVPR：<a href="http://dblp.uni-trier.de/db/conf/cvpr/index.html">http://dblp.uni-trier.de/db/conf/cvpr/index.html</a></p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>研究方向(学习路线_记忆宫殿)</category>
-      </categories>
-      <tags>
-        <tag>阶段二：预备知识学习阶段</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常用快捷键随记</title>
-    <url>/2023/11/11/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9A%8F%E8%AE%B0/</url>
-    <content><![CDATA[<hr>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
-<li>个人微信公众号： Mn2+</li>
-<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-<li>本文简介：电脑常用快捷键随记<span id="more"></span></li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、截图<br>（1）win10自带：Win+Shift+S</p>
-<p>2、系统控制<br>（1）任务管理器：Ctrl+Shift+Esc</p>
-<hr>
-<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
-<li><p>个人微信公众号：Mn2+</p>
-</li>
-<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
-</li>
-<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具小世界</category>
-      </categories>
-      <tags>
-        <tag>电脑办公</tag>
+        <tag>新时代中国特色社会主义理论与实践</tag>
       </tags>
   </entry>
   <entry>
@@ -705,19 +573,50 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象分析与设计</title>
-    <url>/2023/11/12/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/</url>
+    <title>计算机视觉三大顶会</title>
+    <url>/2023/11/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E4%B8%89%E5%A4%A7%E9%A1%B6%E4%BC%9A/</url>
     <content><![CDATA[<hr>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
 <li>个人微信公众号： Mn2+</li>
 <li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
 <li>注：学习交流使用！</li>
-<li>本文简介：研一期末面向对象分析与设计复习<span id="more"></span></li>
+<li>本文简介：带你了解ICCV、ECCV、CVPR三大国际会议<span id="more"></span></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）复习历年真题</p>
-<p>2、简答题<br>（1）简述状态图和活动图的区别？<br>（2）简述 OOD 模型的总体结构，并画图表示。<br>（3）操作系统中的资源调度问题为将存在优先顺序的任务（通常抽象为有向无循环图DAG）分配至处理机上执行。请使用面向对象设计思想采用类图设计这种 DAG 结构中的类及类中属性和方法（方法只需要写出名称即可）。<br>（4）简述面向对象技术的三大机制。</p>
-<p>3、综述题<br>（1）画出网上选课系统中选课的时序图。<br>（2）画出网上选课系统中课程的状态图。<br>（3）画出网上选课系统中选课的活动图。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、前言<br>（1）作为刚入门CV的新人，有必要记住计算机视觉方面的三大顶级会议：ICCV,CVPR,ECCV，统称为ICE。<br>（2）与其它学术领域不同，计算机科学使用会议而不是期刊作为发表研究成果的主要方式。<br>2、ICCV、ECCV、CVPR是什么？<br>（1）ICCV 的全称是 IEEE International Conference on Computer Vision，即国际计算机视觉大会，是公认的三个会议中级别最高的。它的举办地方会在世界范围内选，每两年召开一次。<br>（2）ECCV的全称是European Conference on Computer Vision，即欧洲计算机视觉国际会议。每两年召开一次，与ICCV正好错开。<br>（3）CVPR全称是IEEE Conference on Computer Vision and Pattern Recognition，即IEEE国际计算机视觉与模式识别会议。该会议一般在6月举行，举办地是美国，是一个一年一次的会议。<br>3、三大会议链接<br>（1）ICCV:<a href="http://www.informatik.uni-trier.de/~ley/db/conf/iccv/index.html">http://www.informatik.uni-trier.de/~ley/db/conf/iccv/index.html</a><br>（2）ECCV： <a href="http://www.informatik.uni-trier.de/~ley/db/conf/eccv/index.html">http://www.informatik.uni-trier.de/~ley/db/conf/eccv/index.html</a><br>（3）CVPR：<a href="http://dblp.uni-trier.de/db/conf/cvpr/index.html">http://dblp.uni-trier.de/db/conf/cvpr/index.html</a></p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研究方向(学习路线_记忆宫殿)</category>
+      </categories>
+      <tags>
+        <tag>阶段二：预备知识学习阶段</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>研究生综合英语1</title>
+    <url>/2023/11/11/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%BB%BC%E5%90%88%E8%8B%B1%E8%AF%AD1/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：研一期末研究生综合英语1复习<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）书上的课后习题选择题原题</p>
+<p>2、完形填空<br>（1）课文内容上的某一段</p>
+<p>3、阅读理解<br>（1）四级真题（15年-最新年份）</p>
+<p>4、翻译<br>（1）中译英：课文上的某一段<br>（2）英译中：课文上的某一段</p>
+<p>5、作文<br>（1）书信（写给导师的自荐信）</p>
 <hr>
 <h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
 <li><p>个人微信公众号：Mn2+</p>
@@ -732,7 +631,80 @@
         <category>研一期末复习_记忆宫殿</category>
       </categories>
       <tags>
-        <tag>面向对象分析与设计</tag>
+        <tag>研究生综合英语1</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>矩阵论复习</title>
+    <url>/2023/11/11/%E7%9F%A9%E9%98%B5%E8%AE%BA%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：研一期末矩阵论复习<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="考点01（线性空间与线性变换）"><a href="#考点01（线性空间与线性变换）" class="headerlink" title="考点01（线性空间与线性变换）"></a>考点01（线性空间与线性变换）</h3><p>1、基变换与坐标变换<br>（1）基变换：新基=旧基<em>p<br>（2）坐标变换：新坐标=p逆</em>旧坐标<br>（3）正交化（施密特）<br>（4）习题：p6-例题11、p32-11-12</p>
+<h3 id="考点02（Jordan标准形）"><a href="#考点02（Jordan标准形）" class="headerlink" title="考点02（Jordan标准形）"></a>考点02（Jordan标准形）</h3><p>1、Jordan矩阵<br>（1）p44-例题(5-7)_特别是例7(向量重选)、p59-(12、13)</p>
+<p>2、最小多项式：尝试法(20分)</p>
+<h3 id="考点03（矩阵的分解）"><a href="#考点03（矩阵的分解）" class="headerlink" title="考点03（矩阵的分解）"></a>考点03（矩阵的分解）</h3><p>1、满秩分解(M-P逆)</p>
+<p>2、奇异值分解(20分)</p>
+<h3 id="考点04（矩阵的广义逆）"><a href="#考点04（矩阵的广义逆）" class="headerlink" title="考点04（矩阵的广义逆）"></a>考点04（矩阵的广义逆）</h3><p>1、求M-P逆(p99-例3)(满秩分解)</p>
+<h3 id="考点05（矩阵分析）"><a href="#考点05（矩阵分析）" class="headerlink" title="考点05（矩阵分析）"></a>考点05（矩阵分析）</h3><p>1、求范数(V,M)</p>
+<p>2、求矩阵函数e^A，sinA<br>（1）p135-15</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研一期末复习_记忆宫殿</category>
+      </categories>
+      <tags>
+        <tag>矩阵论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机体系结构</title>
+    <url>/2023/11/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：研一期末计算机体系结构复习<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>（7道题）<br>1、题一<br>（1）Amdahl定律（计算题）<br>（2）Risc和Cisc的区别（论述题）</p>
+<p>2、题二<br>（1）代码的相关性，针对这种相关，在流水线中怎么解决？</p>
+<p>3、题三<br>（1）记忆题</p>
+<p>4、题四<br>（1）时空图（吞吐率、加速比、流水线效率）</p>
+<p>5、题五<br>（1）指令级并行一定会考</p>
+<p>6、题六<br>（1）指令调度</p>
+<p>7、题七<br>（1）循环展开（5.1、5.2）</p>
+<p>8、题八<br>（1）向量处理机</p>
+<p>备注：（该老师是老6，复习重点没有用，出题没有按照复习重点出题，要小心）</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研一期末复习_记忆宫殿</category>
+      </categories>
+      <tags>
+        <tag>计算机体系结构</tag>
       </tags>
   </entry>
   <entry>
@@ -763,6 +735,37 @@
       </categories>
       <tags>
         <tag>高级人工智能</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象分析与设计</title>
+    <url>/2023/11/12/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<hr>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><ul>
+<li>个人微信公众号： Mn2+</li>
+<li><a href="https://blog.csdn.net/Mnpao?type=blog">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+<li>本文简介：研一期末面向对象分析与设计复习<span id="more"></span></li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、选择题<br>（1）复习历年真题</p>
+<p>2、简答题<br>（1）简述状态图和活动图的区别？<br>（2）简述 OOD 模型的总体结构，并画图表示。<br>（3）操作系统中的资源调度问题为将存在优先顺序的任务（通常抽象为有向无循环图DAG）分配至处理机上执行。请使用面向对象设计思想采用类图设计这种 DAG 结构中的类及类中属性和方法（方法只需要写出名称即可）。<br>（4）简述面向对象技术的三大机制。</p>
+<p>3、综述题<br>（1）画出网上选课系统中选课的时序图。<br>（2）画出网上选课系统中课程的状态图。<br>（3）画出网上选课系统中选课的活动图。</p>
+<hr>
+<h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><ul>
+<li><p>个人微信公众号：Mn2+</p>
+</li>
+<li><p>哔哩哔哩：不爱码字的小懒马儿</p>
+</li>
+<li><p><a href="https://github.com/mapao0110/mapao0110.github.io">GitHub</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>研一期末复习_记忆宫殿</category>
+      </categories>
+      <tags>
+        <tag>面向对象分析与设计</tag>
       </tags>
   </entry>
 </search>
